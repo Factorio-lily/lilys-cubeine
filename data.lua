@@ -6,6 +6,7 @@ require("prototypes.core-tech")
 require("prototypes.plant.cubeplant")
 require("prototypes.plant.branch")
 require("prototypes.plant.flower")
+require("prototypes.plant.autoplace")
 
 require("prototypes.fluid.raw-cubeplant-slurry")
 require("prototypes.fluid.filtered-cubeplant-slurry")
@@ -22,12 +23,16 @@ require("prototypes.cubeine-powder")
 require("prototypes.cubeine-crystal")
 require("prototypes.crystal-processing")
 
--- debug
+require("prototypes.cubeine-purification")
+
+require("prototypes.packaging")
+
+-- debug 
+--[[
 data:extend({
     {
         type = "recipe",
         name = "cubeplant-flower-debug",
-        category = "recycling-or-hand-crafting",
         subgroup = "agriculture",
         crafting_machine_tint = {
             primary = { r = 1.000, g = 0.735, b = 0.643, a = 1.000 },    -- #ffbba4ff
@@ -37,11 +42,12 @@ data:extend({
         },
         allow_productivity = false,
         enabled = true,
-        energy_required = 1,
+        energy_required = 10,
         ingredients =
         {
-
+            { type = "item", name = "wood", amount = 1000 },
+            { type = "item", name = "uranium-235", amount = 10 }
         },
-        results = { { type = "item", name = "cubeplant-flower", amount = 1 } }
+        results = { { type = "item", name = "cubeplant-flower", amount = 10 } }
     }
-})
+})--]]

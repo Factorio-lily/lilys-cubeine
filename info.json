@@ -8,8 +8,10 @@
 	"dependencies": [
 		"base >= 2.0",
 		"space-age",
-		"? maraxis",
+		"? maraxsis",
 		"? astroponics",
+		"? space-trains",
+		"? Cerys",
 		"? lilys-injector"
 		]
 }

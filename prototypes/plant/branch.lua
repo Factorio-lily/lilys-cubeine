@@ -12,6 +12,7 @@ item = {
     drop_sound = space_age_item_sounds.agriculture_inventory_move,
     fuel_category = "chemical",
     fuel_value = "2MJ",
+    fuel_emissions_multiplier = 10,
     stack_size = 20,
     default_import_location = "nauvis",
     weight = 20 * kg,

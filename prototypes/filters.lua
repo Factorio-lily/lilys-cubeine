@@ -1,28 +1,29 @@
+local item_sounds = require("__base__.prototypes.item_sounds")
 
 data:extend { {
     type = "item",
     name = "cubeslurry-filter",
-    icon = "__maraxsis__/graphics/icons/salt-filter.png",
+    icon = "__lilys-cubeine__/graphics/icons/filter-clean.png",
     icon_size = 64,
     stack_size = 50,
+    subgroup = "intermediate-product",
+    inventory_move_sound = item_sounds.metal_chest_inventory_move,
+    pick_sound = item_sounds.metal_chest_inventory_pickup,
+    drop_sound = item_sounds.metal_chest_inventory_move,
 } }
 
 data:extend { {
     type = "item",
     name = "cubeslurry-filter-dirty",
-    icon = "__maraxsis__/graphics/icons/salt-filter.png",
+    icon = "__lilys-cubeine__/graphics/icons/filter-dirty.png",
     icon_size = 64,
     stack_size = 50,
+    subgroup = "intermediate-product",
+    inventory_move_sound = item_sounds.metal_chest_inventory_move,
+    pick_sound = item_sounds.metal_chest_inventory_pickup,
+    drop_sound = item_sounds.metal_chest_inventory_move,
 } }
 
-
-data:extend { {
-    type = "item",
-    name = "cubeslurry-filter-dirty",
-    icon = "__maraxsis__/graphics/icons/salt-filter.png",
-    icon_size = 64,
-    stack_size = 50,
-} }
 
 
 
@@ -40,14 +41,20 @@ data:extend {{
         {type = "item",  name = "steel-plate",            amount = 1, probability = 0.05},
         {type = "item", name = "spoilage", amount = 10},
     },
-    category = mods["maraxis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
-    main_product = "cubeslurry-filter",
+    category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
+    --main_product = "cubeslurry-filter",
     allow_productivity = true,
     icons = {
         { icon = "__lilys-cubeine__/graphics/technology/filters.png", icon_size = 256},
         { icon = "__lilys-cubeine__/graphics/icons/misc/signal-recycle.png", icon_size = 64, tint = {0.9, 0.9, 0.9, 0.9} },
-    }
-    ,
+    },
+    subgroup = "intermediate-product",
+    crafting_machine_tint = {
+        primary = { r = 0, g = 05, b = 1, a = 1.000 },     --#0080ff
+        secondary = { r = 0, g = 0.4, b = 0.9, a = 1.000 },   --#0060ee
+        tertiary = { r = 0, g = 0, b = 0, a = 1.000 },     --#000000
+        quaternary = { r = 0, g = 0, b = 0, a = 1.000 },   --#000000
+    },
     
     allow_decomposition = false,
 ---@diagnostic disable-next-line: assign-type-mismatch
@@ -70,10 +77,7 @@ data:extend { {
     category = "advanced-crafting",
     main_product = "cubeslurry-filter",
     allow_productivity = true,
-    icons = {
-        { icon = "__lilys-cubeine__/graphics/technology/filters.png",   icon_size = 256 },
-        { icon = "__lilys-cubeine__/graphics/icons/signal-recycle.png", icon_size = 64, tint = { 0.9, 0.9, 0.9, 0.9 } },
-    }
+    subgroup = "intermediate-product"
 } }
 
 local tech = data.raw["technology"]["cubeplant-processing"]

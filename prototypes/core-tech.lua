@@ -6,8 +6,8 @@ data:extend({
         type = "technology",
         name = "cubeplant-processing",
         icon_size = 256,
-        icon = "__lilys-incendiaries__/graphics/graphics/technology/cubeplant-processing.png",
-        prerequisites = { "agriculture" },
+        icon = "__lilys-cubeine__/graphics/technology/cubeplant-processing.png",
+        prerequisites = { "advanced-oil-processing" },
 
         research_trigger =
         {
@@ -44,11 +44,11 @@ data:extend({
 data:extend({
     {
         type = "technology",
-        name = "cubeplant-crystallization",
+        name = "cubeine-crystallization",
         icon_size = 64,
-        icon = "__lilys-incendiaries__/graphics/icons/cubeine-crystal.png",
+        icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
         scale = 4,
-        prerequisites = { "agriculture" },
+        prerequisites = { "cubeplant-processing" },
 
         research_trigger =
         {

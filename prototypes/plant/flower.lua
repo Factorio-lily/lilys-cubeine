@@ -15,9 +15,31 @@ local item = {
     stack_size = 10,
     weight = 10 * kg,
     fuel_category = "chemical",
-    fuel_value = "100kJ"
+    fuel_value = "100kJ",
+    fuel_emissions_multiplier = 10
   }
   data:extend({item})
 
-
+data:extend({
+    {
+        type = "recipe",
+        name = "cubeplant-flower",
+        category = "organic-or-assembling",
+        subgroup = "agriculture-processes",
+        crafting_machine_tint = {
+            primary = { r = 1.000, g = 0.735, b = 0.643, a = 1.000 },    -- #ffbba4ff
+            secondary = { r = 0.749, g = 0.557, b = 0.490, a = 1.000 },  -- #bf8e7dff
+            tertiary = { r = 0.637, g = 0.637, b = 0.637, a = 1.000 },   -- #a2a2a2ff
+            quaternary = { r = 0.283, g = 0.283, b = 0.283, a = 1.000 }, -- #484848ff
+        },
+        allow_productivity = false,
+        enabled = true,
+        energy_required = 1,
+        ingredients =
+        {
+            { type = "item", name = "cubeplant-branch", amount = 1 }
+        },
+        results = { { type = "item", name = "cubeplant-flower", amount = 1 } }
+    }
+})
 

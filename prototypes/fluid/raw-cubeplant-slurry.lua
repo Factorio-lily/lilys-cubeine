@@ -1,7 +1,7 @@
 local fluid = {
     type = "fluid",
     name = "raw-cubeplant-slurry",
-    icon = "__lilys-cubeine/graphics/icons/fluid/raw-cubeplant-slurry.png",
+    icon = "__lilys-cubeine__/graphics/icons/fluid/raw-cubeplant-slurry.png",
     subgroup = "fluid",
     default_temperature = 25,
     order = "a[fluid]-f[cubeine]-a[raw-slurry]",

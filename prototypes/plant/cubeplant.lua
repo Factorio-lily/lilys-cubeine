@@ -6,7 +6,7 @@ local seconds = 60
 local minutes = 60*seconds
 
 local plant_emissions = { pollution = -0.001 }
-local plant_flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"}
+local plant_flags = {"placeable-neutral", "placeable-off-grid", "breaths-air", "not-flammable"}
 
 local leaf_sound = sounds.tree_leaves
 local leaf_sound_trigger =
@@ -23,7 +23,9 @@ local leaf_sound_trigger =
 local plant = {
     type = "plant",
     name = "redleaf-cubeplant", 
-    icon = "__lilys-cubeine__/graphics/entity/cubeplant.png",
+    icon = "__lilys-cubeine__/graphics/technology/cubeplant-processing.png",
+    icon_size = 256,
+    scale = 0.25,
     flags = plant_flags,
     minable =
     {
@@ -68,9 +70,15 @@ local plant = {
     subgroup = "trees",
     order = "a[tree]-c[nauvis-gleba]-a[seedable]-d[redleaf-cubeplant]",
     impact_category = "tree",
-    --[[autoplace =
-    {
-        control = "gleba_plants",
+    autoplace = {
+        control = "redleaf-cubeplants",
+        order = "a[plant]-b[redleaf-cubeplant]",
+        probability_expression = "redleaf_cubeplant_probability",
+        richness_expression = "redleaf_cubeplant_richness",
+        --tile_restriction = { "natural-yumako-soil", "artificial-yumako-soil", "overgrowth-yumako-soil" }
+    },
+    --[[{
+        control = "trees",
         order = "a[tree]-b[forest]-a",
         probability_expression = "min(0.2, 0.3 * (1 - gleba_plants_noise) * control:gleba_plants:size)",
         richness_expression = "random_penalty_at(3, 1)",
@@ -87,6 +95,25 @@ local plant = {
       {r = 255, g = 200, b =  255},
       {r = 255, g = 220, b =  255},
       {r = 255, g = 200, b =  255},
+    },
+    pictures = {
+        layers = {
+            {
+                filename = "__lilys-cubeine__/graphics/entity/cubeplant-shadow.png",
+                width = 500,
+                height = 356,
+                scale = 0.25,
+                shift = util.by_pixel(20, 0),
+                draw_as_shadow = true
+            }, 
+            {
+                filename = "__lilys-cubeine__/graphics/entity/cubeplant.png",
+                width = 500,
+                height = 356,
+                scale = 0.25,
+                shift = util.by_pixel(20, 0)
+            },
+        }
     },
     agricultural_tower_tint =
     {
@@ -110,6 +137,13 @@ local plant = {
         entity_to_sound_ratio = 0.3,
         average_pause_seconds = 8
     },
+    surface_conditions = {
+        {
+            property = "pressure",
+            min = 1000,
+            max = 3000
+        }
+},
     map_color = { 255, 160, 160 }, --#ffa0a0
 }
 
