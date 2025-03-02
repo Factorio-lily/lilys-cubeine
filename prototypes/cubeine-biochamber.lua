@@ -2,17 +2,52 @@ require ("sound-util")
 require ("circuit-connector-sprites")
 require ("util")
 require ("__space-age__.prototypes.entity.circuit-network")
-
+local sounds = require("__base__.prototypes.entity.sounds")
+local space_age_sounds = require("__space-age__.prototypes.entity.sounds")
+local item_sounds = require("__base__.prototypes.item_sounds")
+local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 
 
 local biochamber_pictures = require("__space-age__.prototypes.entity.biochamber-pictures")
+
+local biochamber_item = {
+    
+        type = "item",
+        name = "cubeine-biochamber",
+        icons = {
+            {
+                icon = "__space-age__/graphics/icons/biochamber.png",
+                icon_size = 64,
+                tint = { 1, 0.8, 0.8, 1 },
+            },
+            {
+                icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
+                icon_size = 64,
+                scale = 0.25,
+                shift = {6, 6}
+            }
+
+        },
+        subgroup = "agriculture",
+        order = "b[cubeine-biochamber]",
+        inventory_move_sound = item_sounds.fluid_inventory_move,
+        pick_sound = item_sounds.fluid_inventory_pickup,
+        drop_sound = item_sounds.fluid_inventory_move,
+        place_result = "cubeine-biochamber",
+        stack_size = 20,
+        default_import_location = "gleba"
+}
+
+
+
+
 
 local biochamber = table.deepcopy(data.raw["assembling-machine"]["biochamber"])
 biochamber.icon = nil
 biochamber.icons = {
     {
         icon = "__space-age__/graphics/icons/biochamber.png",
-        tint = { 0.2, 0, 0, 0.2 }
+        tint = { 1, 0.8, 0.8, 1 },
     }
 }
 biochamber.name = "cubeine-biochamber"
@@ -43,21 +78,33 @@ biochamber.energy_usage = "1MW"
 
 for _, layer in ipairs(biochamber.graphics_set.animation.layers) do
     if _ == 1 or _ == 2 then
-        layer.tint = {0.2, 0, 0, 0.2}
+        layer.tint = {1, 0.8, 0.8, 1}
     end
     layer.animation_speed = 1.5
 end
+biochamber.name = "cubeine-biochamber"
 
-
-data:extend({biochamber})
+data:extend({biochamber_item, biochamber})
 
 
 --recipe
 local recipe = {
-
+    icons = {
+        {
+            icon = "__space-age__/graphics/icons/biochamber.png",
+            icon_size = 64,
+            tint = { 1, 0.8, 0.8, 1 },
+        },
+        {
+            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
+            icon_size = 64,
+            scale = 0.25,
+            shift = { 6, 6 }
+        }
+    },
     type = "recipe",
     name = "cubeine-biochamber",
-    subgroup = "agriculture-processes",
+    subgroup = "agriculture",
     enabled = false,
     energy_required = 30,
     crafting_machine_tint = {
@@ -70,13 +117,13 @@ local recipe = {
         { type = "item",  name = "biochamber",   amount = 1 },
         { type = "fluid", name = "cubeine-solution", amount = 4000 },
         { type = "item",  name = "cubeine-crystal", amount = 10 },
-        { type = "item",  name = "low-density-strcture",  amount = 100 },
+        { type = "item",  name = "low-density-structure",  amount = 100 },
     },
     results = {
         { type = "item", name = "cubeine-biochamber", amount = 1 },
     },
     category = "organic-or-assembling",
-    main_product = "cubeine-biochamber",
+    --main_product = "cubeine-biochamber",
     allow_productivity = false
 
 }
@@ -91,18 +138,19 @@ data:extend({
         
         icons = {
             {
-                icon = "__spage-age__/graphics/technology/biochamber.png",
+                icon = "__space-age__/graphics/technology/biochamber.png",
                 icon_size = 256,
-                tint = {0.2, 0, 0, 0.2}
+                tint = {1, 0.8, 0.8, 1},
             },
             {
                 icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
                 icon_size = 64,
-                shift = {-1.5, -1.5}
+                scale = 0.5,
+                shift = {48, 48}
             }
 
         },
-        prerequisites = { "cubeplant-solution", "agricultural-science-pack" },
+        prerequisites = { "cubeine-solution", "agricultural-science-pack" },
 
         unit = {
             count = 1000,
@@ -110,7 +158,6 @@ data:extend({
             {
                 { "automation-science-pack",   1 },
                 { "logistic-science-pack",     1 },
-                { "military-science-pack",     1 },
                 { "chemical-science-pack",     1 },
                 { "production-science-pack",   1 },
                 { "agricultural-science-pack", 1 }

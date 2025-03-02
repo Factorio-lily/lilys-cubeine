@@ -10,11 +10,11 @@ local powder_bag =  {
     icons = {
         {
             icon = "__lilys-cubeine__/graphics/icons/cubeine.png",
-            scale = 0.75
+            scale = 0.375
         },
         {
             icon = "__lilys-cubeine__/graphics/icons/plastic-bag.png",
-            scale = 1
+            scale = 0.5
         }
     },
     subgroup = "agriculture-processes",
@@ -22,7 +22,7 @@ local powder_bag =  {
     inventory_move_sound = item_sounds.resource_inventory_move,
     pick_sound = item_sounds.resource_inventory_pickup,
     drop_sound = item_sounds.resource_inventory_move,
-    stack_size = 1,
+    stack_size = 4,
     default_import_location = "nauvis",
     weight = 10000
 }
@@ -34,11 +34,11 @@ local crystal_bag = {
     icons = {
         {
             icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
-            scale = 0.75
+            scale = 0.375
         },
         {
             icon = "__lilys-cubeine__/graphics/icons/plastic-bag.png",
-            scale = 1
+            scale = 0.5
         }
     },
     subgroup = "agriculture-processes",
@@ -46,7 +46,7 @@ local crystal_bag = {
     inventory_move_sound = space_age_item_sounds.ice_inventory_move,
     pick_sound = space_age_item_sounds.ice,
     drop_sound = space_age_item_sounds.ice_inventory_move,
-    stack_size = 1,
+    stack_size = 4,
     default_import_location = "nauvis",
     weight = 5000,
 }
@@ -58,11 +58,12 @@ data:extend({{
     icons = {
         {
             icon = "__lilys-cubeine__/graphics/icons/cubeine.png",
-            scale = 0.75
+            scale = 0.375
         },
         {
             icon = "__lilys-cubeine__/graphics/icons/plastic-bag.png",
-            scale = 1
+            scale = 0.5,
+            draw_background = true
         }
     },
     type = "recipe",
@@ -86,6 +87,7 @@ data:extend({{
     auto_recycle = false,
     hide_from_signal_gui = false,
     show_amount_in_title = false,
+    overload_multiplier = 2
 }
 })
 
@@ -94,11 +96,12 @@ data:extend({{
     icons = {
         {
             icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
-            scale = 0.75
+            scale = 0.375
         },
         {
             icon = "__lilys-cubeine__/graphics/icons/plastic-bag.png",
-            scale = 1
+            scale = 0.5,
+            draw_background = true
         }
     },
     type = "recipe",
@@ -122,6 +125,7 @@ data:extend({{
     auto_recycle = false,
     hide_from_signal_gui = false,
     show_amount_in_title = false,
+    overload_multiplier = 2
 }})
 
 
@@ -131,11 +135,12 @@ data:extend({{
     icons = {
         {
             icon = "__lilys-cubeine__/graphics/icons/cubeine.png",
-            scale = 0.75
+            scale = 0.375
         },
         {
             icon = "__lilys-cubeine__/graphics/icons/plastic-bag-torn.png",
-            scale = 1
+            scale = 0.5,
+            draw_background = true
         }
     },
     type = "recipe",
@@ -165,11 +170,12 @@ data:extend({{
     icons = {
         {
             icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
-            scale = 0.75
+            scale = 0.375
         },
         {
             icon = "__lilys-cubeine__/graphics/icons/plastic-bag-torn.png",
-            scale = 1
+            scale = 0.5,
+            draw_background = true
         }
     },
     type = "recipe",

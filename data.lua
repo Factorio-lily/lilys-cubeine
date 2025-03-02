@@ -27,6 +27,12 @@ require("prototypes.cubeine-purification")
 
 require("prototypes.packaging")
 
+require("prototypes.cubeine-cut-solution")
+require("prototypes.cubeine-biochamber")
+require("prototypes.cubeine-module-boost")
+require("prototypes.cubeine-cut-fuel")
+require("prototypes.cubeine-thruster")
+
 -- debug 
 --[[
 data:extend({
