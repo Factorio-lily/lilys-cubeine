@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.2
+Date: 2025-03-02
+  Changes:
+    - Added support for cubium and terrapalus mods
+    - Added verious settings for plant spawning and technologies
+---------------------------------------------------------------------------------------------------
 Version: 1.0.1
 Date: 2025-03-02
   Changes:

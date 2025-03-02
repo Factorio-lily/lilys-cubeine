@@ -75,7 +75,15 @@ local plant = {
         order = "a[plant]-b[redleaf-cubeplant]",
         probability_expression = "redleaf_cubeplant_probability",
         richness_expression = "redleaf_cubeplant_richness",
-        --tile_restriction = { "natural-yumako-soil", "artificial-yumako-soil", "overgrowth-yumako-soil" }
+        tile_restriction =
+        {
+            --Nauvis
+            "grass-1", "grass-2", "grass-3", "grass-4",
+            "dry-dirt", "dirt-1", "dirt-2", "dirt-3", "dirt-4", "dirt-5", "dirt-6", "dirt-7",
+            "red-desert-0", "red-desert-1", "red-desert-2", "red-desert-3",
+            -- Gleba
+            "highland-dark-rock", "highland-dark-rock-2", "highland-yellow-rock", "pit-rock"
+        }
     },
     --[[{
         control = "trees",
@@ -146,5 +154,14 @@ local plant = {
 },
     map_color = { 255, 160, 160 }, --#ffa0a0
 }
+
+if mods["cubium"] and plant.autoplace.tile_restriction then
+    local tiles = {"cubium-ash-soil", "cubium-soil-light", "cubium-soil-dark", "cubium-ash-cracks", "cubium-volcanic-pumice-stones", "cubium-volcanic-ash-flats", "cubium-volcanic-ash-light"}
+
+    for _, tile in ipairs(tiles) do
+        table.insert(plant.autoplace.tile_restriction, tile)
+    end
+end
+
 
 data:extend({plant})

@@ -7,7 +7,7 @@ data:extend({
         name = "cubeplant-processing",
         icon_size = 256,
         icon = "__lilys-cubeine__/graphics/technology/cubeplant-processing.png",
-        prerequisites = { "advanced-oil-processing" },
+        prerequisites = { "advanced-oil-processing", settings.startup["technology-condition"].value .. "" },
 
         research_trigger =
         {
