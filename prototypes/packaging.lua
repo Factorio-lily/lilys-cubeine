@@ -163,6 +163,7 @@ data:extend({{
     auto_recycle = false,
     hide_from_signal_gui = false,
     show_amount_in_title = false,
+    overload_multiplier = 2
 }})
 
 --recipe
@@ -198,6 +199,7 @@ data:extend({{
     auto_recycle = false,
     hide_from_signal_gui = false,
     show_amount_in_title = false,
+    overload_multiplier = 2
 }})
 
 
