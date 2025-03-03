@@ -87,7 +87,8 @@ data:extend({{
     auto_recycle = false,
     hide_from_signal_gui = false,
     show_amount_in_title = false,
-    overload_multiplier = 2
+    overload_multiplier = 2,
+    allow_decomposition = false
 }
 })
 
@@ -125,7 +126,8 @@ data:extend({{
     auto_recycle = false,
     hide_from_signal_gui = false,
     show_amount_in_title = false,
-    overload_multiplier = 2
+    overload_multiplier = 2,
+    allow_decomposition = false
 }})
 
 
@@ -163,7 +165,8 @@ data:extend({{
     auto_recycle = false,
     hide_from_signal_gui = false,
     show_amount_in_title = false,
-    overload_multiplier = 2
+    overload_multiplier = 2,
+    allow_decomposition = false
 }})
 
 --recipe
@@ -199,7 +202,8 @@ data:extend({{
     auto_recycle = false,
     hide_from_signal_gui = false,
     show_amount_in_title = false,
-    overload_multiplier = 2
+    overload_multiplier = 2,
+    allow_decomposition = false
 }})
 
 
