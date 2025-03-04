@@ -46,7 +46,9 @@ local plant = {
             }
         }
     },
+---@diagnostic disable-next-line: undefined-global, undefined-global
     mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-teflilly", 5, 0.5),
+---@diagnostic disable-next-line: undefined-global
     mined_sound = sound_variations("__space-age__/sound/mining/mined-teflilly", 5, 0.5),
     growth_ticks = 5 * minutes,
     harvest_emissions = { spores = 50, pollution = 50 },
@@ -133,6 +135,7 @@ local plant = {
     {
         sound =
         {
+---@diagnostic disable-next-line: undefined-global
             variations = sound_variations("__space-age__/sound/world/plants/teflilly", 8, 0.7),
             advanced_volume_control =
             {

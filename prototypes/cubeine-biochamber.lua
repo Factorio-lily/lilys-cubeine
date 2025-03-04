@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 require ("sound-util")
 require ("circuit-connector-sprites")
 require ("util")

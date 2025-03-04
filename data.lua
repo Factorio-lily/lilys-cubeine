@@ -33,6 +33,11 @@ require("prototypes.cubeine-module-boost")
 require("prototypes.cubeine-cut-fuel")
 require("prototypes.cubeine-thruster")
 
+
+if mods["astroponics"] then
+    require("prototypes.mod-compat.astroponics")
+end
+
 -- debug 
 --[[
 data:extend({
