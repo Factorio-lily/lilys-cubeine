@@ -37,6 +37,9 @@ require("prototypes.cubeine-thruster")
 if mods["astroponics"] then
     require("prototypes.mod-compat.astroponics")
 end
+if mods["se-space-trains"] then
+    require("prototypes.mod-compat.space-trains")
+end
 
 -- debug 
 --[[
