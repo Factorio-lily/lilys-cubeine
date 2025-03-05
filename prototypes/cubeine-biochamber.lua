@@ -66,6 +66,7 @@ biochamber.energy_source = {
         volume = 1000,
         filter = "cubeine-solution",
         draw_only_when_connected = true,
+---@diagnostic disable-next-line: undefined-global
         pipe_covers = pipecoverspictures(),
         pipe_connections =
         {
