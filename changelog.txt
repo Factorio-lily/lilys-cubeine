@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.6
+Date: 2025-03-05
+  Changes:
+    - Added replanting technology with no prerequisites that allows you to make seeds/flowers and replant cubeplants back
+---------------------------------------------------------------------------------------------------
 Version: 1.0.5
 Date: 2025-03-04
   Changes:

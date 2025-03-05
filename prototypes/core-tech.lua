@@ -1,5 +1,32 @@
 
 
+
+-- technology
+data:extend({
+    {
+        type = "technology",
+        name = "cubeplant-replanting",
+        icon_size = 64,
+        icon = "__lilys-cubeine__/graphics/icons/cubeplant-flower.png",
+        prerequisites = {} ,
+
+        research_trigger =
+        {
+            type = "mine-entity",
+            entity = "redleaf-cubeplant"
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe = "cubeplant-flower"
+            }
+        }
+    }
+})
+
+
+
 -- technology
 data:extend({
     {
@@ -16,10 +43,6 @@ data:extend({
         },
         effects =
         {
-            {
-                type = "unlock-recipe",
-                recipe = "cubeplant-flower"
-            },
             {
                 type = "unlock-recipe",
                 recipe = "cubeplant-slurry"

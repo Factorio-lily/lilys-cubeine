@@ -33,7 +33,7 @@ data:extend({
             quaternary = { r = 0.283, g = 0.283, b = 0.283, a = 1.000 }, -- #484848ff
         },
         allow_productivity = false,
-        enabled = true,
+        enabled = false,
         energy_required = 1,
         ingredients =
         {
