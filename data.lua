@@ -1,6 +1,7 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
 local sounds = require("__base__.prototypes.entity.sounds")
 
+
 require("prototypes.core-tech")
 
 require("prototypes.plant.cubeplant")
@@ -29,7 +30,7 @@ require("prototypes.packaging")
 
 require("prototypes.cubeine-cut-solution")
 require("prototypes.cubeine-biochamber")
---require("prototypes.cubeine-module-boost")
+require("prototypes.cubeine-module-boost")
 require("prototypes.cubeine-cut-fuel")
 require("prototypes.cubeine-thruster")
 
@@ -40,6 +41,32 @@ end
 if mods["se-space-trains"] then
     require("prototypes.mod-compat.space-trains")
 end
+
+
+data:extend({
+    {
+        type = "item-subgroup",
+        name = "cubeplant-processing",
+        group = "bioprocessing",
+        order = "k"
+    },
+    {
+        type = "item-subgroup",
+        name = "cubeine-processes",
+        group = "bioprocessing",
+        order = "l"
+    },
+    {
+        type = "item-subgroup",
+        name = "cubeine-products",
+        group = "intermediate-products",
+        order = "m"
+    },
+})
+
+
+
+
 
 -- debug 
 --[[
@@ -65,3 +92,22 @@ data:extend({
         results = { { type = "item", name = "cubeplant-flower", amount = 10 } }
     }
 })--]]
+
+
+
+--test
+--[[
+local item = table.deepcopy(data.raw["module"]["speed-module-3"])
+item.name = item.name .. "-test"
+item.spoil_ticks = minute
+item.spoil_to_trigger_result = multispoil.create_spoil_trigger({ "productivity-module-3", "productivity-module-3", "efficiency-module-3" })  
+
+local recipe = {
+    type = "recipe",
+    name = "debug_16116",
+    ingredients = {},
+    energy_required = 0.1,
+    results = {{type = "item", name = item.name, amount = 1}}
+}
+data:extend({item, recipe})
+--]]

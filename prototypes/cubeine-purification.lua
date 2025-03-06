@@ -3,7 +3,7 @@
 local purification = {
     type = "recipe",
     name = "cubeine-purification",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeine-processes",
     enabled = false,
     icons = {
         {

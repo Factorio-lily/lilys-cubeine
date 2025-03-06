@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 2025-03-05
+  Changes:
+    - Added ability to overclock modules with cubeine solution
+    - Added a new "module" item group to clutter ui less
+    - Lots of item and recipe classification changes
+---------------------------------------------------------------------------------------------------
 Version: 1.0.6
 Date: 2025-03-05
   Changes:

@@ -3,7 +3,7 @@
 local raw_slurry = {
     type = "recipe",
     name = "cubeplant-slurry",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeplant-processing",
     enabled = false,
     energy_required = 20,
     crafting_machine_tint = {
@@ -30,7 +30,7 @@ local filtered_slurry = {
 
     type = "recipe",
     name = "cubeplant-slurry-filtering",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeplant-processing",
     enabled = false,
     energy_required = 40,
     crafting_machine_tint = {
@@ -59,7 +59,7 @@ local pure_fluid = {
 
     type = "recipe",
     name = "cubeplant-slurry-distillation",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeplant-processing",
     enabled = false,
     energy_required = 20,
     crafting_machine_tint = {
@@ -91,7 +91,7 @@ local cubeine = {
     icon_size = 64,
     type = "recipe",
     name = "cubeine-extraction",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeplant-processing",
     enabled = false,
     energy_required = 5,
     crafting_machine_tint = {

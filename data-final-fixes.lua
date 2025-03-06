@@ -23,3 +23,20 @@ if mods["se-space-trains"] then
 
 
 end
+
+
+if mods["quality"] then
+local allrecipes = data.raw["recipe"]
+for name, recipe in pairs(allrecipes) do
+    if recipe.category == "recycling" and recipe.ingredients and recipe.ingredients[1] then
+        if (string.find(recipe.ingredients[1].name, "module") ~= nil) and (string.find(recipe.ingredients[1].name, "destroyed") ~= nil) then
+                local original_name = string.gsub(recipe.ingredients[1].name, "%-destroyed", "")
+                local original_recipe = data.raw["recipe"][original_name .. "-recycling"]
+                recipe.results = original_recipe.results
+                recipe.energy_required = original_recipe.energy_required * 2
+        end
+    end
+    
+
+end
+end

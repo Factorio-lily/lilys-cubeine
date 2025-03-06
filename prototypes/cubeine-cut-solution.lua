@@ -4,7 +4,7 @@ local solution = {
 
     type = "recipe",
     name = "cubeine-solution-mixing",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeine-processes",
     enabled = false,
     energy_required = 2,
     crafting_machine_tint = {

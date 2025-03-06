@@ -1,6 +1,6 @@
 {
 	"name": "lilys-cubeine",
-	"version": "1.0.6",
+	"version": "1.1.0",
 	"title": "Lily's Redleaf Cubeplant",
 	"author": "MsBinaryLily",
 	"description": "A mysterious red plant that grows in the shape of a cube. Interesting what can it be used for.",
@@ -8,6 +8,8 @@
 	"dependencies": [
 		"base >= 2.0",
 		"space-age",
+		"bioprocessing-tab",
+		"runtime-spoilage-library",
 		"? maraxsis",
 		"? astroponics",
 		"? cubium",
@@ -15,6 +17,8 @@
 		"(?) Cerys-Moon-of-Fulgora",
 		"(?) terrapalus",
 		"(?) modules-t4",
+		"(?) secretas",
+		"(?) Moshine", 
 		"? lilys-injector"
 		]
 }

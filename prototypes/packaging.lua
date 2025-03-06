@@ -17,7 +17,7 @@ local powder_bag =  {
             scale = 0.5
         }
     },
-    subgroup = "agriculture-processes",
+    subgroup = "cubeine-processes",
     order = "b[agriculture]-g[cubeine-powder-bag]",
     inventory_move_sound = item_sounds.resource_inventory_move,
     pick_sound = item_sounds.resource_inventory_pickup,
@@ -41,7 +41,7 @@ local crystal_bag = {
             scale = 0.5
         }
     },
-    subgroup = "agriculture-processes",
+    subgroup = "cubeine-processes",
     order = "b[agriculture]-g[cubeine-crystal-bag]",
     inventory_move_sound = space_age_item_sounds.ice_inventory_move,
     pick_sound = space_age_item_sounds.ice,
@@ -68,7 +68,7 @@ data:extend({{
     },
     type = "recipe",
     name = "cubeine-powder-packing",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeine-processes",
     enabled = false,
     energy_required = 1,
     emissions_multiplier = 1,
@@ -82,7 +82,7 @@ data:extend({{
     --main_product = "cubeine-powder",
     allow_productivity = false,
     allow_quality = false,
-    order = "n[cubeine]-z[powder-packing]",
+    order = "n[cubeine]-x[powder-packing]",
 ---@diagnostic disable-next-line: assign-type-mismatch
     auto_recycle = false,
     hide_from_signal_gui = false,
@@ -107,7 +107,7 @@ data:extend({{
     },
     type = "recipe",
     name = "cubeine-crystal-packing",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeine-processes",
     enabled = false,
     energy_required = 1,
     emissions_multiplier = 1,
@@ -121,7 +121,7 @@ data:extend({{
     --main_product = "cubeine-powder",
     allow_productivity = false,
     allow_quality = false,
-    order = "n[cubeine]-z[crystal-packing]",
+    order = "n[cubeine]-x[crystal-packing]",
     ---@diagnostic disable-next-line: assign-type-mismatch
     auto_recycle = false,
     hide_from_signal_gui = false,
@@ -147,7 +147,7 @@ data:extend({{
     },
     type = "recipe",
     name = "cubeine-powder-unpacking",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeine-processes",
     enabled = false,
     energy_required = 1,
     emissions_multiplier = 1,
@@ -160,7 +160,7 @@ data:extend({{
     --main_product = "cubeine-powder",
     allow_productivity = false,
     allow_quality = false,
-    order = "n[cubeine]-z[powder-unpacking]",
+    order = "n[cubeine]-x[powder-unpacking]",
     ---@diagnostic disable-next-line: assign-type-mismatch
     auto_recycle = false,
     hide_from_signal_gui = false,
@@ -184,7 +184,7 @@ data:extend({{
     },
     type = "recipe",
     name = "cubeine-crystal-unpacking",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeine-processes",
     enabled = false,
     energy_required = 1,
     emissions_multiplier = 1,
@@ -197,7 +197,7 @@ data:extend({{
     
     allow_productivity = false,
     allow_quality = false,
-    order = "n[cubeine]-z[crystal-unpacking]",
+    order = "n[cubeine]-x[crystal-unpacking]",
     ---@diagnostic disable-next-line: assign-type-mismatch
     auto_recycle = false,
     hide_from_signal_gui = false,

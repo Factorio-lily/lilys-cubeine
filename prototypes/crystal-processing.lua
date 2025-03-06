@@ -5,7 +5,7 @@ local hot = {
 
     type = "recipe",
     name = "cubeine-crystal-forging",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeine-processes",
     icons = {
         {
             icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -48,7 +48,7 @@ local cold = {
 
     type = "recipe",
     name = "cubeine-crystal-cryoforging",
-    subgroup = "agriculture-processes",
+    subgroup = "cubeine-processes",
     icons = {
         {
             icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",

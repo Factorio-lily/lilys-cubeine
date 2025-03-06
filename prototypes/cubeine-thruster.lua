@@ -60,7 +60,9 @@ thruster.fuel_fluid_box =
     volume = 2000,
     pipe_connections =
     {
+---@diagnostic disable-next-line: assign-type-mismatch
         { flow_direction = "input-output", direction = defines.direction.west, position = { -1.5, -2 }, enable_working_visualisations = { "pipe-4" } },
+---@diagnostic disable-next-line: assign-type-mismatch
         { flow_direction = "input-output", direction = defines.direction.east, position = { 1.5, 0 }, enable_working_visualisations = { "pipe-2" } },
     }
 }
@@ -73,7 +75,9 @@ thruster.oxidizer_fluid_box =
       volume = 2000,
       pipe_connections =
       {
+---@diagnostic disable-next-line: assign-type-mismatch
         {flow_direction = "input-output", direction = defines.direction.east, position = { 1.5, -2}, enable_working_visualisations = { "pipe-1" }},
+---@diagnostic disable-next-line: assign-type-mismatch
         {flow_direction = "input-output", direction = defines.direction.west, position = {-1.5,  0}, enable_working_visualisations = { "pipe-3" }},
       }
     }

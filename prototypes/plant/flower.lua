@@ -25,7 +25,7 @@ data:extend({
         type = "recipe",
         name = "cubeplant-flower",
         category = "organic-or-assembling",
-        subgroup = "agriculture-processes",
+        subgroup = "cubeplant-processing",
         crafting_machine_tint = {
             primary = { r = 1.000, g = 0.735, b = 0.643, a = 1.000 },    -- #ffbba4ff
             secondary = { r = 0.749, g = 0.557, b = 0.490, a = 1.000 },  -- #bf8e7dff
