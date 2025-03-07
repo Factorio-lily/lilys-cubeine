@@ -1,8 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.3
+Date: 2025-03-07
+  Changes:
+    - Cubeine plants now burn with cubeine flame when destroyed.
+    - Added overclock level number when overclocking modules
+---------------------------------------------------------------------------------------------------
 Version: 1.1.2
 Date: 2025-03-07
   Changes:
-    - Fixed another crash related to oveclock table
+    - Fixed another crash related to overclock table
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.1
 Date: 2025-03-07

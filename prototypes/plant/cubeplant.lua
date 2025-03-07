@@ -63,7 +63,7 @@ local plant = {
     },
     dying_trigger_effect = {
         type = "create-fire",
-        entity_name = "fire-flame"
+        entity_name = "cubeine-flame"
     },
     collision_box = { { -0.8, -0.8 }, { 0.8, 0.8 } },
     --collision_mask = {layers={player=true, ground_tile=true, train=true}},

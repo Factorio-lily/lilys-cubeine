@@ -182,7 +182,7 @@ local function create_overclocked(m, tier, icons, level)
         module.effect.speed = module.effect.speed * oc[level].b
         module.subgroup = "module-overclocked"
     end
-    module.localised_name = { "?", { "", { "module-strings.overclocked" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } } }, { "module-strings.overclocked-fallback" } }
+    module.localised_name = { "?", { "", { "module-strings.overclocked" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } },  " (" .. tostring(level) .. ")"}, { "module-strings.overclocked-fallback" } }
     module.localised_description = { "?", { "", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } }, " ", { "module-strings.overclocked-desc" } }, { "module-strings.overclocked-fallback-desc" } }
     module.spoil_ticks = (oc[level].t / tier) * (m.subgroup == "module-degraded" and 0.5 or 1)
     --module.spoil_to_trigger = get_spoil_effect(m, module, level, m.subgroup == "module-degraded")
@@ -208,7 +208,7 @@ local function create_oc_recipe(module, level)
     local recipe = {
         type = "recipe",
         name = module.name .. "-overclocked-" .. tostring(level),
-        localised_name = { "?", { "", { "module-strings.overclocking" }, " ", { "?", { "item-name." .. module.name }, { "item-name." .. tostring(string.gsub(module.name, "%-degraded", "")) } } }, { "module-strings.overclocking-fallback" } },
+        localised_name = { "?", { "", { "module-strings.overclocking" }, " ", { "?", { "item-name." .. module.name }, { "item-name." .. tostring(string.gsub(module.name, "%-degraded", "")) } },  " (" .. tostring(level) .. ")" }, { "module-strings.overclocking-fallback" } },
         subgroup = is_degraded and "module-degraded-overclocked" or "module-overclocked",
         enabled = false,
         energy_required = level * module.tier,
