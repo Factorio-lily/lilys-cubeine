@@ -188,13 +188,16 @@ local function create_overclocked(m, tier, icons, level)
     --module.spoil_to_trigger = get_spoil_effect(m, module, level, m.subgroup == "module-degraded")
     module.spoil_result = nil
 
-    module.beacon_tint.primary[1] = 1
-    module.beacon_tint.primary[2] = module.beacon_tint.primary[2] / 2
-    module.beacon_tint.primary[3] = module.beacon_tint.primary[3] / 2
-    module.beacon_tint.secondary[1] = 1
-    module.beacon_tint.secondary[2] = module.beacon_tint.secondary[2] / 2
-    module.beacon_tint.secondary[3] = module.beacon_tint.secondary[3] / 2
-
+    if module.beacon_tint ~= nil then
+        module.beacon_tint.primary[1] = 1
+        module.beacon_tint.primary[2] = module.beacon_tint.primary[2] / 2
+        module.beacon_tint.primary[3] = module.beacon_tint.primary[3] / 2
+        module.beacon_tint.secondary[1] = 1
+        module.beacon_tint.secondary[2] = module.beacon_tint.secondary[2] / 2
+        module.beacon_tint.secondary[3] = module.beacon_tint.secondary[3] / 2
+    else
+        module.beacon_tint = {primary = {1, 0, 0}, secondary = {1, 0, 0}}
+    end
     return module
 end
 
