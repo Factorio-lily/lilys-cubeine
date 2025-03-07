@@ -352,5 +352,7 @@ for name, module in pairs(allmodules) do
 end
 
 for _, module in ipairs(modules) do
-    add_overclocking(module)
+    if module.tier > 0 then
+        add_overclocking(module)
+    end
 end
