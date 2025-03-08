@@ -58,6 +58,8 @@ end
 
 function OnInit()
     storage = storage or {}
+    storage.reactors = storage.reactors or {}
+    storage.vhp = storage.vhp or {} --virtual heatpipes
     call_rsl()
 end
 
@@ -68,9 +70,56 @@ script.on_init(OnInit)
 script.on_configuration_changed(OnInit)
 
 
+script.on_event(defines.events.on_built_entity, function(event)
+    if event.entity.name == "nukubeine-reactor" then
+        storage.reactors[event.entity] = {vhp = nil}
+    end
+end
+)
+
+local function validate_storage()
+    for reactor, data in pairs(storage.reactors) do
+        if not reactor.valid then
+
+--Remove any scripted effects here
 
 
 
+            storage.reactors[reactor] = nil
+        end
+    end
+
+    for vhp, data in pairs(storage.vhp) do
+        if not vhp.valid then
+            storage.vhp[vhp] = nil
+        end
+
+        if vhp.reactor == nil or not (vhp.reactor.valid) then
+            vhp.destroy()
+        end
+
+    end
+
+end
+
+
+local function manage_reactors()
+    for reactor, data in pairs(storage.reactors) do
+        if reactor.frozen then
+            rendering.draw_animation({
+                animation = "nukubeine-reactor-frozen-animation",
+                animation_speed = 0,
+                target = reactor,
+                surface = reactor.surface,
+                time_to_live = 1
+            })
+        end
+
+
+        
+        
+    end
+end
 
 
 script.on_event(defines.events.on_script_trigger_effect, function(event)
@@ -88,3 +137,10 @@ end
 
 end
 )
+
+script.on_event(defines.events.on_tick, function(event)
+    validate_storage()
+    manage_reactors()
+
+
+end)

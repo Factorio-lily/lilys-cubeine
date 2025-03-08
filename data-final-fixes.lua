@@ -40,3 +40,11 @@ for name, recipe in pairs(allrecipes) do
 
 end
 end
+
+local rsc = data.raw["reactor"]["nukubeine-reactor"].surface_conditions or {}
+
+for _, cond in ipairs(rsc) do
+    if cond.property == "magnetic-field" then
+       cond.max = 200 
+    end
+end
