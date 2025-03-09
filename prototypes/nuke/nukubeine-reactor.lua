@@ -60,7 +60,7 @@ local reactor = {
         {property = "pressure", min = 1},
         {property = "magnetic-field", max = 200 }
     },
-    heating_energy = "1MW",
+    heating_energy = "1W",
     neighbour_bonus = 0,
     corpse = "nuclear-reactor-remnants",
     dying_explosion = "nuclear-reactor-explosion",
@@ -83,7 +83,16 @@ local reactor = {
     collision_box = {{-4.2, -4.2}, {4.2, 4.2}},
     selection_box = {{-4.5, -4.5}, {4.5, 4.5}},
     damaged_trigger_effect = hit_effects.entity(),
-
+    light  = {
+      intensity = 0.5,
+      size = 40,
+      color = {
+        r = 1.00,
+        g = 0.01,
+        b = 0.2,
+        a = 1
+      }
+    },
     lower_layer_picture  =
     {
       layers = {
@@ -92,7 +101,7 @@ local reactor = {
         width = 320,
         height = 316,
         scale = 0.5,
-        shift = { 4, 4 },
+        shift = { 2, 2},
         tint = {1, 0.6, 0.6, 1}
       },
       {
@@ -100,7 +109,7 @@ local reactor = {
         width = 320,
         height = 316,
         scale = 0.5,
-        shift = { -4, 4 },
+        shift = { -2, 2 },
         tint = {1, 0.6, 0.6, 1}
       },
       {
@@ -108,7 +117,7 @@ local reactor = {
         width = 320,
         height = 316,
         scale = 0.5,
-        shift = {4, -4},
+        shift = {2.1, -2.2},
       tint = { 1, 0.6, 0.6, 1 }
       },
       {
@@ -116,8 +125,16 @@ local reactor = {
         width = 320,
         height = 316,
         scale = 0.5,
-        shift = { -4, -4 },
+        shift = { -2.1, -2.2 },
       tint = { 1, 0.6, 0.6, 1 }
+      },
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/reactor-pipes.png",
+        width = 320,
+        height = 316,
+        scale = 0.5,
+        shift = { 0, -2.2 },
+        tint = { 1, 0.6, 0.6, 1 }
       },
     }
     },
@@ -129,7 +146,7 @@ local reactor = {
           width = 320,
           height = 316,
           scale = 0.5,
-          shift = { 4, 4 },
+          shift = { 2, 2 },
           tint = { 1, 0.6, 0.6, 1 }
       },
     apply_heat_pipe_glow {
@@ -137,7 +154,7 @@ local reactor = {
           width = 320,
           height = 316,
           scale = 0.5,
-          shift = { -4, 4 },
+          shift = { -2, 2 },
           tint = { 1, 0.6, 0.6, 1 }
         },
     apply_heat_pipe_glow{
@@ -145,7 +162,7 @@ local reactor = {
       width = 320,
       height = 316,
       scale = 0.5,
-      shift = { 4, -4 },
+      shift = { 2.1, -2.2 },
       tint = { 1, 0.6, 0.6, 1 }
     },
     apply_heat_pipe_glow {
@@ -153,9 +170,17 @@ local reactor = {
       width = 320,
       height = 316,
       scale = 0.5,
-      shift = { -4, -4 },
+      shift = { -2.1, -2.2 },
       tint = { 1, 0.6, 0.6, 1 }
     },
+      apply_heat_pipe_glow {
+        filename = "__base__/graphics/entity/nuclear-reactor/reactor-pipes-heated.png",
+        width = 320,
+        height = 316,
+        scale = 0.5,
+        shift = { 0, -2.2 },
+        tint = { 1, 0.6, 0.6, 1 }
+      },
   }
     },
 
@@ -163,11 +188,12 @@ local reactor = {
   {
     sheet =
     {
-      filename = "__base__/graphics/entity/nuclear-reactor/reactor-connect-patches.png",
+      filename = "__lilys-cubeine__/graphics/entity/reactor/reactor-connect-patches-large.png",
       width = 64,
       height = 64,
-      variation_count = 12,
-      scale = 0.5
+      variation_count = 21,
+      scale = 0.5,
+      tint = { 1, 0.6, 0.6, 1 }
     }
   },
 
@@ -175,12 +201,13 @@ local reactor = {
   {
     sheet =
     {
-      filename = "__base__/graphics/entity/nuclear-reactor/reactor-connect-patches.png",
+      filename = "__lilys-cubeine__/graphics/entity/reactor/reactor-connect-patches-large.png",
       width = 64,
       height = 64,
-      variation_count = 12,
+      variation_count = 21,
       y = 64,
-      scale = 0.5
+      scale = 0.5,
+      tint = { 1, 0.6, 0.6, 1 }
     }
   },
 
@@ -188,11 +215,12 @@ local reactor = {
   {
     sheet = apply_heat_pipe_glow
         {
-          filename = "__base__/graphics/entity/nuclear-reactor/reactor-connect-patches-heated.png",
+          filename = "__lilys-cubeine__/graphics/entity/reactor/reactor-connect-patches-heated-large.png",
           width = 64,
           height = 64,
-          variation_count = 12,
-          scale = 0.5
+          variation_count = 21,
+          scale = 0.5,
+          tint = { 1, 0.6, 0.6, 1 }
         }
   },
 
@@ -200,30 +228,31 @@ local reactor = {
   {
     sheet = apply_heat_pipe_glow
         {
-          filename = "__base__/graphics/entity/nuclear-reactor/reactor-connect-patches-heated.png",
+          filename = "__lilys-cubeine__/graphics/entity/reactor/reactor-connect-patches-heated-large.png",
           width = 64,
           height = 64,
-          variation_count = 12,
+          variation_count = 21,
           y = 64,
-          scale = 0.5
+          scale = 0.5,
+          tint = { 1, 0.6, 0.6, 1 }
         }
   },
 
 
-
+  
     picture =
-    {
+    { 
       layers =
       {
-        {
-          filename = "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-1.png",
-          width = 590,
-          height = 640,
-          scale = 0.5,
-          shift = {0, -0.5},
-          tint = {0.5, 0.5, 0.5, 0.5}
-          --shift = util.by_pixel(-5, -7)
-        },
+      {
+        filename = "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-1.png",
+        width = 590,
+        height = 640,
+        scale = 0.5,
+        shift = { 0, -0.5 },
+        --tint = { 0.5, 0.5, 0.5, 0.5 }
+        --shift = util.by_pixel(-5, -7)
+      },
         {
           filename = "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-shadow.png",
           width = 1200,
@@ -235,7 +264,7 @@ local reactor = {
       }
     },
 
-    working_light_picture =
+    --[[working_light_picture =
     {
     filenames = {
       "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-emission-1.png",
@@ -253,22 +282,126 @@ local reactor = {
         shift = { 0, -0.5 },
         tint = {1, 0, 1, 1}
       --shift = { -0.03125, -0.1875 },
-    },
+    },--]]
 
     heat_buffer =
     {
       max_temperature = 3000,
-      specific_heat = "500MJ",
-      max_transfer = "10GW",
+      specific_heat = "200MJ",
+      max_transfer = "100GW",
       minimum_glow_temperature = 350,
-      heat_picture = {
+    connections =
+    {
+      {
+        position = { -4.0, -4.0 },
+        direction = defines.direction.north
+      },
+      {
+        position = { -2.0, -4.0 },
+        direction = defines.direction.north
+      },
+      {
+        position = { 0, -4.0 },
+        direction = defines.direction.north
+      },
+      {
+        position = { 2.0, -4.0 },
+        direction = defines.direction.north
+      },
+      {
+        position = { 4.0, -4.0 },
+        direction = defines.direction.north
+      },
+      {
+        position = { 0, 1 },
+        direction = defines.direction.north --internal
+      },
+      {
+        position = { 4, -4 },
+        direction = defines.direction.east
+      },
+      {
+        position = { 4, -2 },
+        direction = defines.direction.east
+      },
+      {
+        position = { 4, 0 },
+        direction = defines.direction.east
+      },
+      {
+        position = { 4, 2 },
+        direction = defines.direction.east
+      },
+      {
+        position = { 4, 4 },
+        direction = defines.direction.east
+      },
+      {
+        position = { -4, 4 },
+        direction = defines.direction.south
+      },
+      {
+        position = { -2, 4 },
+        direction = defines.direction.south
+      },
+      {
+        position = { 0, 4 },
+        direction = defines.direction.south
+      }, 
+      {
+      position = { 2, 4 },
+      direction = defines.direction.south
+      }, 
+      {
+      position = { 4, 4 },
+      direction = defines.direction.south
+      },
+      {
+        position = { -4, -4 },
+        direction = defines.direction.west
+      },
+      {
+        position = { -4, -2 },
+        direction = defines.direction.west
+      },
+      {
+        position = { -4, 0 },
+        direction = defines.direction.west
+      }, 
+      {
+      position = { -4, 2 },
+      direction = defines.direction.west
+      }, 
+      {
+        position = { -4, 4 },
+        direction = defines.direction.west
+      },
+      --[[{
+      position = { -1, 0 },
+      direction = defines.direction.east --internal
+      },
+      {
+        position = { 0, 1 },
+        direction = defines.direction.west --internal
+      },
+      {
+        position = { 0, -1 },
+        direction = defines.direction.south --internal
+      },
+      {
+        position = { 0, 1 },
+        direction = defines.direction.north --internal
+      },--]]
+    },
+      --[[heat_picture = {
         filename = "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-emission-1.png",
         mode = "additive-soft",
         tint = {1, 0.4, 0.1, 1},
+      render_layer = "higher-object-above",
       width = 590,
       height = 640,
-      draw_as_light = true
-      }
+      draw_as_glow = true
+      }--]]
     },
     impact_category            = "metal-large",
     open_sound                 = { filename = "__base__/sound/open-close/nuclear-open.ogg", volume = 0.8 },
@@ -358,7 +491,7 @@ pipe.heat_buffer =
 {
   max_temperature = 2000,
   specific_heat = "2MJ",
-  max_transfer = "10GW",
+  max_transfer = "20GW",
   minimum_glow_temperature = 350,
   connections =
   {
@@ -385,6 +518,14 @@ pipe.heat_buffer =
   }
 }
 pipe.heating_radius = 2
+
+for _, res in ipairs(pipe.resistances) do
+  if res.type == "fire" then
+    res.percent = 100
+  end
+end
+
+
 
 
 for name, array in pairs(pipe.connection_sprites) do
@@ -504,8 +645,8 @@ data:extend({
         icons = {
             {
                 icon = "__lilys-cubeine__/graphics/entity/reactor/research-center-icon-big.png",
-                icon_size = 64,
-                scale = 640/256,
+                icon_size = 640,
+                --scale = 640/256,
             }
         },
         prerequisites = { "nukubeine-production", "fusion-reactor" },
@@ -540,3 +681,72 @@ data:extend({
         }
     }
 })
+
+
+for i = 1, 80, 1 do
+  data:extend({{
+    type = "heat-pipe",
+    name = "nukubeine-reactor-vhp-"..i,
+    max_health = 10000000,
+    heating_radius = i,
+    hidden = true,
+    collision_mask = { layers = {} },
+    collision_box = { { -0.2, -0.2 }, { 0.2, 0.2 } },
+    selection_box = { { 0, 0 }, { 0, 0 } },
+    fast_replaceable_group = "vhp",
+    heat_buffer = {
+      max_temperature = 3000,
+      specific_heat = "50MJ",
+      max_transfer = "50GW",
+      minimum_glow_temperature = 350,
+      connections =
+      {
+        {
+          position = { 0, 0 },
+          ---@diagnostic disable-next-line: assign-type-mismatch
+          direction = defines.direction.north
+        },
+        {
+          position = { 0, 0 },
+          ---@diagnostic disable-next-line: assign-type-mismatch
+          direction = defines.direction.east
+        },
+        {
+          position = { 0, 0 },
+          ---@diagnostic disable-next-line: assign-type-mismatch
+          direction = defines.direction.south
+        },
+        {
+          position = { 0, 0 },
+          ---@diagnostic disable-next-line: assign-type-mismatch
+          direction = defines.direction.west
+        }
+      }
+    }
+  },
+  {
+      type = "lamp",
+      name = "nukubeine-reactor-vlt-" .. i,
+      collision_mask = { layers = {} },
+      max_health = 10000000,
+      flags = { "not-on-map", "placeable-off-grid" },
+      light = {
+        intensity = 1 + 0.1 * i,
+        size = i * 4,
+        color = {
+          r = 1.00,
+          g = 0.5,
+          b = 0.2,
+          a = 1
+        }
+      },
+      fast_replaceable_group = "vlt",
+      energy_usage_per_tick = "1kJ",
+      energy_source = { type = "void" },
+      collision_box = { { -0.2, -0.2 }, { 0.2, 0.2 } },
+      selection_box = { { 0, 0 }, { 0, 0 } },
+      always_on = true,
+      hidden = true
+  }
+})
+end

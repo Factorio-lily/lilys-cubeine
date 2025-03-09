@@ -2,7 +2,51 @@ local item_sounds = require("__base__.prototypes.item_sounds")
 local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local sounds = require("__base__.prototypes.entity.sounds")
 
-
+local cuburn3 = {
+    {
+        type = "direct",
+        action_delivery = {
+            type = "instant",
+            source_effects = {
+                {
+                    type = "create-entity",
+                    entity_name = "cubeine-flame",
+                    probability = 1
+                },
+            }
+        }
+    },
+    {
+        type = "area",
+        radius = 12,
+        action_delivery = {
+            type = "instant",
+            target_effects = {
+                {
+                    type = "create-entity",
+                    entity_name = "cubeine-flame",
+                    probability = 1
+                }
+            }
+        }
+    },
+    {
+        type = "cluster",
+        cluster_count = 64,
+        distance = 12,
+        distance_deviation = 80,
+        action_delivery = {
+            type = "instant",
+            target_effects = {
+                {
+                    type = "create-entity",
+                    entity_name = "cubeine-flame",
+                    probability = 1
+                }
+            }
+        }
+    }
+}
 
 local category = {
     type = "fuel-category",
@@ -54,7 +98,7 @@ local item = {
                     type = "projectile",
                     projectile = "nukubeine-boom-shard",
                     starting_speed_deviation = 0.4,
-                    starting_speed = 0.5
+                    starting_speed = 0.1
                 }
             }
         }
@@ -65,16 +109,22 @@ data:extend{
     {
         type = "projectile",
         name = "nukubeine-boom-shard",
-        acceleration = 0.1,
+        acceleration = 0.001,
         animation = {
             filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant.png",
             size = 64,
             scale = 0.25,
             draw_as_glow = true
         },
+        light = {color = {1, 0.1, 0.2, 1}, intensity = 0.8, size = 16},
         rotatable = true,
-        height = 10,
-        action = data.raw["projectile"]["atomic-rocket"].action
+        height = 20,
+        action = {
+            data.raw["projectile"]["atomic-rocket"].action,
+            cuburn3[1],
+            cuburn3[2],
+            cuburn3[3],
+        }
     }
 }
 
@@ -97,14 +147,16 @@ local cube = {
     energy_required = 60,
     emissions_multiplier = 10,
     ingredients = {
+        { type = "item",  name = "cubeine-crystal", amount = 10 },
         { type = "item", name = "cubeine-powder",  amount = 100 },
-        { type = "item",  name = "cubeine-crystal", amount = 1 },
         { type = "item",  name = "uranium-235",     amount = 100 },
         { type = "item",  name = "uranium-238",   amount = 1000,  ignore_in_stats = 900 },
+        { type = "item",  name = "quantum-processor",   amount = 100,  ignore_in_stats = 100 },
     },
     results = {
         { type = "item", name = "nukubeine-crystal", amount = 1 },
-        { type = "item", name = "uranium-238",       amount = 900, ignore_in_stats = 900 },
+        { type = "item", name = "uranium-238",       amount = 900, ignore_in_stats = 900,ignored_by_productivity = 900 },
+        { type = "item",  name = "quantum-processor",   amount = 100,  ignore_in_stats = 100, ignored_by_productivity = 1000},
     },
     category = "centrifuging",
     main_product = "nukubeine-crystal",

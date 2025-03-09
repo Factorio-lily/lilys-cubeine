@@ -66,6 +66,7 @@ data:extend({
 
 
 require("prototypes.nuke.nukubeine")
+require("prototypes.nuke.nukubeine-artillery-shell")
 require("prototypes.nuke.nukubeine-reactor")
 
 

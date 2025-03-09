@@ -4,7 +4,7 @@ Date: 2025-03-07
   Changes:
     - Cubeine charged battery packs now spoil (into discharged packs) after an hour
     - Cubeine purification now gives 4-5 units of powder (used to be 3-5)
-    - Added some special endgame tech
+    - Added [Redacted]
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.4
 Date: 2025-03-08
