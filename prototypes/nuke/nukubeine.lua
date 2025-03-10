@@ -10,7 +10,7 @@ local cuburn3 = {
             source_effects = {
                 {
                     type = "create-entity",
-                    entity_name = "cubeine-flame",
+                    entity_name = "nukubeine-flame",
                     probability = 1
                 },
             }
@@ -24,7 +24,7 @@ local cuburn3 = {
             target_effects = {
                 {
                     type = "create-entity",
-                    entity_name = "cubeine-flame",
+                    entity_name = "nukubeine-flame",
                     probability = 1
                 }
             }
@@ -40,7 +40,7 @@ local cuburn3 = {
             target_effects = {
                 {
                     type = "create-entity",
-                    entity_name = "cubeine-flame",
+                    entity_name = "nukubeine-flame",
                     probability = 1
                 }
             }
@@ -251,3 +251,27 @@ data:extend({
         }
     }
 })
+
+
+local nukubeine_flame = table.deepcopy(data.raw["fire"]["fire-flame"])
+nukubeine_flame.name = "nukubeine-flame"
+nukubeine_flame.initial_lifetime = 12000
+nukubeine_flame.lifetime_increase_by = 1500
+nukubeine_flame.maximum_lifetime = 180000
+nukubeine_flame.emissions_per_second = { pollution = 10, spores = 1 }
+nukubeine_flame.flame_alpha = 0.8
+nukubeine_flame.light.color = { 1, 0.1, 0.8, 1 }
+nukubeine_flame.maximum_damage_multiplier = 100
+nukubeine_flame.damage_multiplier_increase_per_added_fuel = 1
+nukubeine_flame.damage_per_tick.amount = nukubeine_flame.damage_per_tick.amount * 10
+--nukubeine_flame.spawn_entity = "nukubeine-flame"
+
+for _, picture in ipairs(nukubeine_flame.pictures) do
+    picture.tint = { 1, 0.1, 1, 1 }
+end
+
+for _, picture in ipairs(nukubeine_flame.smoke_source_pictures) do
+    picture.tint = { 1, 0.1, 1, 1 }
+end
+
+data:extend({ nukubeine_flame })
