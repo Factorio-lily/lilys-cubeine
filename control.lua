@@ -70,7 +70,7 @@ end
 
 
 
-script.on_load(OnInit)
+script.on_load(call_rsl)
 script.on_init(OnInit)
 script.on_configuration_changed(OnInit)
 
