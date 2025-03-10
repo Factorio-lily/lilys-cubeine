@@ -1,9 +1,9 @@
 {
 	"name": "lilys-cubeine",
-	"version": "1.2.1",
-	"title": "Lily's Redleaf Cubeplant",
+	"version": "1.2.2",
+	"title": "Lily's Cubeine Technologies",
 	"author": "MsBinaryLily",
-	"description": "A mysterious red plant that grows in the shape of a cube. Interesting what can it be used for.",
+	"description": "Cubeine - a novel substance that can be extracted from certain plant and has excellent fuel and catalytic properties. Grow, harvest, extract and exploit it for your needs with this mod's advanced technologies.",
 	"factorio_version": "2.0",
 	"dependencies": [
 		"base >= 2.0",
