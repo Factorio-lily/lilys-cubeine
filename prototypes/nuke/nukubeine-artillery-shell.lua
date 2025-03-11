@@ -99,7 +99,7 @@ data:extend({
         name = "nukubeine-artillery-shells",
         icon_size = 64,
         icon = "__lilys-cubeine__/graphics/icons/nukubeine-artillery-shell-icon.png",
-        prerequisites = {"artillery"},
+        prerequisites = { "artillery", "nukubeine-production" },
 
         research_trigger =
         {

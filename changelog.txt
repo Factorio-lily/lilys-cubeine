@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.5
+Date: 2025-03-11
+  Changes:
+    - Added suport for cubeine plants on Moshine (toggleable)
+    - Some minor changes to plant autoplacement
+---------------------------------------------------------------------------------------------------
 Version: 1.2.4
 Date: 2025-03-10
   Changes:
