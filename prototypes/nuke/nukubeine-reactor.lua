@@ -434,7 +434,9 @@ local reactor = {
     },
 
     default_temperature_signal = { type = "virtual", name = "signal-T" },
+---@diagnostic disable-next-line: undefined-global
     circuit_wire_max_distance  = reactor_circuit_wire_max_distance * 2,
+---@diagnostic disable-next-line: undefined-global    
     circuit_connector          = circuit_connector_definitions["nuclear-reactor"],
     
 }
@@ -730,8 +732,7 @@ for i = 0, 80, 1 do
       name = "nukubeine-reactor-vlt-" .. i,
       collision_mask = { layers = {} },
       max_health = 10000000,
-      flags = { "not-repairable" },
-      flags = { "not-on-map", "placeable-off-grid" },
+      flags = { "not-on-map", "not-repairable" },
       light = {
         intensity = 0.2 + 0.1 * i,
         size = i * 4,
