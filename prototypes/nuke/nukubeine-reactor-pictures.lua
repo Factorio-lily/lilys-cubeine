@@ -70,11 +70,11 @@ local heat_animation = {
     width = 590,
     height = 640,
     filenames = {
-        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-bw-1.png",
-        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-bw-2.png"
+        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-bwl-1.png",
+        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-bwl-2.png"
     },
     blend_mode = "additive",
-    tint = { 0.5, 0.2, 0.5, 0.5 },
+    --tint = { 0.5, 0.2, 0.5, 0.5 },
 
     scale = 0.5,
     lines_per_file = 8,

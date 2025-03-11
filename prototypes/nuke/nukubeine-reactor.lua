@@ -683,11 +683,12 @@ data:extend({
 })
 
 
-for i = 1, 80, 1 do
+for i = 0, 80, 1 do
   data:extend({{
     type = "heat-pipe",
     name = "nukubeine-reactor-vhp-"..i,
     max_health = 10000000,
+    flags = {"not-repairable"},
     heating_radius = i,
     hidden = true,
     collision_mask = { layers = {} },
@@ -729,14 +730,15 @@ for i = 1, 80, 1 do
       name = "nukubeine-reactor-vlt-" .. i,
       collision_mask = { layers = {} },
       max_health = 10000000,
+      flags = { "not-repairable" },
       flags = { "not-on-map", "placeable-off-grid" },
       light = {
-        intensity = 1 + 0.1 * i,
+        intensity = 0.2 + 0.1 * i,
         size = i * 4,
         color = {
           r = 1.00,
-          g = 0.5,
-          b = 0.2,
+          g = 0 + math.min(1, math.pow(i / 40.0, 2)),
+          b = 0 + math.min(1, math.pow(i / 40.0, 4)),
           a = 1
         }
       },

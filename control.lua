@@ -65,6 +65,7 @@ function OnInit()
     storage.reactors = storage.reactors or {}
     storage.vhp = storage.vhp or {} --virtual heatpipes
     storage.vlt = storage.vlt or {} --virtual lights
+    storage.vhp_del = storage.vhp_del or {} --virtual heatpipes - to be deleted
     call_rsl()
 end
 
@@ -117,7 +118,7 @@ script.on_event(defines.events.on_built_entity, function(event)
             surface = reactor.surface,
             scale = 0.5,
             shift = { 0, -0.5 },
-            tint = { 1, 0.4, 0.1, 1 },
+            --tint = { 1, 0.4, 0.1, 1 },
             render_layer = "higher-object-above",
             width = 590,
             height = 640,
@@ -128,13 +129,13 @@ script.on_event(defines.events.on_built_entity, function(event)
 end
 )
 
-local function validate_storage()
+local function validate_storage(tick)
     for reactor, data in pairs(storage.reactors) do
         if not reactor.valid then
 
 --Remove any scripted effects here
             if data.frozen and data.frozen.valid then
-                        data.frozen.destroy()
+                data.frozen.destroy()
             end
             if data.base and data.base.valid then
                 data.base.destroy()
@@ -171,7 +172,24 @@ local function validate_storage()
             vlt.destroy()
         end
     end
-
+    if not storage.vhp_del then
+        storage.vhp_del = {}
+    end
+    for vhp, data in pairs(storage.vhp_del) do
+        if not vhp.valid then
+            storage.vhp_del = nil
+        end
+        
+        if vhp.valid and data.tick < tick then
+            vhp.destroy()
+    
+        else
+            if data.reactor and data.reactor.valid and vhp.valid then
+                vhp.temperature = data.reactor.temperature
+            end
+        end
+        
+    end
 end
 
 
@@ -188,17 +206,17 @@ local function manage_reactors(tick)
         local t = reactor.temperature
         local trigger_chance = t > 1000 and math.pow((t - 1000) / 5000, 2) or 0
         
-        local light_radius = math.ceil(0.73 * math.sqrt(t) + 0)
-        local heat_radius = math.ceil(0.73 * math.sqrt(t) + 5)
-        local danger_radius = 0.73 * math.sqrt(t) / 1.8
-        local danger_intensity = (t / 300) ^ 2
+        local light_radius = math.floor(6e-6 * t * t + 0)
+        local heat_radius = math.ceil(6e-6 * t * t + 5)
+        local danger_radius = 6e-6 * t * t / 1.8
+        local danger_intensity = (t / 300) * (t / 300)
         local safe_radius = 10
 
         local shc = 0.2
-        local k = 0.5e-14
+        local k = 0.4e-15
 
 
-        local temp_decrease = t^4 * k * shc
+        local temp_decrease = t^4 * k / shc
         reactor.temperature = reactor.temperature - temp_decrease
 
         if (data.vhp ~= nil and data.vhp.valid and heat_radius ~= data.heat_radius) then
@@ -207,12 +225,19 @@ local function manage_reactors(tick)
                 position = reactor.position,
                 force = reactor.force,
                 create_build_effect_smoke = false,
-                fast_replace = true
+                --fast_replace = true
             })
             if data.vhp.valid and data.vhp ~= nvhp then
-                data.vhp.destroy()
+                if not storage.vhp_del then
+                    storage.vhp_del = {}
+                end
+                data.vhp.temperature = t
+
+                storage.vhp_del[data.vhp] = {tick = tick + 60, reactor = reactor}
+                --data.vhp.destroy()
             end
             data.vhp = nvhp
+            data.vhp.temperature = t
             data.heat_radius = heat_radius
         end
         if (data.vhp == nil or (not data.vhp.valid)) then
@@ -262,8 +287,8 @@ local function manage_reactors(tick)
         
 
         if data.heat_glow and data.heat_glow.valid then
-            local a = math.min(1, t < 300 and 0 or math.pow((t - 300) / 2700, 4))
-            data.heat_glow.color = {a, 0.4 * a, 0.1 * a, a}
+            local a = math.min(1, t < 300 and 0 or math.pow((t - 100) / 2700, 4))
+            data.heat_glow.color = { math.sqrt(a), a * math.sqrt(a), a * a, math.sqrt(a) }
         end
         
         if (data.frozen and data.base and data.emissive and data.heat_glow) and (data.frozen.valid and data.base.valid and data.emissive.valid and data.heat_glow.valid) then
@@ -326,7 +351,7 @@ end
 )
 
 script.on_event(defines.events.on_tick, function(event)
-    validate_storage()
+    validate_storage(event.tick)
     manage_reactors(event.tick)
 
 
