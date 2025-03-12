@@ -24,7 +24,14 @@ data:extend({
         default_value = true,
         order = "ab"
     },
-    tcs
+    tcs,
+    {
+        type = "int-setting",
+        name = "max-overclock",
+        setting_type = "startup",
+        default_value = 6,
+        allowed_values = {0, 1, 2, 3, 4, 5, 6}
+    }
 })
 
 

@@ -265,14 +265,18 @@ local function add_overclocking(module)
     local d_oc_list = {}
 
     for _, data in ipairs(oc) do
-        local oc1 = create_overclocked(module, tier, icons, _)
-        local oc2 = create_overclocked(degraded_version, tier, degraded_version.icons, _)
-        table.insert(oc_list, oc1)
-        table.insert(d_oc_list, oc2)
-        create_oc_recipe(module, _)
-        create_oc_recipe(degraded_version, _)
-        rsl.register_spoilable_item(oc1, 1, degraded_version.name)
-        rsl.register_spoilable_item(oc2, 1, degraded_version.name)
+
+        if (_ <= settings.startup["max-overclock"].value) then
+
+            local oc1 = create_overclocked(module, tier, icons, _)
+            local oc2 = create_overclocked(degraded_version, tier, degraded_version.icons, _)
+            table.insert(oc_list, oc1)
+            table.insert(d_oc_list, oc2)
+            create_oc_recipe(module, _)
+            create_oc_recipe(degraded_version, _)
+            rsl.register_spoilable_item(oc1, 1, degraded_version.name)
+            rsl.register_spoilable_item(oc2, 1, degraded_version.name)
+        end
     end
 
     --data:extend(oc_list)
@@ -331,28 +335,22 @@ for name, recipe in pairs(allrecipes) do
 end
 --]]
 
-
-data:extend({tech})
-
-
+if settings.startup["max-overclock"].value > 0 then
+    data:extend({tech})
 
 
+    local allmodules = data.raw["module"]
+    local modules = {}
 
-
-
-
-
-local allmodules = data.raw["module"]
-local modules = {}
-
-for name, module in pairs(allmodules) do
-    if module.category == "speed" and module.effect.speed and module.effect.speed > 0 then
-       table.insert(modules, module) 
+    for name, module in pairs(allmodules) do
+        if module.category == "speed" and module.effect.speed and module.effect.speed > 0 then
+        table.insert(modules, module) 
+        end
     end
-end
 
-for _, module in ipairs(modules) do
-    if module.tier > 0 then
-        add_overclocking(module)
+    for _, module in ipairs(modules) do
+        if module.tier > 0 and (not module.hidden)then
+            add_overclocking(module)
+        end
     end
 end
