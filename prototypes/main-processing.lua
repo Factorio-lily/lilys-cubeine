@@ -78,7 +78,7 @@ local pure_fluid = {
         { type = "fluid", name = "petroleum-gas",        amount = 960 },
         { type = "fluid", name = "lubricant",            amount = 180 },
     },
-    category = "oil-processing",
+    category = (mods["Age-of-Production"] and "petrochemistry-or-oil-processing" or "oil-processing"),
     main_product = "pure-cubeplant-fluid",
     allow_productivity = true
 

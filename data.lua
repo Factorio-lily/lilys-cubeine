@@ -42,6 +42,9 @@ if mods["se-space-trains"] then
     require("prototypes.mod-compat.space-trains")
 end
 
+if mods["Age-of-Production"] then
+    require("prototypes.mod-compat.age-of-production")
+end
 
 data:extend({
     {
