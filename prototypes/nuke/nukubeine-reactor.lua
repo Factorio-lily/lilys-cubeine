@@ -424,8 +424,8 @@ local reactor = {
         distance = 60,
         distance_deviation = 160,
         action_delivery = {
-          type = "projectile",
-          projectile = "nukubeine-boom-shard",
+          type = "stream",
+          stream = "nukubeine-boom-shard",
           starting_speed_deviation = 0.4,
           starting_speed = 0.5
         }

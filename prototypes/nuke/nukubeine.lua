@@ -95,8 +95,8 @@ local item = {
                 distance = 40,
                 distance_deviation = 80,
                 action_delivery = {
-                    type = "projectile",
-                    projectile = "nukubeine-boom-shard",
+                    type = "stream",
+                    stream = "nukubeine-boom-shard",
                     starting_speed_deviation = 0.4,
                     starting_speed = 0.1
                 }
@@ -105,7 +105,7 @@ local item = {
     }
 }
 
-data:extend{
+--[[data:extend{
     {
         type = "projectile",
         name = "nukubeine-boom-shard",
@@ -126,8 +126,41 @@ data:extend{
             cuburn3[3],
         }
     }
+}--]]
+data:extend {
+    {
+        type = "stream",
+        name = "nukubeine-boom-shard",
+        particle_spawn_interval = 5,
+        particle_horizontal_speed = 0.2,
+        particle_horizontal_speed_deviation = 0.15,
+        particle_vertical_acceleration = 0.005,
+        particle_buffer_size = 1,
+        particle_spawn_timeout = 2,
+        particle = {
+            filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant.png",
+            size = 64,
+            scale = 0.25,
+            draw_as_glow = true
+        },
+        shadow = {
+            filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-shadow.png",
+            size = 64,
+            scale = 0.25,
+            draw_as_shadow = true
+        },
+        stream_light = { color = { 1, 0.1, 0.2, 1 }, intensity = 0.8, size = 16 },
+        ground_light = { color = { 1, 0.1, 0.2, 1 }, intensity = 1, size = 4 },
+        target_position_deviation = 10,
+        oriented_particle = true,
+        action = {
+            data.raw["projectile"]["atomic-rocket"].action,
+            cuburn3[1],
+            cuburn3[2],
+            cuburn3[3],
+        }
+    }
 }
-
 
 
 
@@ -274,4 +307,5 @@ for _, picture in ipairs(nukubeine_flame.smoke_source_pictures) do
     picture.tint = { 1, 0.1, 1, 1 }
 end
 
+---@diagnostic disable-next-line: assign-type-mismatch
 data:extend({ nukubeine_flame })

@@ -189,12 +189,18 @@ local function create_overclocked(m, tier, icons, level)
     module.spoil_result = nil
 
     if module.beacon_tint ~= nil then
+        if not module.beacon_tint.primary then
+            module.beacon_tint.primary = {1, 0, 0}
+        end
         module.beacon_tint.primary[1] = 1
-        module.beacon_tint.primary[2] = module.beacon_tint.primary[2] / 2
-        module.beacon_tint.primary[3] = module.beacon_tint.primary[3] / 2
+        module.beacon_tint.primary[2] = module.beacon_tint.primary[2] and (module.beacon_tint.primary[2] / 2) or 0
+        module.beacon_tint.primary[3] = module.beacon_tint.primary[3] and (module.beacon_tint.primary[2] / 3) or 0
+        if not module.beacon_tint.secondary then
+            module.beacon_tint.secondary = {1, 0, 0}
+        end
         module.beacon_tint.secondary[1] = 1
-        module.beacon_tint.secondary[2] = module.beacon_tint.secondary[2] / 2
-        module.beacon_tint.secondary[3] = module.beacon_tint.secondary[3] / 2
+        module.beacon_tint.secondary[2] = module.beacon_tint.secondary[2] and (module.beacon_tint.secondary[2] / 2) or 0
+        module.beacon_tint.secondary[3] = module.beacon_tint.secondary[3] and (module.beacon_tint.secondary[3] / 2) or 0
     else
         module.beacon_tint = {primary = {1, 0, 0}, secondary = {1, 0, 0}}
     end
