@@ -60,6 +60,7 @@ if mods["quality"] then
                 new_recipe.icons = module.icons
                 table.insert(new_recipe.icons, 1, { icon = "__quality__/graphics/icons/recycling.png" })
                 table.insert(new_recipe.icons, { icon = "__quality__/graphics/icons/recycling-top.png" })
+---@diagnostic disable-next-line: assign-type-mismatch
                 data:extend({new_recipe})
             end
     end
