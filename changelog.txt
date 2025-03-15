@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.0
+Date: 2025-03-15
+  Changes:
+    - Added cubeine fusion reactors. Using cubeine solution as a fluid, they provide more power, but less efficient. Also, most of the solution ends up as steam after cooling.
+---------------------------------------------------------------------------------------------------
 Version: 1.2.10
 Date: 2025-03-14
   Changes:

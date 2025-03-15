@@ -636,7 +636,7 @@ local pipe_recipe = {
 }
 
 
-
+---@diagnostic disable-next-line: assign-type-mismatch
 data:extend({reactor, item, recipe, pipe, pipe_item, pipe_recipe})
 
 -- technology

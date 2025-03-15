@@ -1,7 +1,7 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
 local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 
-item = {
+local item = {
     type = "item",
     name = "cubeplant-branch",
     icon = "__lilys-cubeine__/graphics/icons/cubeplant-branch.png",
