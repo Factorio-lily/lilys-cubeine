@@ -35,3 +35,10 @@ table.insert(tech.effects, 3, {
     type = "unlock-recipe",
     recipe = "aop-cubeplant-planting"
 })
+
+local tech2 = data.raw["technology"]["aop-agriculture-productivity"]
+table.insert(tech2.effects, {
+    type = "change-recipe-productivity",
+    recipe = "aop-cubeplant-planting",
+    change = 0.1
+})
