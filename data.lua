@@ -69,7 +69,7 @@ data:extend({
 
 
 require("prototypes.advanced.cubeine-fusion-reactor")
-require("prototypes.advanced.cubeine-fusion-furnace")
+require("prototypes.advanced.cubeine-plasma-furnace")
 
 require("prototypes.nuke.nukubeine")
 require("prototypes.nuke.nukubeine-artillery-shell")

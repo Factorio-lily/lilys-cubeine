@@ -66,6 +66,7 @@ function OnInit()
     storage.vhp = storage.vhp or {} --virtual heatpipes
     storage.vlt = storage.vlt or {} --virtual lights
     storage.vhp_del = storage.vhp_del or {} --virtual heatpipes - to be deleted
+    storage.fusion = storage.fusion or {}
     call_rsl()
 end
 
@@ -130,6 +131,23 @@ end
 )
 
 local function validate_storage(tick)
+    if not storage.fusion then
+        storage.fusion = {}
+    end
+
+    for num, data in pairs(storage.fusion) do
+        if not game.get_entity_by_unit_number(num).valid then
+            storage.fusion[num] = nil
+        end
+        
+    end
+
+
+
+
+
+
+
     for reactor, data in pairs(storage.reactors) do
         if not reactor.valid then
 
@@ -354,5 +372,17 @@ script.on_event(defines.events.on_tick, function(event)
     validate_storage(event.tick)
     manage_reactors(event.tick)
 
+
+    --[[for num, data in pairs(storage.fusion) do
+        local reactor =  game.get_entity_by_unit_number(num)
+        
+        for _, box in ipairs(reactor.fluidbox) do
+            if box.amount and box.amount > 0 and box.name == "cubeine-fusion-plasma" and box.temperature < 2000000 then
+                box.temperature = 2000000
+            end
+        end
+    end--]]
+
+    
 
 end)

@@ -34,3 +34,10 @@ for _, cond in ipairs(rsc) do
        cond.max = 200 
     end
 end
+
+
+local plasma = data.raw["fluid"]["cubeine-fusion-plasma"]
+if plasma then
+    plasma.fuel_value = tostring(plasma.default_temperature / 1000000 * util.parse_energy(plasma.heat_capacity)) .. "MJ"
+end
+
