@@ -24,7 +24,14 @@ data:extend({
         default_value = true,
         order = "ab"
     },
-    tcs
+    tcs,
+    {
+        type = "int-setting",
+        name = "max-overclock",
+        setting_type = "startup",
+        default_value = 6,
+        allowed_values = {0, 1, 2, 3, 4, 5, 6}
+    }
 })
 
 
@@ -51,5 +58,18 @@ if mods["terrapalus"] then
         order = "ad"
     },
     table.insert(tcs.allowed_values, "planet-discovery-terrapalus")
+})
+end
+
+if mods["Moshine"] then
+    data:extend({
+        {
+        type = "bool-setting",
+        name = "moshine-spawn",
+        setting_type = "startup",
+        default_value = true,
+        order = "ae"
+    },
+    table.insert(tcs.allowed_values, "planet-discovery-moshine")
 })
 end

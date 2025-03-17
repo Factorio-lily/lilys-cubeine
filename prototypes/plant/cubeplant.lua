@@ -84,7 +84,7 @@ local plant = {
             "dry-dirt", "dirt-1", "dirt-2", "dirt-3", "dirt-4", "dirt-5", "dirt-6", "dirt-7",
             "red-desert-0", "red-desert-1", "red-desert-2", "red-desert-3",
             -- Gleba
-            "highland-dark-rock", "highland-dark-rock-2", "highland-yellow-rock", "pit-rock"
+            "highland-dark-rock", "highland-dark-rock-2", "highland-yellow-rock", "pit-rock",
         }
     },
     --[[{
@@ -151,13 +151,14 @@ local plant = {
     surface_conditions = {
         {
             property = "pressure",
-            min = 1000,
+            min = 500,
             max = 3000
         }
 },
     map_color = { 255, 160, 160 }, --#ffa0a0
 }
 
+--Cubium
 if mods["cubium"] and plant.autoplace.tile_restriction then
     local tiles = {"cubium-ash-soil", "cubium-soil-light", "cubium-soil-dark", "cubium-ash-cracks", "cubium-volcanic-pumice-stones", "cubium-volcanic-ash-flats", "cubium-volcanic-ash-light"}
 
@@ -165,6 +166,17 @@ if mods["cubium"] and plant.autoplace.tile_restriction then
         table.insert(plant.autoplace.tile_restriction, tile)
     end
 end
+
+--Moshine
+if mods["Moshine"] and plant.autoplace.tile_restriction then
+    local tiles = { "moshine-dunes", "moshine-sand", "moshine-dust" }
+
+    for _, tile in ipairs(tiles) do
+        table.insert(plant.autoplace.tile_restriction, tile)
+    end
+end
+
+
 
 
 data:extend({plant})

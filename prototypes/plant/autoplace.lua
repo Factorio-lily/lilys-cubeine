@@ -22,7 +22,7 @@ data:extend({
                      candidate_point_count = 10 * var('control:redleaf-cubeplants:frequency'),\z
                      hard_region_target_quantity = 0,\z
                      basement_value = 0,\z
-                     maximum_spot_basement_radius = 128} * (gleba_highland + nauvis_plateaus" .. (mods["cubium"] and " + cubium_ashlands_biome" or "") ..  ")",
+                     maximum_spot_basement_radius = 128} * (gleba_highland + nauvis_plateaus" .. (mods["Moshine"] and " + fulgora_dunes" or "") .. (mods["cubium"] and " + cubium_ashlands_biome" or "") ..  ")",
         local_expressions =
         {
             spot_radius_expression = "4 * sqrt(var('control:redleaf-cubeplants:size'))",
@@ -55,4 +55,9 @@ end
 if mods["terrapalus"] and settings.startup["terrapalus-spawn"].value  then
     local cubium = data.raw.planet.terrapalus
     cubium.map_gen_settings.autoplace_controls["redleaf-cubeplants"] = {}
+end
+
+if mods["Moshine"] and settings.startup["moshine-spawn"].value then
+    local moshine = data.raw.planet.moshine
+    moshine.map_gen_settings.autoplace_controls["redleaf-cubeplants"] = {}
 end

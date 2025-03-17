@@ -122,7 +122,8 @@ battery_charged.order = "s-aa[cubeine-battery-pack]"
 battery_charged.fuel_acceleration_multiplier = 2
 battery_charged.fuel_top_speed_multiplier = 1.6
 battery_charged.burnt_result = "cubeine-space-train-discharged-battery-pack"
-
+battery_charged.spoil_ticks = hour
+battery_charged.spoil_result = battery_discharged.name
 
 local battery_fried = {
     type = "item",

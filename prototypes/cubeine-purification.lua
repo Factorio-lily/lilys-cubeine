@@ -23,7 +23,7 @@ local purification = {
         { type = "fluid", name = "steam",        amount = 1000, minimum_temperature = 500 },
     },
     results = {
-        { type = "item", name = "cubeine-powder", amount_min = 3, amount_max = 5, ignored_by_stats = 5 },
+        { type = "item", name = "cubeine-powder", amount_min = 4, amount_max = 5, ignored_by_stats = 5 },
         { type = "fluid", name = "water",        amount = 90 },
     },
     category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",

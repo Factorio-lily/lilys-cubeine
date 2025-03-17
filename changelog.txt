@@ -1,8 +1,75 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.0
+Date: 2025-03-15
+  Changes:
+    - Added cubeine fusion reactors. Using cubeine solution as a fluid, they provide more power, but less efficient. Also, most of the solution ends up as steam after cooling.
+---------------------------------------------------------------------------------------------------
+Version: 1.2.10
+Date: 2025-03-14
+  Changes:
+    - Added fuel value to intermediate cubeplant fluids
+---------------------------------------------------------------------------------------------------
+Version: 1.2.9
+Date: 2025-03-13
+  Changes:
+    - Update to [Redacted] delivery properties
+    - Hopefully fixed some issues
+---------------------------------------------------------------------------------------------------
+Version: 1.2.8
+Date: 2025-03-12
+  Changes:
+    - Added some limited Age of Production support
+---------------------------------------------------------------------------------------------------
+Version: 1.2.7
+Date: 2025-03-12
+  Changes:
+    - Added setting for module overclocking - change allowed levels or disable it entirely
+---------------------------------------------------------------------------------------------------
+Version: 1.2.6
+Date: 2025-03-11
+  Changes:
+    - Fixed some typos
+---------------------------------------------------------------------------------------------------
+Version: 1.2.5
+Date: 2025-03-11
+  Changes:
+    - Added suport for cubeine plants on Moshine (toggleable)
+    - Some minor changes to plant autoplacement
+---------------------------------------------------------------------------------------------------
+Version: 1.2.4
+Date: 2025-03-10
+  Changes:
+    - Glorious incandescence!
+    - Flickering should be fixed
+---------------------------------------------------------------------------------------------------
+Version: 1.2.3
+Date: 2025-03-10
+  Changes:
+    - Added [REDACTED] fire
+---------------------------------------------------------------------------------------------------
+Version: 1.2.2
+Date: 2025-03-10
+  Changes:
+    - Name change
+---------------------------------------------------------------------------------------------------
+Version: 1.2.1
+Date: 2025-03-10
+  Changes:
+    - Fixed storage CRC error (hopefully)
+    - Fixed destroyed module recycling
+---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 2025-03-07
+  Changes:
+    - Cubeine charged battery packs now spoil (into discharged packs) after an hour
+    - Cubeine purification now gives 4-5 units of powder (used to be 3-5)
+    - Added [Redacted]
+---------------------------------------------------------------------------------------------------
 Version: 1.1.4
 Date: 2025-03-08
   Changes:
     - Merged tiberim compatibility fix (credit: Atraxi)
+
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.3
 Date: 2025-03-07

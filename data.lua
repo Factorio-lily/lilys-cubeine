@@ -30,7 +30,7 @@ require("prototypes.packaging")
 
 require("prototypes.cubeine-cut-solution")
 require("prototypes.cubeine-biochamber")
-require("prototypes.cubeine-module-boost")
+
 require("prototypes.cubeine-cut-fuel")
 require("prototypes.cubeine-thruster")
 
@@ -42,6 +42,9 @@ if mods["se-space-trains"] then
     require("prototypes.mod-compat.space-trains")
 end
 
+if mods["Age-of-Production"] then
+    require("prototypes.mod-compat.age-of-production")
+end
 
 data:extend({
     {
@@ -65,7 +68,12 @@ data:extend({
 })
 
 
+require("prototypes.advanced.cubeine-fusion-reactor")
+require("prototypes.advanced.cubeine-fusion-furnace")
 
+require("prototypes.nuke.nukubeine")
+require("prototypes.nuke.nukubeine-artillery-shell")
+require("prototypes.nuke.nukubeine-reactor")
 
 
 -- debug 
