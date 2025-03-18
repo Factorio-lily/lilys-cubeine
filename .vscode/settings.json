@@ -11,6 +11,7 @@
     ],
     "Lua.workspace.checkThirdParty": "ApplyInMemory",
     "Lua.diagnostics.globals": [
-        "utils"
+        "pipecoverspictures",
+        "util"
     ]
 }

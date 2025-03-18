@@ -47,6 +47,12 @@ data.extend({
         name = "module-destroyed",
         group = "module",
         order = "e"
+    },
+    {
+        type = "item-subgroup",
+        name = "module-hyper",
+        group = "module",
+        order = "e"
     }
 })
 
@@ -58,18 +64,11 @@ data.extend({
 -- t - effect duration
 -- db - degraded boost effect
 -- dx - degraded destroy chance
-local oc = {
-    {b = 1.2, t = hour * 2, d = 0.2, x = 0, db = 1.4, dx = 0},  --safe
-    {b = 1.5, t = hour * 2, d = 0.5, x = 0, db = 2, dx = 0},  --mostly safe
-    {b = 1.8, t = hour * 2, d = 0.8, x = 0, db = 2.2, dx = 0.2},  -- unsafe
-    {b = 2.5, t = hour * 2, d = 1, x = 0.2, db = 3, dx = 0.5},  -- dangerous
-    {b = 4, t = hour * 4/3 , d = 1, x = 0.6, db = 6, dx = 1}, --extreme
-    {b = 10, t = hour, d = 1, x = 1, db = 16, dx = 1}, --burnout
-}
-local restabilize_time = hour / 6
+local oc = require("prototypes.modules.oc")
+local restabilize_time = hour / 12
 
 
-
+local effectutils = require("prototypes.modules.module-effect-utils")
 
 
 local function create_degraded(m, tier, icons)
@@ -83,10 +82,9 @@ local function create_degraded(m, tier, icons)
     })
     module.spoil_ticks = restabilize_time * tier
     module.spoil_result = m.name
-    module.effect.speed = module.effect.speed / 2.0
-    if module.effect.quality then
-        module.effect.quality = module.effect.quality * 2
-    end
+
+    module.effect = effectutils.degrade_effect(module.category, module.effect)
+
     module.subgroup = "module-degraded"
     module.localised_name = {"?",{"", {"module-strings.degraded"}, " ", {"item-name." .. m.name}}, {"module-strings.degraded-fallback"}}
     module.localised_description = { "?", { "", { "item-description." .. m.name }, " ", { "module-strings.degraded-desc" } }, { "module-strings.degraded-fallback-desc" } }
@@ -111,6 +109,54 @@ local function create_destroyed(m, tier, icons)
     return module
 end
 
+local function create_hyper(m, tier, icons)
+    local module = table.deepcopy(m)
+    module.name = m.name .. "-hyper"
+    module.icons = table.deepcopy(icons)
+    table.insert(module.icons, {
+        icon = "__lilys-cubeine__/graphics/icons/speed-module-mask-hyper.png",
+        icon_size = 64,
+        --tint = {0.5, 0.5, 0.5, 0.5}
+    })
+    if module.effect then
+        module.effect = effectutils.hyper_effect(module.category, module.effect)
+    end
+    module.hidden = not settings.startup["hyper-allowed"].value
+    module.subgroup = "module-hyper"
+    module.localised_name = { "?", { "", { "module-strings.hyper" }, " ", { "item-name." .. m.name } }, { "module-strings.hyper-fallback" } }
+    module.localised_description = { "?", { "", { "item-description." .. m.name }, " ", { "module-strings.hyper-desc" } }, { "module-strings.hyper-fallback-desc" } }
+    if module.beacon_tint then
+        if module.beacon_tint.primary and (module.beacon_tint.primary[2] and module.beacon_tint.primary[3]) then
+            if  module.beacon_tint.primary[2] < module.beacon_tint.primary[3] then
+                module.beacon_tint.primary[1] = 1
+                module.beacon_tint.primary[2] = (module.beacon_tint.primary[2] and module.beacon_tint.primary[2] / 3 or 0.2)
+                module.beacon_tint.primary[3] = (module.beacon_tint.primary[3] and module.beacon_tint.primary[3] or 1)
+                module.beacon_tint.primary[4] = 1
+            else
+                module.beacon_tint.primary[1] = 1
+                module.beacon_tint.primary[3] = (module.beacon_tint.primary[3] and module.beacon_tint.primary[3] / 3 or 0.2)
+                module.beacon_tint.primary[2] = (module.beacon_tint.primary[2] and module.beacon_tint.primary[2] or 1)
+                module.beacon_tint.primary[4] = 1
+            end
+        end
+        if module.beacon_tint.secondary and (module.beacon_tint.secondary[2] and module.beacon_tint.secondary[3]) then
+            if module.beacon_tint.secondary[2] < module.beacon_tint.secondary[3] then
+                module.beacon_tint.secondary[1] = 1
+                module.beacon_tint.secondary[2] = (module.beacon_tint.secondary[2] and module.beacon_tint.secondary[2] / 3 or 0.2)
+                module.beacon_tint.secondary[3] = (module.beacon_tint.secondary[3] and module.beacon_tint.secondary[3] or 1)
+                module.beacon_tint.secondary[4] = 1
+            else
+                module.beacon_tint.secondary[1] = 1
+                module.beacon_tint.secondary[3] = (module.beacon_tint.secondary[3] and module.beacon_tint.secondary[3] / 3 or 0.2)
+                module.beacon_tint.secondary[2] = (module.beacon_tint.secondary[2] and module.beacon_tint.secondary[2] or 1)
+                module.beacon_tint.secondary[4] = 1
+            end
+        end
+    end
+    
+    return module
+end
+
 local function add_oc_icons(icons, amount)
 
     for i = 1, 6, 1 do
@@ -127,43 +173,6 @@ local function add_oc_icons(icons, amount)
     return icons
 end
 
-local function get_spoil_effect(m, module, level, is_degraded)
-    local degrade_chance = (is_degraded and 1 or oc[level].d)
-    local destroy_chance = (is_degraded and oc[level].dx or oc[level].x)
-    local sum = degrade_chance + destroy_chance
-    if sum > 1 then 
-        degrade_chance = degrade_chance - (sum - 1)
-    end
-    local normal_chance = 0
-    if (sum < 1) then
-        normal_chance = 1 - sum
-    end
-
-    local list = {}
-    if is_degraded then
-        for i = 0.1, degrade_chance, 0.1 do
-            table.insert(list, m.name)
-        end
-        for i = 0.1, destroy_chance, 0.1 do
-            local destroyed_name = string.gsub(m.name, "degraded", "destroyed")
-            table.insert(list, destroyed_name)
-        end
-    else
-        for i = 0.1, degrade_chance, 0.1 do
-            table.insert(list, m.name .. "-degraded")
-        end
-        for i = 0.1, destroy_chance, 0.1 do
-            table.insert(list, m.name .. "-destroyed")
-        end
-        for i = 0.1, normal_chance, 0.1 do
-            table.insert(list, m.name)
-        end
-
-
-    end
-
-    --return multispoil.create_spoil_trigger(list)
-end
 
 local function create_overclocked(m, tier, icons, level)
     local module = table.deepcopy(m)
@@ -175,13 +184,10 @@ local function create_overclocked(m, tier, icons, level)
         --tint = {0.5, 0.5, 0.5, 0.5}
     })
     add_oc_icons(module.icons, level)
-    if m.subgroup == "module-degraded" then
-        module.effect.speed = module.effect.speed * oc[level].db
-        module.subgroup = "module-degraded-overclocked"
-    else
-        module.effect.speed = module.effect.speed * oc[level].b
-        module.subgroup = "module-overclocked"
-    end
+
+    module.effect = effectutils.overclock_effect(module.category, module.effect, level, m.subgroup == "module-degraded")
+    module.subgroup = "module-overclocked"
+
     module.localised_name = { "?", { "", { "module-strings.overclocked" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } },  " (" .. tostring(level) .. ")"}, { "module-strings.overclocked-fallback" } }
     module.localised_description = { "?", { "", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } }, " ", { "module-strings.overclocked-desc" } }, { "module-strings.overclocked-fallback-desc" } }
     module.spoil_ticks = (oc[level].t / tier) * (m.subgroup == "module-degraded" and 0.5 or 1)
@@ -248,7 +254,7 @@ end
 
 
 
--- only speed module prototype tables
+-- only speed module prototype tables ...unless
 local function add_overclocking(module)
     local name = module.name
     local icons
@@ -266,6 +272,7 @@ local function add_overclocking(module)
     local tier = module.tier
     local degraded_version = create_degraded(module, tier, icons)
     local destroyed_version = create_destroyed(module, tier, icons)
+    local hyper_version = create_hyper(module, tier, icons)
 
     local oc_list = {}
     local d_oc_list = {}
@@ -289,7 +296,7 @@ local function add_overclocking(module)
     --data:extend(d_oc_list)
 
 
-    data:extend({degraded_version, destroyed_version})
+    data:extend({degraded_version, destroyed_version, hyper_version})
 end
 
 
@@ -348,8 +355,15 @@ if settings.startup["max-overclock"].value > 0 then
     local allmodules = data.raw["module"]
     local modules = {}
 
+    local categories = {}
+    categories["speed"] = true
+    categories["productivity"] = settings.startup["overclock-all"].value
+    categories["quality"] = settings.startup["overclock-all"].value
+    categories["efficiency"] = settings.startup["overclock-all"].value
+    categories["overclock"] = settings.startup["overclock-all"].value
+
     for name, module in pairs(allmodules) do
-        if module.category == "speed" and module.effect.speed and module.effect.speed > 0 then
+        if categories[module.category] then
         table.insert(modules, module) 
         end
     end
