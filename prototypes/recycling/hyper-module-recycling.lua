@@ -22,7 +22,7 @@ if mods["quality"] then
                 local original_name = string.gsub(recipe.ingredients[1].name, "%-hyper", "")
                 local original_recipe = data.raw["recipe"][original_name .. "-recycling"]
                 recipe.results[1].probability = 0.75
-                recipe.energy_required = math.ceil(original_recipe.energy_required) * 10
+                recipe.energy_required = original_recipe and (math.ceil(original_recipe.energy_required) * 10) or 60
                 recipe.show_amount_in_title = false
                 hyper_modules[recipe.ingredients[1].name] = nil
             end
