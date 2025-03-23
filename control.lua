@@ -312,6 +312,10 @@ local function manage_reactors(tick)
             end
         end
         
+        local working_animation_speed = 0.5
+        if reactor then
+            working_animation_speed = working_animation_speed + reactor.quality.level * 0.3 * working_animation_speed
+        end
 
         if data.heat_glow and data.heat_glow.valid then
             local a = math.min(1, t < 300 and 0 or math.pow((t - 100) / 2700, 4))
@@ -339,10 +343,10 @@ local function manage_reactors(tick)
                     data.emissive.visible = false
                     data.heat_glow.visible = true
                 else
-                    data.frozen.animation_speed = 0.5
-                    data.base.animation_speed = 0.5
-                    data.emissive.animation_speed = 0.5
-                    data.heat_glow.animation_speed = 0.5
+                    data.frozen.animation_speed = working_animation_speed
+                    data.base.animation_speed = working_animation_speed
+                    data.emissive.animation_speed = working_animation_speed
+                    data.heat_glow.animation_speed = working_animation_speed
                     data.frozen.visible = false
                     data.base.visible = true
                     data.emissive.visible = true
