@@ -186,7 +186,7 @@ local function create_overclocked(m, tier, icons, level)
     add_oc_icons(module.icons, level)
 
     module.effect = effectutils.overclock_effect(module.category, module.effect, level, m.subgroup == "module-degraded")
-    module.subgroup = "module-overclocked"
+    module.subgroup = m.subgroup == "module-degraded" and "module-degraded-overclocked" or "module-overclocked"
 
     module.localised_name = { "?", { "", { "module-strings.overclocked" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } },  " (" .. tostring(level) .. ")"}, { "module-strings.overclocked-fallback" } }
     module.localised_description = { "?", { "", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } }, " ", { "module-strings.overclocked-desc" } }, { "module-strings.overclocked-fallback-desc" } }
