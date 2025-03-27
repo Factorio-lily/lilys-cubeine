@@ -77,7 +77,7 @@ function OnInit()
     call_rsl()
 end
 
-script.on_load(call_rsl)
+--script.on_load(call_rsl)
 script.on_init(OnInit)
 script.on_configuration_changed(OnInit)
 
