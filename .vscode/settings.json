@@ -9,5 +9,9 @@
     "Lua.workspace.userThirdParty": [
         "c:\\Users\\Lily\\AppData\\Roaming\\Code\\User\\workspaceStorage\\cf8beaef071500d97262458e3955b1bd\\justarandomgeek.factoriomod-debug\\sumneko-3rd"
     ],
-    "Lua.workspace.checkThirdParty": "ApplyInMemory"
+    "Lua.workspace.checkThirdParty": "ApplyInMemory",
+    "Lua.diagnostics.globals": [
+        "pipecoverspictures",
+        "util"
+    ]
 }

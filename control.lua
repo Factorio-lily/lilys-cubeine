@@ -1,12 +1,4 @@
-local oc = {
-    { b = 1.2, t = 60 * 60 * 60 * 2,     d = 0.2, x = 0,   db = 1.4, dx = 0 },     --safe
-    { b = 1.5, t = 60 * 60 * 60 * 2,     d = 0.5, x = 0,   db = 2,   dx = 0 },     --mostly safe
-    { b = 1.8, t = 60 * 60 * 60 * 2,     d = 0.8, x = 0,   db = 2.2, dx = 0.2 },   -- unsafe
-    { b = 2.5, t = 60 * 60 * 60 * 2,     d = 1,   x = 0.2, db = 3,   dx = 0.5 },   -- dangerous
-    { b = 4,   t = 60 * 60 * 60 * 4 / 3, d = 1,   x = 0.6, db = 6,   dx = 1 },     --extreme
-    { b = 10,  t = 60 * 60 * 60,         d = 1,   x = 1,   db = 16,  dx = 1 },     --burnout
-}
-
+local oc = require("prototypes.modules.oc")
 
 
 local function call_rsl()
@@ -18,18 +10,25 @@ local function call_rsl()
         local base_name = string.gsub(name, "%-overclocked%-" .. tostring(level), "")
         local degraded_name = base_name .. "-degraded"
         local destroyed_name = base_name .. "-destroyed"
-        local degraded_chance = oc[level].d
-        if degraded_chance + oc[level].x > 1 then
-            degraded_chance = 1 - oc[level].x
+        local hyper_name = base_name .. "-hyper"
+
+        local hyper_chance = oc[level].su
+        local destroyed_chance = oc[level].x
+        if (hyper_chance + destroyed_chance) > 1  then
+            destroyed_chance = math.max(0, destroyed_chance - (hyper_chance + destroyed_chance - 1))
         end
-        local base_chance = 1 - degraded_chance - oc[level].x
+        local degraded_chance = oc[level].d
+        if (hyper_chance + destroyed_chance + degraded_chance) > 1 then
+            degraded_chance = math.max(0, degraded_chance - ((hyper_chance + destroyed_chance + degraded_chance - 1)))
+        end
+        local base_chance = math.max(0, 1 - hyper_chance - destroyed_chance - degraded_chance)
 
         remote.call("rsl_registry", "register_rsl_definition", name,
             { -- You call the "rsl_registry" to use "register_rsl_definition" and pass it the name of your custom item "mutation-a"
                 mode = { random = true, conditional = false, weighted = true },
                 condition = true,
                 possible_results = {
-                    [true] = { { name = base_name, weight = base_chance }, { name = degraded_name, weight = oc[level].d }, { name = destroyed_name, weight = oc[level].x } },
+                    [true] = { { name = base_name, weight = base_chance }, { name = degraded_name, weight = degraded_chance }, { name = destroyed_name, weight = destroyed_chance }, {name = hyper_name, weight = hyper_chance} },
                 [false] = {}
                 }
             }
@@ -40,14 +39,24 @@ local function call_rsl()
         local level = tonumber(string.sub(name, string.len(name)))
         local degraded_name = string.gsub(name, "%-overclocked%-" .. tostring(level), "")
         local destroyed_name = string.gsub(degraded_name, "%-degraded", "-destroyed")
-        local base_chance = 1 - oc[level].dx
+        local hyper_name = string.gsub(degraded_name, "%-degraded", "-hyper")
+
+        local hyper_chance = oc[level].su
+        local destroyed_chance = oc[level].dx
+        if (hyper_chance + destroyed_chance) > 1 then
+            destroyed_chance = math.max(0, destroyed_chance - (hyper_chance + destroyed_chance - 1))
+        end
+        local degraded_chance = math.max(0, 1 - hyper_chance - destroyed_chance)
+        if (hyper_chance + destroyed_chance + degraded_chance) > 1 then
+            degraded_chance = math.max(0, degraded_chance - ((hyper_chance + destroyed_chance + degraded_chance - 1)))
+        end
 
         remote.call("rsl_registry", "register_rsl_definition", name,
             { -- You call the "rsl_registry" to use "register_rsl_definition" and pass it the name of your custom item "mutation-a"
                 mode = { random = true, conditional = false, weighted = true },
                 condition = true,
                 possible_results = {
-                    [true] = {{ name = degraded_name, weight = base_chance }, { name = destroyed_name, weight = oc[level].dx } },
+                    [true] = {{ name = degraded_name, weight = degraded_chance }, { name = destroyed_name, weight = destroyed_chance }, {name = hyper_name, weight = hyper_chance} },
                     [false] = {}
                 }
             }
@@ -66,6 +75,7 @@ function OnInit()
     storage.vhp = storage.vhp or {} --virtual heatpipes
     storage.vlt = storage.vlt or {} --virtual lights
     storage.vhp_del = storage.vhp_del or {} --virtual heatpipes - to be deleted
+    storage.fusion = storage.fusion or {}
     call_rsl()
 end
 
@@ -130,6 +140,23 @@ end
 )
 
 local function validate_storage(tick)
+    if not storage.fusion then
+        storage.fusion = {}
+    end
+
+    for num, data in pairs(storage.fusion) do
+        if not game.get_entity_by_unit_number(num).valid then
+            storage.fusion[num] = nil
+        end
+        
+    end
+
+
+
+
+
+
+
     for reactor, data in pairs(storage.reactors) do
         if not reactor.valid then
 
@@ -285,6 +312,10 @@ local function manage_reactors(tick)
             end
         end
         
+        local working_animation_speed = 0.5
+        if reactor then
+            working_animation_speed = working_animation_speed + reactor.quality.level * 0.3 * working_animation_speed
+        end
 
         if data.heat_glow and data.heat_glow.valid then
             local a = math.min(1, t < 300 and 0 or math.pow((t - 100) / 2700, 4))
@@ -312,10 +343,10 @@ local function manage_reactors(tick)
                     data.emissive.visible = false
                     data.heat_glow.visible = true
                 else
-                    data.frozen.animation_speed = 0.5
-                    data.base.animation_speed = 0.5
-                    data.emissive.animation_speed = 0.5
-                    data.heat_glow.animation_speed = 0.5
+                    data.frozen.animation_speed = working_animation_speed
+                    data.base.animation_speed = working_animation_speed
+                    data.emissive.animation_speed = working_animation_speed
+                    data.heat_glow.animation_speed = working_animation_speed
                     data.frozen.visible = false
                     data.base.visible = true
                     data.emissive.visible = true
@@ -354,5 +385,17 @@ script.on_event(defines.events.on_tick, function(event)
     validate_storage(event.tick)
     manage_reactors(event.tick)
 
+
+    --[[for num, data in pairs(storage.fusion) do
+        local reactor =  game.get_entity_by_unit_number(num)
+        
+        for _, box in ipairs(reactor.fluidbox) do
+            if box.amount and box.amount > 0 and box.name == "cubeine-fusion-plasma" and box.temperature < 2000000 then
+                box.temperature = 2000000
+            end
+        end
+    end--]]
+
+    
 
 end)

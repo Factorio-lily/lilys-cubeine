@@ -37,7 +37,8 @@ reactor.resistances = {
 }
 reactor.power_input = "20MW" -- at normal quality
 reactor.max_fluid_usage = 80/second -- at normal quality
-
+table.insert(reactor.flags, "get-by-unit-number")
+reactor.neighbour_bonus = 2
 reactor.burner =
     {
       type = "burner",
@@ -191,11 +192,32 @@ for dir, data in pairs(generator.graphics_set) do
 end
 
 
+local generator2_item = table.deepcopy(generator_item)
+generator2_item.name = generator2_item.name .."-cold"
+generator2_item.place_result = generator2_item.place_result .. "-cold"
+table.insert(generator2_item.icons, 
+    {
+        icon = "__lilys-cubeine__/graphics/icons/misc/signal-thermometer-blue.png",
+        icon_size = 64,
+        tint = { 0.65, 0.65, 0.65, 0.65 }
+    })
 
-
+local generator2 = table.deepcopy(generator)
+generator2.name = generator2.name.."-cold"
+generator2.order = "mc[cubeine-fusion-energy]-c[generator-cold]"
+generator2.minable.result = generator2.minable.result .. "-cold"
+generator2.input_fluid_box.maximum_temperature = 1001000
+generator2.energy_source.usage_priority = "primary-output"
+generator2.energy_source =
+{
+    type = "electric",
+    usage_priority = "secondary-output",
+    output_flow_limit = "400MW",   -- This is used to define max power output. 100MW at normal quality
+}
+generator2.max_fluid_usage = 160 / second
 
 ---@diagnostic disable-next-line: assign-type-mismatch
-data:extend({reactor_item, reactor, generator_item, generator})
+data:extend({reactor_item, reactor, generator_item, generator, generator2_item, generator2})
 
 
 data:extend({
@@ -221,7 +243,8 @@ data:extend({
             secondary = { r = 1, g = 0.306, b = 0.402, a = 1.000 },      -- #dc8444ff
             tertiary = { r = 0.159, g = 0.136, b = 0.207, a = 1.000 }, -- #282234ff
             quaternary = { r = 0.945, g = 0.170, b = 0.200, a = 1.000 }, -- #f12e44ff
-        }
+        },
+        allow_productivity = false,
     },
     {
         type = "recipe",
@@ -245,7 +268,75 @@ data:extend({
             secondary = { r = 1, g = 0.306, b = 0.402, a = 1.000 }, -- #dc8444ff
             tertiary = { r = 0.159, g = 0.136, b = 0.207, a = 1.000 }, -- #282234ff
             quaternary = { r = 0.945, g = 0.170, b = 0.200, a = 1.000 }, -- #f12e44ff
-        }
+        },
+        allow_productivity = false,
+    },
+    {
+        type = "recipe",
+        name = "cubeine-fusion-generator-cold",
+        icons = {
+            {
+                icon = "__space-age__/graphics/icons/fusion-generator.png",
+                icon_size = 64,
+                tint = { 1, 0.8, 0.8, 1 }
+            },
+            {
+                icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
+                icon_size = 64,
+                scale = 0.25,
+                shift = { 6, 6 }
+            },
+            {
+                icon = "__lilys-cubeine__/graphics/icons/misc/signal-thermometer-blue.png",
+                icon_size = 64,
+                tint = { 0.65, 0.65, 0.65, 0.65 }
+            }
+        },
+        energy_required = 1,
+        enabled = false,
+        ingredients =
+        {
+            { type = "item",  name = "cubeine-fusion-generator", amount = 1 },
+        },
+        results = { { type = "item", name = "cubeine-fusion-generator-cold", amount = 1 } },
+        allow_productivity= false,
+        allow_quality = false,
+    },
+    {
+        type = "recipe",
+        name = "cubeine-fusion-generator-cold-not",
+        icons = {
+            {
+                icon = "__space-age__/graphics/icons/fusion-generator.png",
+                icon_size = 64,
+                tint = { 1, 0.8, 0.8, 1 }
+            },
+            {
+                icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
+                icon_size = 64,
+                scale = 0.25,
+                shift = { 6, 6 }
+            },
+            {
+                icon = "__lilys-cubeine__/graphics/icons/misc/signal-thermometer-blue.png",
+                icon_size = 64,
+                tint = { 0.65, 0.65, 0.65, 0.65 }
+            },
+            {
+                icon = "__lilys-cubeine__/graphics/icons/misc/signal-deny.png",
+                icon_size = 64,
+                tint = { 0.65, 0.65, 0.65, 0.65 }
+            }
+        },
+        energy_required = 1,
+        enabled = false,
+        ingredients =
+        {
+            { type = "item", name = "cubeine-fusion-generator-cold", amount = 1 },
+        },
+        results = { { type = "item", name = "cubeine-fusion-generator", amount = 1 } },
+        allow_productivity = false,
+        allow_quality = false,
     },
 })
 
@@ -328,12 +419,12 @@ local solution2 = {
 
     },
     category = "cryogenics",
-    main_product = "steam",
+    main_product = "water",
     allow_productivity = false
 
 }
 
-data:extend({ solution })
+data:extend({ solution, solution2 })
 
 
 -- technology

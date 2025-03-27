@@ -1,6 +1,6 @@
 {
 	"name": "lilys-cubeine",
-	"version": "1.3.0",
+	"version": "1.5.1",
 	"title": "Lily's Cubeine Technologies",
 	"author": "MsBinaryLily",
 	"description": "Cubeine - a novel substance that can be extracted from certain plant and has excellent fuel and catalytic properties. Grow, harvest, extract and exploit it for your needs with this mod's advanced technologies.",
@@ -8,6 +8,7 @@
 	"dependencies": [
 		"base >= 2.0",
 		"space-age",
+		"lilys-injector",
 		"bioprocessing-tab",
 		"runtime-spoilage-library",
 		"? maraxsis",
@@ -19,7 +20,6 @@
 		"(?) terrapalus",
 		"(?) modules-t4",
 		"(?) secretas",
-		"(?) Moshine", 
-		"? lilys-injector"
-		]
+		"(?) Moshine"
+	]
 }
