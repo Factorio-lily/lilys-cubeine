@@ -49,12 +49,12 @@ local item = {
                             {
                                 {
                                     type = "create-sticker",
-                                    sticker = "cubeine-powder-sticker",
+                                    sticker = "cubeine-powder-sticker-0",
                                     show_in_tooltip = true
                                 },
                                 {
                                     type = "create-sticker",
-                                    sticker = "cubeine-powder-sticker-2",
+                                    sticker = "cubeine-powder-sticker-back",
                                 },
                                 {
                                     type = "play-sound",
@@ -78,7 +78,7 @@ local item = {
     }
   }
 
-local sticker1 = {
+local sticker_front = {
     type = "sticker",
     name = "cubeine-powder-sticker",
     flags = { "not-on-map" },
@@ -101,9 +101,9 @@ local sticker1 = {
             }
         )
 }
-local sticker2 = {
+local sticker_back = {
     type = "sticker",
-    name = "cubeine-powder-sticker-2",
+    name = "cubeine-powder-sticker-back",
     flags = { "not-on-map" },
     hidden = true,
     single_particle = true,
@@ -124,7 +124,7 @@ local sticker2 = {
 }
 
 
-local sticker3 = {
+local sticker_wd = {
     type = "sticker",
     name = "cubeine-powder-sticker-3",
     flags = { "not-on-map" },
@@ -147,8 +147,8 @@ local delayed_trigger = {
             type = "instant",
             source_effects = {
                 {
-                    type = "create-sticker",
-                    sticker = "cubeine-powder-sticker-3",
+                    type = "script",
+                    effect_id = "cubeine-powder-wd",
                 },
             }
         }
@@ -156,4 +156,16 @@ local delayed_trigger = {
     }
 }
 
-  data:extend{item, sticker1, sticker2, sticker3, delayed_trigger}
+
+for i = 1, 6, 1 do
+    local sf = table.deepcopy(sticker_front)
+    sf.name = sf.name .. "-" .. tostring(i + 1)
+    sf.target_movement_modifier = sf.target_movement_modifier * (1 + 0.3 * i)
+    sf.damage_per_tick.amount = sf.damage_per_tick.amount * (1 + 0.3 * i)
+    local swd = table.deepcopy(sticker_wd)
+    swd.name = swd.name .. "-" .. tostring(i + 1)
+    swd.duration_in_ticks = swd.duration_in_ticks * (1 + 0.3 * i)
+    data:extend({sf, swd})
+end
+sticker_front.name = sticker_front.name .. "-" .. "0"
+data:extend{item, sticker_front, sticker_back, sticker_wd, delayed_trigger}
