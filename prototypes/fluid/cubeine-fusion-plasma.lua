@@ -9,7 +9,6 @@ fluid.icons = {
         tint = {1, 0.2, 0.2, 1}
     }
 }
-fluid.icon = nil
 
 fluid.default_temperature = fluid.default_temperature
 fluid.max_temperature = fluid.max_temperature * 2 

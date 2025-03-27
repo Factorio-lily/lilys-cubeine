@@ -21,11 +21,11 @@ local item = {
     stack_size = 100,
     default_import_location = "nauvis",
     weight = 50,
-    fuel_category = "chemical",
-    fuel_value = "10MJ",
+    fuel_category = "cubic",
+    fuel_value = "1000MJ",
     fuel_acceleration_multiplier = 20,
     fuel_top_speed_multiplier = 5,
-    fuel_emissions_multiplier = 100,
+    fuel_emissions_multiplier = 20,
     capsule_action = {
         type = "use-on-self",
         attack_parameters =
@@ -49,12 +49,12 @@ local item = {
                             {
                                 {
                                     type = "create-sticker",
-                                    sticker = "cubeine-crystal-sticker",
+                                    sticker = "cubeine-crystal-sticker-0",
                                     show_in_tooltip = true
                                 },
                                 {
                                     type = "create-sticker",
-                                    sticker = "cubeine-crystal-sticker-2",
+                                    sticker = "cubeine-crystal-sticker-back",
                                 },
                                 {
                                     type = "play-sound",
@@ -77,7 +77,7 @@ local item = {
     }
 }
 
-local sticker1 = {
+local sticker_front = {
     type = "sticker",
     name = "cubeine-crystal-sticker",
     flags = { "not-on-map" },
@@ -100,9 +100,9 @@ local sticker1 = {
             }
         )
 }
-local sticker2 = {
+local sticker_back = {
     type = "sticker",
-    name = "cubeine-crystal-sticker-2",
+    name = "cubeine-crystal-sticker-back",
     flags = { "not-on-map" },
     hidden = true,
     single_particle = true,
@@ -122,9 +122,9 @@ local sticker2 = {
         )
 }
 
-local sticker3 = {
+local sticker_wd = {
     type = "sticker",
-    name = "cubeine-crystal-sticker-3",
+    name = "cubeine-crystal-sticker-wd",
     flags = { "not-on-map" },
     hidden = true,
     single_particle = true,
@@ -145,8 +145,8 @@ local delayed_trigger = {
             type = "instant",
             source_effects = {
                 {
-                    type = "create-sticker",
-                    sticker = "cubeine-powder-sticker-3",
+                    type = "script",
+                    effect_id = "cubeine-crystal-wd",
                 },
             }
         }
@@ -154,4 +154,16 @@ local delayed_trigger = {
     }
 }
 
-data:extend { item, sticker1, sticker2, sticker3, delayed_trigger }
+for i = 1, 6, 1 do
+    local sf = table.deepcopy(sticker_front)
+    sf.name = sf.name .. "-" .. tostring(i + 1)
+    sf.target_movement_modifier = sf.target_movement_modifier * (1 + 0.3 * i)
+    sf.damage_per_tick.amount = sf.damage_per_tick.amount * (1 + 0.3 * i)
+    local swd = table.deepcopy(sticker_wd)
+    swd.name = swd.name .. "-" .. tostring(i + 1)
+    swd.duration_in_ticks = swd.duration_in_ticks * (1 + 0.3 * i)
+    data:extend({ sf, swd })
+end
+sticker_front.name = sticker_front.name .. "-" .. "0"
+
+data:extend { item, sticker_front, sticker_back, sticker_wd, delayed_trigger }

@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.6.0
+Date: 2025-03-26
+  Changes:
+    - Changed cubeine crystals to provide cubic energy instead. Sorry, supersonic tanks will be missed. Cubeine powder still provides chemical energy and cubes can be eaten.
+    - Reworked the powder and crystal consumption script - it should be more reliable now. Or maybe not yet.... please report any bugs encountered.
+---------------------------------------------------------------------------------------------------
 Version: 1.5.1
 Date: 2025-03-23
   Changes:
