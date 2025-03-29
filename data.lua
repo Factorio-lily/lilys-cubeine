@@ -75,7 +75,7 @@ require("prototypes.nuke.nukubeine")
 require("prototypes.nuke.nukubeine-artillery-shell")
 require("prototypes.nuke.nukubeine-reactor")
 
-
+require("prototypes.drill.cubeine-giga-thermal-drill")
 -- debug 
 --[[
 data:extend({

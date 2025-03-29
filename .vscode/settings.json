@@ -12,6 +12,10 @@
     "Lua.workspace.checkThirdParty": "ApplyInMemory",
     "Lua.diagnostics.globals": [
         "pipecoverspictures",
-        "util"
+        "util",
+        "assembler2pipepictures",
+        "assembler3pipepictures",
+        "circuit_connector_definitions",
+        "default_circuit_wire_max_distance"
     ]
 }
