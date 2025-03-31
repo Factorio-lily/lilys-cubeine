@@ -278,6 +278,7 @@ local rf_r = {
     order = "n[cubeine]-c[cutting]-a[rocket-fuel]"
 }
 
+---@diagnostic disable-next-line: assign-type-mismatch
 data:extend({rf, rf_r, rf_dummy})
 -----------------------------------------------------------------------
 --nuclear fuel
@@ -343,6 +344,7 @@ local nf_r = {
     order = "n[cubeine]-c[cutting]-b[nuclear-fuel]"
 }
 
+---@diagnostic disable-next-line: assign-type-mismatch
 data:extend({nf, nf_r, nf_dummy})
 -----------------------------------------------------------------------
 --plutonium fuel
@@ -411,6 +413,7 @@ local pf_r = {
 }
 
 
+---@diagnostic disable-next-line: assign-type-mismatch
 data:extend({pf, pf_r, pf_dummy})
 end
 
@@ -479,4 +482,5 @@ for _, picture in ipairs(cubeine_flame.smoke_source_pictures) do
     picture.tint = { 1, 0.1, 0.2, 1 }
 end
 
+---@diagnostic disable-next-line: assign-type-mismatch
 data:extend({cubeine_flame})

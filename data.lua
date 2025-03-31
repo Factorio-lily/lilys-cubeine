@@ -1,6 +1,6 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
 local sounds = require("__base__.prototypes.entity.sounds")
-
+require("util")
 
 require("prototypes.core-tech")
 
@@ -15,6 +15,8 @@ require("prototypes.fluid.pure-cubeplant-fluid")
 require("prototypes.fluid.cubeine-fuel")
 require("prototypes.fluid.cubeine-solution")
 
+require("prototypes.fluid.cuboil")
+require("prototypes.fluid.cubonium-gas")
 
 require("prototypes.core-tech")
 require("prototypes.main-processing")
@@ -31,9 +33,13 @@ require("prototypes.packaging")
 require("prototypes.cubeine-cut-solution")
 require("prototypes.cubeine-biochamber")
 
-require("prototypes.cubeine-cut-fuel")
+require("prototypes.fuel.cubeine-cut-fuel")
 require("prototypes.cubeine-thruster")
 
+
+require("prototypes.fuel.cuboil-processing")
+require("prototypes.fuel.cubonium-gas-processing")
+require("prototypes.fuel.gas-turbine")
 
 if mods["astroponics"] then
     require("prototypes.mod-compat.astroponics")
