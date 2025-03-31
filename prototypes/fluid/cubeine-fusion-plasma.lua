@@ -26,6 +26,7 @@ residue.name = "residue-cubeine-solution"
 residue.default_temperature = 1000
 residue.max_temperature = 2000
 residue.gas_temperature = 150
+residue.fuel_value = nil
 residue.base_color = { 0.8, 1, 0.9, 1 }
 residue.flow_color = { 0.9, 1, 0.9, 1 }
 residue.icon = "__lilys-cubeine__/graphics/icons/fluid/cubeine-residue.png"
