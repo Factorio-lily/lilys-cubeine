@@ -15,8 +15,9 @@ item1.icons = {
     {
         icon = "__base__/graphics/icons/fluid/petroleum-gas.png",
         icon_size = 64,
-        scale = 0.25,
-        shift = { 6, -6 }
+        --scale = 0.25,
+        --shift = { 6, -6 }
+        tint = { 0.7, 0.7, 0.7, 0.7 }
     },
 
 }
@@ -29,6 +30,7 @@ entity1.fluid_box.filter = "petroleum-gas"
 entity1.fluid_box.minimum_temperature = nil
 entity1.icons = table.deepcopy(item1.icons)
 entity1.scale_fluid_usage = true
+entity1.fluid_usage_per_tick = entity1.fluid_usage_per_tick / 5
 entity1.max_power_output = "7.2MW"
 entity1.smoke[1].name = "lilys-gas-turbine-smoke"
 entity1.energy_source.emissions_per_minute = { ["pollution"] = 5 }
@@ -42,7 +44,7 @@ entity1.surface_conditions = {
 
 local smoke1 = table.deepcopy(data.raw["trivial-smoke"]["turbine-smoke"])
 smoke1.name = "lilys-gas-turbine-smoke"
-smoke1.color = { 0.1, 0.1, 0.1, 0.2 }
+smoke1.color = { 0.1, 0.1, 0.1, 0.1 }
 
 
 
@@ -58,8 +60,9 @@ item2.icons = {
     {
         icon = "__lilys-cubeine__/graphics/icons/fluid/cubonium-gas.png",
         icon_size = 64,
-        scale = 0.25,
-        shift = { 6, -6 }
+        --scale = 0.25,
+        --shift = { 6, -6 }
+        tint = { 0.7, 0.7, 0.7, 0.7 }
     },
     {
         icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -78,17 +81,18 @@ entity2.fluid_box.filter = "cubonium-gas"
 entity2.fluid_box.minimum_temperature = nil
 entity2.icons = table.deepcopy(item2.icons)
 entity2.scale_fluid_usage = true
+entity1.fluid_usage_per_tick = entity2.fluid_usage_per_tick / 5
 entity2.max_power_output = "36MW"
 entity2.horizontal_animation.layers[1].tint = base_tint
 entity2.vertical_animation.layers[1].tint = base_tint
 entity2.smoke[1].name = "cubeine-gas-turbine-smoke"
 entity2.energy_source.emissions_per_minute = { ["pollution"] = 10 }
-entity2.surface_conditions = {
+--[[entity2.surface_conditions = {
     {
         property = "pressure",
         min = 300
     }
-}
+}--]]
 
 
 local smoke2 = table.deepcopy(data.raw["trivial-smoke"]["turbine-smoke"])
@@ -106,10 +110,14 @@ data:extend({
         name = "lilys-gas-turbine",
         enabled = false,
         energy_required = 6,
+        category = "crafting-with-fluid",
         ingredients = {
-            { type = "item", name = "iron-gear-wheel", amount = 50 },
-            { type = "item", name = "copper-plate",    amount = 50 },
-            { type = "item", name = "pipe",            amount = 20 } },
+            { type = "item",  name = "iron-gear-wheel", amount = 50 },
+            { type = "item",  name = "copper-plate",    amount = 50 },
+            { type = "item",  name = "pipe",            amount = 20 },
+            { type = "item",  name = "steel-plate",     amount = 100 },
+            { type = "fluid", name = "lubricant",       amount = 500 },
+        },
         results = { { type = "item", name = "lilys-gas-turbine", amount = 1 } }
     },
     {
@@ -148,7 +156,7 @@ data:extend({
         prerequisites = { "cubonium-gas" },
 
         unit = {
-            count = 1500,
+            count = 3000,
             ingredients =
             {
                 { "automation-science-pack", 1 },
@@ -156,8 +164,10 @@ data:extend({
 
                 { "chemical-science-pack",   1 },
                 { "production-science-pack", 1 },
+                { "utility-science-pack",    1 },
+                { "space-science-pack",      1 },
             },
-            time = 30
+            time = 60
 
         },
         effects =

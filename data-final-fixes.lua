@@ -56,6 +56,8 @@ for name, value in pairs(data.raw["item"]) do
         if fuel_fluids2[name2] then
             local fluid = data.raw["fluid"][name2]
             value.fuel_emissions_multiplier = fluid.emissions_multiplier
+            value.fuel_acceleration_multiplier = 1
+            value.fuel_top_speed_multiplier = 1
             value.burnt_result = "barrel"
             value.fuel_value = tostring(50 * util.parse_energy(fluid.fuel_value) / 1000) .. "kJ"
             value.fuel_category = "chemical"

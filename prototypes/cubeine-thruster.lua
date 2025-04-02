@@ -97,6 +97,7 @@ end
 thruster.graphics_set.flame_effect.filename = "__lilys-cubeine__/graphics/entity/thruster-flame.png"
 thruster.plumes.stateless_visualisations[2].animation.tint = {1, 0.1, 0.1, 1}
 
+---@diagnostic disable-next-line: assign-type-mismatch
 data:extend({ thruster_item, thruster })
 
 

@@ -39,7 +39,7 @@ require("prototypes.cubeine-thruster")
 
 require("prototypes.fuel.cuboil-processing")
 require("prototypes.fuel.cubonium-gas-processing")
-require("prototypes.fuel.gas-turbine")
+require("prototypes.gas-turbine")
 
 if mods["astroponics"] then
     require("prototypes.mod-compat.astroponics")
