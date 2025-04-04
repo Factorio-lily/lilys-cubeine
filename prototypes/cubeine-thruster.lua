@@ -33,23 +33,30 @@ local thruster_item = {
     drop_sound = space_age_item_sounds.rocket_inventory_move,
     place_result = "cubeine-thruster",
     stack_size = 10,
-    weight = 200*kg
-  }
-  
+    weight = 200 * kg
+}
+
 
 local thruster = table.deepcopy(data.raw["thruster"]["thruster"])
 thruster.icon = nil
 thruster.icons = {
     {
         icon = "__space-age__/graphics/icons/thruster.png",
+        icon_size = 64,
         tint = { 1, 0.8, 0.8, 1 },
+    },
+    {
+        icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
+        icon_size = 64,
+        scale = 0.25,
+        shift = { 6, 6 }
     }
 }
 thruster.name = "cubeine-thruster"
 thruster.minable.result = "cubeine-thruster"
 thruster.max_health = 600
-thruster.min_performance = {fluid_volume = 0.1, fluid_usage = 0.5, effectivity = 0.6}
-thruster.max_performance = {fluid_volume = 0.5, fluid_usage = 5, effectivity = 0.4}
+thruster.min_performance = { fluid_volume = 0.1, fluid_usage = 0.5, effectivity = 0.6 }
+thruster.max_performance = { fluid_volume = 0.5, fluid_usage = 5, effectivity = 0.4 }
 
 thruster.fuel_fluid_box =
 {
@@ -60,31 +67,31 @@ thruster.fuel_fluid_box =
     volume = 2000,
     pipe_connections =
     {
----@diagnostic disable-next-line: assign-type-mismatch
+        ---@diagnostic disable-next-line: assign-type-mismatch
         { flow_direction = "input-output", direction = defines.direction.west, position = { -1.5, -2 }, enable_working_visualisations = { "pipe-4" } },
----@diagnostic disable-next-line: assign-type-mismatch
-        { flow_direction = "input-output", direction = defines.direction.east, position = { 1.5, 0 }, enable_working_visualisations = { "pipe-2" } },
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        { flow_direction = "input-output", direction = defines.direction.east, position = { 1.5, 0 },   enable_working_visualisations = { "pipe-2" } },
     }
 }
 thruster.oxidizer_fluid_box =
+{
+    filter = "thruster-oxidizer",
+    production_type = "input",
+    -- pipe_covers = pipecoverspictures(),
+    draw_only_when_connected = true,
+    volume = 2000,
+    pipe_connections =
     {
-      filter = "thruster-oxidizer",
-      production_type = "input",
-      -- pipe_covers = pipecoverspictures(),
-      draw_only_when_connected = true,
-      volume = 2000,
-      pipe_connections =
-      {
----@diagnostic disable-next-line: assign-type-mismatch
-        {flow_direction = "input-output", direction = defines.direction.east, position = { 1.5, -2}, enable_working_visualisations = { "pipe-1" }},
----@diagnostic disable-next-line: assign-type-mismatch
-        {flow_direction = "input-output", direction = defines.direction.west, position = {-1.5,  0}, enable_working_visualisations = { "pipe-3" }},
-      }
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        { flow_direction = "input-output", direction = defines.direction.east, position = { 1.5, -2 }, enable_working_visualisations = { "pipe-1" } },
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        { flow_direction = "input-output", direction = defines.direction.west, position = { -1.5, 0 }, enable_working_visualisations = { "pipe-3" } },
     }
+}
 
 thruster.graphics_set.animation.animation_speed = 1
 thruster.graphics_set.animation.animation_speed = 1
-thruster.graphics_set.animation.tint = {1, 0.8, 0.8, 1}
+thruster.graphics_set.animation.tint = { 1, 0.8, 0.8, 1 }
 
 
 for _, vis in ipairs(thruster.graphics_set.working_visualisations) do
@@ -92,10 +99,9 @@ for _, vis in ipairs(thruster.graphics_set.working_visualisations) do
         vis.animation.tint = { 1, 0.4, 0.4, 1 }
         vis.animation.animation_speed = 1
     end
-    
 end
 thruster.graphics_set.flame_effect.filename = "__lilys-cubeine__/graphics/entity/thruster-flame.png"
-thruster.plumes.stateless_visualisations[2].animation.tint = {1, 0.1, 0.1, 1}
+thruster.plumes.stateless_visualisations[2].animation.tint = { 1, 0.1, 0.1, 1 }
 
 ---@diagnostic disable-next-line: assign-type-mismatch
 data:extend({ thruster_item, thruster })
@@ -129,10 +135,10 @@ local recipe = {
         quaternary = { r = 0.655, g = 0.349, b = 0.459, a = 1.000 }, --#a75975
     },
     ingredients = {
-        { type = "item",  name = "thruster",            amount = 1 },
-        { type = "item", name = "tungsten-plate",      amount = 100 },
-        { type = "item",  name = "cubeine-crystal",       amount = 10 },
-        { type = "item",  name = "low-density-structure", amount = 100 },
+        { type = "item", name = "thruster",              amount = 1 },
+        { type = "item", name = "tungsten-plate",        amount = 100 },
+        { type = "item", name = "cubeine-crystal",       amount = 10 },
+        { type = "item", name = "low-density-structure", amount = 100 },
     },
     results = {
         { type = "item", name = "cubeine-thruster", amount = 1 },
@@ -156,12 +162,12 @@ local fuel = {
     energy_required = 15,
     crafting_machine_tint = {
         primary = { r = 0.62, g = 0.09, b = 0.145, a = 1.000 },    --#9e1725
-        secondary = {r = 1, g = 0.767, b = 0.605, a = 1}, -- #ffc39aff
-        tertiary = {r = 1, g = 0.649, b = 0.542, a = 1}, -- #ffa58aff
-        quaternary = { r = 0.62, g = 0.09, b = 0.145, a = 1.000 },  --#9e1725
+        secondary = { r = 1, g = 0.767, b = 0.605, a = 1 },        -- #ffc39aff
+        tertiary = { r = 1, g = 0.649, b = 0.542, a = 1 },         -- #ffa58aff
+        quaternary = { r = 0.62, g = 0.09, b = 0.145, a = 1.000 }, --#9e1725
     },
     ingredients = {
-        { type = "fluid", name = "thruster-fuel",          amount = 10000 },
+        { type = "fluid", name = "thruster-fuel",  amount = 10000 },
         { type = "item",  name = "cubeine-powder", amount = 10 },
     },
     results = {
@@ -206,7 +212,7 @@ data:extend({
                 { "chemical-science-pack",     1 },
                 { "production-science-pack",   1 },
                 { "agricultural-science-pack", 1 },
-                { "metallurgic-science-pack" , 1 }
+                { "metallurgic-science-pack",  1 }
             },
             time = 60
 
