@@ -17,6 +17,7 @@ require("prototypes.fluid.cubeine-solution")
 
 require("prototypes.fluid.cuboil")
 require("prototypes.fluid.cubonium-gas")
+require("prototypes.fluid.liquid-cubonium")
 
 require("prototypes.core-tech")
 require("prototypes.main-processing")
@@ -35,7 +36,7 @@ require("prototypes.cubeine-biochamber")
 
 require("prototypes.fuel.cubeine-cut-fuel")
 require("prototypes.cubeine-thruster")
-
+require("prototypes.cubonium-monopropellant-thruster")
 
 require("prototypes.fuel.cuboil-processing")
 require("prototypes.fuel.cubonium-gas-processing")

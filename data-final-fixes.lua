@@ -44,7 +44,7 @@ end
 
 
 
-local fuel_fluids = {"cuboil", "cubonium-gas", "cubeine-fuel", "raw-cubeine-fluid"}
+local fuel_fluids = {"cuboil", "cubonium-gas", "cubeine-fuel", "raw-cubeine-fluid", "liquid-cubonium"}
 local fuel_fluids2 = {}
 for _, value in ipairs(fuel_fluids) do
     fuel_fluids2[value] = true

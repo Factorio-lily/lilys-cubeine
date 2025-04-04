@@ -1,4 +1,3 @@
-
 --recipe
 local purification = {
     type = "recipe",
@@ -19,12 +18,12 @@ local purification = {
     energy_required = 10,
     pollution_multiplier = 10,
     ingredients = {
-        { type = "item", name = "cubeine-powder", amount = 5, ignored_by_stats = 5 },
-        { type = "fluid", name = "steam",        amount = 1000, minimum_temperature = 500 },
+        { type = "item",  name = "cubeine-powder", amount = 5,    ignored_by_stats = 5 },
+        { type = "fluid", name = "steam",          amount = 1000, minimum_temperature = 500 },
     },
     results = {
-        { type = "item", name = "cubeine-powder", amount_min = 4, amount_max = 5, ignored_by_stats = 5 },
-        { type = "fluid", name = "water",        amount = 90 },
+        { type = "item",  name = "cubeine-powder", amount_min = 4, amount_max = 5,               ignored_by_stats = 5, ignored_by_productivity = 100 },
+        { type = "fluid", name = "water",          amount = 90,    ignored_by_productivity = 100 },
     },
     category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
     --main_product = "cubeine-powder",
@@ -35,7 +34,7 @@ local purification = {
     show_amount_in_title = false,
     order = "n[cubeine]-b[powder-purification]"
 }
-data:extend({purification})
+data:extend({ purification })
 
 -- technology
 data:extend({
@@ -60,15 +59,15 @@ data:extend({
             count = 1000,
             ingredients =
             {
-                { "automation-science-pack", 1 },
-                { "logistic-science-pack",   1 },
-            
-                { "chemical-science-pack",   1 },
-                { "production-science-pack", 1 },
+                { "automation-science-pack",   1 },
+                { "logistic-science-pack",     1 },
+
+                { "chemical-science-pack",     1 },
+                { "production-science-pack",   1 },
                 { "agricultural-science-pack", 1 }
             },
             time = 60
-        
+
         },
         effects =
         {
