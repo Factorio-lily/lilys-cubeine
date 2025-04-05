@@ -19,7 +19,7 @@ local function animationLayer()
         frame_count = 120,
         lines_per_file = 8,
         animation_speed = 0.5,
-        shift = util.by_pixel(0, -8),
+        --shift = util.by_pixel(0, -8),
         scale = 0.5,
         tint = base_tint,
         stripes = {
@@ -390,7 +390,7 @@ local drill = {
                     line_length = 1,
                     repeat_count = 120,
                     animation_speed = 1,
-                    shift = util.by_pixel(0, -8),
+                    --shift = util.by_pixel(0, -8),
                     draw_as_shadow = true,
                     scale = 0.5
                 },
@@ -399,6 +399,7 @@ local drill = {
         },
         working_visualisations = {
             {
+                name = "drill-animation",
                 fadeout = true,
                 animation = {
                     layers = {
@@ -412,7 +413,7 @@ local drill = {
                             frame_count = 120,
                             lines_per_file = 8,
                             animation_speed = 0.5,
-                            shift = util.by_pixel(0, -8),
+                            --shift = util.by_pixel(0, -8),
                             scale = 0.5,
                             tint = emissive_tint,
                             stripes = {
@@ -439,8 +440,19 @@ local drill = {
     {
         main_sounds =
         {
-            sound = { filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-working-loop.ogg", volume = 2.3 },
+            sound = { filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-working-loop.ogg", volume = 1.3 },
+            fade_in_ticks = 4,
+            fade_out_ticks = 30
         },
+        sound_accents =
+        {
+            {
+                sound = { filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-start.ogg", volume = 1.75, audible_distance_modifier = 0.3 },
+                play_for_working_visualisation = "drill-animation",
+                frame = 8,
+            }
+        },
+        max_sounds_per_prototype = 1
     },
     drilling_sound =
     {
@@ -448,12 +460,25 @@ local drill = {
         {
             filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-loop.ogg",
             volume = 2.7,
-            aggregation = { max_count = 2, remove = true, count_already_playing = true }
+            aggregation = { max_count = 20, remove = true, count_already_playing = true }
         },
-        fade_ticks = 10
+        fade_ticks = 100
+    },
+    moving_sound =
+    {
+        sound =
+        {
+            filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-moving-loop.ogg",
+            volume = 1.0,
+            aggregation = { max_count = 2, remove = true, count_already_playing = true },
+            audible_distance_modifier = 0.5
+        },
+        stopped_sound = { filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-moving-stop.ogg", volume = 1.4 },
+        minimal_sound_duration_for_stopped_sound = 33, -- at least third of the movement duration (which is drilling_frames / animation_speed)
+        fade_ticks = 2
     },
     drilling_sound_animation_start_frame = 20,
-    drilling_sound_animation_end_frame = 100,
+    drilling_sound_animation_end_frame = 80,
     open_sound = sounds.drill_open,
     close_sound = sounds.drill_close,
 

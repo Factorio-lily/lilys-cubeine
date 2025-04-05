@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.8.3
+Date: 2025-04-04
+  Changes:
+    - Changes to thermal drill animation and graphics
+    - Cryogenic cubonium thruster now explodes on death
+---------------------------------------------------------------------------------------------------
 Version: 1.8.2
 Date: 2025-04-03
   Changes:

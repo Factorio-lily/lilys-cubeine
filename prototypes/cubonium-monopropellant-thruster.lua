@@ -71,7 +71,7 @@ thruster.minable.result = "cubonium-monopropellant-thruster"
 thruster.max_health = 600
 thruster.min_performance = { fluid_volume = 0.1, fluid_usage = 2.0/60, effectivity = 1 }
 thruster.max_performance = { fluid_volume = 0.8, fluid_usage = 6.0/60, effectivity = 2/3.0 }
-thruster.dying_trigger_effect = nukubeine.spoil_to_trigger_result.trigger
+thruster.dying_trigger_effect = {type = "nested-result", action = nukubeine.spoil_to_trigger_result.trigger}
 thruster.fuel_fluid_box =
 {
     filter = "liquid-cubonium",

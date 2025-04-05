@@ -36,7 +36,7 @@ require("prototypes.cubeine-biochamber")
 
 require("prototypes.fuel.cubeine-cut-fuel")
 require("prototypes.cubeine-thruster")
-require("prototypes.cubonium-monopropellant-thruster")
+
 
 require("prototypes.fuel.cuboil-processing")
 require("prototypes.fuel.cubonium-gas-processing")
@@ -81,6 +81,8 @@ require("prototypes.advanced.cubeine-plasma-furnace")
 require("prototypes.nuke.nukubeine")
 require("prototypes.nuke.nukubeine-artillery-shell")
 require("prototypes.nuke.nukubeine-reactor")
+
+require("prototypes.cubonium-monopropellant-thruster")
 
 require("prototypes.drill.cubeine-giga-thermal-drill")
 -- debug 
