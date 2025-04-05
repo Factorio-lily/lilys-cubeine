@@ -143,6 +143,67 @@ script.on_event(defines.events.on_built_entity, function(event)
 end
 )
 
+script.on_event(defines.events.on_robot_built_entity, function(event)
+    if event.entity.name == "nukubeine-reactor" then
+        reactor = event.entity
+        local frozen = rendering.draw_animation {
+            animation = "nukubeine-reactor-frozen-animation",
+            animation_speed = 0,
+            target = reactor,
+            surface = reactor.surface,
+            scale = 0.5,
+            shift = { 0, -0.5 },
+            visible = false,
+            render_layer = "higher-object-above"
+        }
+        local base = rendering.draw_animation {
+            animation = "nukubeine-reactor-base-animation",
+            animation_speed = 0,
+            target = reactor,
+            surface = reactor.surface,
+            scale = 0.5,
+            shift = { 0, -0.5 },
+            visible = true,
+            render_layer = "higher-object-above"
+        }
+        local emi = rendering.draw_animation {
+            animation = "nukubeine-reactor-emissive-animation",
+            animation_speed = 0,
+            target = reactor,
+            surface = reactor.surface,
+            scale = 0.5,
+            shift = { 0, -0.5 },
+            visible = false,
+            render_layer = "higher-object-above",
+            draw_as_glow = true,
+            blend_mode = "additive"
+        }
+        local heat_glow = rendering.draw_animation {
+            animation = "nukubeine-reactor-heat-glow",
+            animation_speed = 0,
+            target = reactor,
+            surface = reactor.surface,
+            scale = 0.5,
+            shift = { 0, -0.5 },
+            --tint = { 1, 0.4, 0.1, 1 },
+            render_layer = "higher-object-above",
+            width = 590,
+            height = 640,
+            draw_as_glow = true
+        }
+        storage.reactors[reactor] = {
+            vhp = nil,
+            vlt = nil,
+            frozen = frozen,
+            base = base,
+            emissive = emi,
+            heat_glow =
+                heat_glow
+        }
+    end
+end
+)
+
 local function validate_storage(tick)
     if not storage.fusion then
         storage.fusion = {}
