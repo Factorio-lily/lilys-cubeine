@@ -11,6 +11,75 @@ local base_tint = { r = 1, g = 0.8, b = 0.8, a = 1 }
 local emissive_tint = { r = 1, g = 0.2, b = 0.2, a = 1 }
 
 
+local function animationLayer()
+    return {
+        priority = "high",
+        width = 704,
+        height = 704,
+        frame_count = 120,
+        lines_per_file = 8,
+        animation_speed = 0.5,
+        shift = util.by_pixel(0, -8),
+        scale = 0.5,
+        tint = base_tint,
+        stripes = {
+            {
+                filename = "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-1.png",
+                width_in_frames = 8,
+                height_in_frames = 8
+            },
+            {
+                filename = "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-2.png",
+                width_in_frames = 8,
+                height_in_frames = 7
+            }
+        }
+    }
+end
+
+local pipepictures = {
+    north =
+    {
+        filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-up.png",
+        priority = "extra-high",
+        width = 128,
+        height = 128,
+        shift = { 0, 0.75 },
+        --shift = util.by_pixel(2.25, 13.5),
+        scale = 0.5
+    },
+    east =
+    {
+        filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-right.png",
+        priority = "extra-high",
+        width = 128,
+        height = 128,
+        shift = { -0.75, 0 },
+        --shift = util.by_pixel(-24.5, 1),
+        scale = 0.5
+    },
+    south =
+    {
+        filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-down.png",
+        priority = "extra-high",
+        width = 128,
+        height = 128,
+        shift = { 0, -0.75 },
+        --shift = util.by_pixel(0, -31.25),
+        scale = 0.5
+    },
+    west =
+    {
+        filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-left.png",
+        priority = "extra-high",
+        width = 128,
+        height = 128,
+        shift = { 0.75, 0 },
+        --shift = util.by_pixel(25.75, 1.25),
+        scale = 0.5
+    }
+}
+
 local drill_item = {
     type = "item",
     name = "cubeine-giga-thermal-drill",
@@ -83,7 +152,7 @@ local drill = {
     flags = { "placeable-neutral", "player-creation" },
     minable = { mining_time = 1, result = "cubeine-giga-thermal-drill" },
     resource_categories = { "basic-fluid", "basic-solid", "hard-solid" },
-    max_health = 5000,
+    max_health = 15000,
     corpse = "big-remnants",
     dying_explosion = "big-explosion",
     collision_box = { { -4.2, -4.2 }, { 4.2, 4.2 } },
@@ -206,8 +275,9 @@ local drill = {
     output_fluid_box =
     {
         volume = 10000,
-        pipe_picture = assembler3pipepictures(),
-        pipe_covers = pipecoverspictures(),
+        pipe_picture = pipepictures,
+        secondary_draw_orders = { north = -1, east = -1, west = -1 },
+        --pipe_covers = pipecoverspictures(),
         pipe_connections =
         {
             {
@@ -236,9 +306,10 @@ local drill = {
     drops_full_belt_stacks = true,
     input_fluid_box =
     {
-        pipe_picture = assembler3pipepictures(),
+        pipe_picture = pipepictures,
         pipe_covers = pipecoverspictures(),
         volume = 1000,
+        secondary_draw_orders = { north = -1, east = -1, west = -1 },
         pipe_connections =
         {
             { direction = defines.direction.west,  position = { -4, -3 } },
@@ -309,64 +380,57 @@ local drill = {
         },
         animation =
         {
-            north =
-            {
-                layers =
+            layers = {
                 {
-                    {
-                        priority = "high",
-                        filenames = {
-                            "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-1.png",
-                            "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-2.png", 
-                        },
-                        animation_speed = 0.5,
-                        scale = 0.5,
-                        line_length = 8,
-                        width = 704,
-                        height = 704,
-                        frame_count = 120,
-                        lines_per_file = 8,
-                        tint = base_tint,
-                    },
-                    {
-                        priority = "high",
-                        filenames = {
-                            "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-emission-1.png",
-                            "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-emission-2.png",
-                        },
-                        animation_speed = 0.5,
-                        scale = 0.5,
-                        line_length = 8,
-                        width = 704,
-                        height = 704,
-                        frame_count = 120,
-                        lines_per_file = 8,
-                        draw_as_glow = true,
-                        blend_mode = "additive",
-                        tint = emissive_tint,
-                    },
-                }
-            }
+                    filename = "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-shadow.png",
+                    priority = "high",
+                    width = 1400,
+                    height = 1400,
+                    frame_count = 1,
+                    line_length = 1,
+                    repeat_count = 120,
+                    animation_speed = 1,
+                    shift = util.by_pixel(0, -8),
+                    draw_as_shadow = true,
+                    scale = 0.5
+                },
+                animationLayer()
+            },
         },
-        idle_animation = {
-            north = {
-                layers = {
-                    {
-                        priority = "high",
-                        filenames = {
-                            "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-1.png",
-                            "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-2.png",
-                        },
-                        animation_speed = 0.5,
-                        scale = 0.5,
-                        line_length = 1,
-                        width = 704,
-                        height = 704,
-                        frame_count = 1,
-                        repeat_count = 120,
-                        lines_per_file = 1,
-                        tint = base_tint,
-                    },
+        working_visualisations = {
+            {
+                fadeout = true,
+                animation = {
+                    layers = {
+                        animationLayer(),
+                        {
+                            priority = "high",
+                            draw_as_glow = true,
+                            blend_mode = "additive",
+                            width = 704,
+                            height = 704,
+                            frame_count = 120,
+                            lines_per_file = 8,
+                            animation_speed = 0.5,
+                            shift = util.by_pixel(0, -8),
+                            scale = 0.5,
+                            tint = emissive_tint,
+                            stripes = {
+                                {
+                                    filename =
+                                    "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-emission-1.png",
+                                    width_in_frames = 8,
+                                    height_in_frames = 8
+                                },
+                                {
+                                    filename =
+                                    "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-emission-2.png",
+                                    width_in_frames = 8,
+                                    height_in_frames = 7
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -376,10 +440,7 @@ local drill = {
         main_sounds =
         {
             sound = { filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-working-loop.ogg", volume = 2.3 },
-            fade_in_ticks = 4,
-            fade_out_ticks = 30
         },
-        max_sounds_per_prototype = 10
     },
     drilling_sound =
     {
