@@ -3,10 +3,10 @@ local sounds = require("__base__.prototypes.entity.sounds")
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
 
 local seconds = 60
-local minutes = 60*seconds
+local minutes = 60 * seconds
 
 local plant_emissions = { pollution = -0.001 }
-local plant_flags = {"placeable-neutral", "placeable-off-grid", "breaths-air", "not-flammable"}
+local plant_flags = { "placeable-neutral", "placeable-off-grid", "breaths-air", "not-flammable" }
 
 local leaf_sound = sounds.tree_leaves
 local leaf_sound_trigger =
@@ -22,7 +22,7 @@ local leaf_sound_trigger =
 
 local plant = {
     type = "plant",
-    name = "redleaf-cubeplant", 
+    name = "redleaf-cubeplant",
     icon = "__lilys-cubeine__/graphics/technology/cubeplant-processing.png",
     icon_size = 256,
     scale = 0.25,
@@ -46,9 +46,9 @@ local plant = {
             }
         }
     },
----@diagnostic disable-next-line: undefined-global, undefined-global
+    ---@diagnostic disable-next-line: undefined-global, undefined-global
     mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-teflilly", 5, 0.5),
----@diagnostic disable-next-line: undefined-global
+    ---@diagnostic disable-next-line: undefined-global
     mined_sound = sound_variations("__space-age__/sound/mining/mined-teflilly", 5, 0.5),
     growth_ticks = 5 * minutes,
     harvest_emissions = { spores = 50, pollution = 50 },
@@ -95,16 +95,16 @@ local plant = {
         tile_restriction = { "natural-yumako-soil", "artificial-yumako-soil", "overgrowth-yumako-soil" }
     },--]]
     colors = {
-      {r = 255, g = 255, b =  255},
-      {r = 255, g = 255, b =  255},
-      {r = 255, g = 220, b =  255},
-      {r = 255, g = 255, b =  220},
-      {r = 255, g = 220, b =  255},
-      {r = 255, g = 220, b =  220},
-      {r = 255, g = 255, b =  220},
-      {r = 255, g = 200, b =  255},
-      {r = 255, g = 220, b =  255},
-      {r = 255, g = 200, b =  255},
+        { r = 255, g = 255, b = 255 },
+        { r = 255, g = 255, b = 255 },
+        { r = 255, g = 220, b = 255 },
+        { r = 255, g = 255, b = 220 },
+        { r = 255, g = 220, b = 255 },
+        { r = 255, g = 220, b = 220 },
+        { r = 255, g = 255, b = 220 },
+        { r = 255, g = 200, b = 255 },
+        { r = 255, g = 220, b = 255 },
+        { r = 255, g = 200, b = 255 },
     },
     pictures = {
         layers = {
@@ -115,7 +115,7 @@ local plant = {
                 scale = 0.25,
                 shift = util.by_pixel(20, 0),
                 draw_as_shadow = true
-            }, 
+            },
             {
                 filename = "__lilys-cubeine__/graphics/entity/cubeplant.png",
                 width = 500,
@@ -127,7 +127,7 @@ local plant = {
     },
     agricultural_tower_tint =
     {
-        primary = { r = 0.852, g = 0.218, b = 0.218, a = 1.000 }, -- #bb3737ff
+        primary = { r = 0.852, g = 0.218, b = 0.218, a = 1.000 },   -- #bb3737ff
         secondary = { r = 0.861, g = 0.613, b = 0.308, a = 1.000 }, -- #bb4f4eff
     },
     -- tile_buildability_rules = { {area = {{-0.55, -0.55}, {0.55, 0.55}}, required_tiles = {"natural-yumako-soil", "artificial-yumako-soil"}, remove_on_collision = true} },
@@ -135,7 +135,7 @@ local plant = {
     {
         sound =
         {
----@diagnostic disable-next-line: undefined-global
+            ---@diagnostic disable-next-line: undefined-global
             variations = sound_variations("__space-age__/sound/world/plants/teflilly", 8, 0.7),
             advanced_volume_control =
             {
@@ -154,13 +154,14 @@ local plant = {
             min = 500,
             max = 3000
         }
-},
+    },
     map_color = { 255, 160, 160 }, --#ffa0a0
 }
 
 --Cubium
 if mods["cubium"] and plant.autoplace.tile_restriction then
-    local tiles = {"cubium-ash-soil", "cubium-soil-light", "cubium-soil-dark", "cubium-ash-cracks", "cubium-volcanic-pumice-stones", "cubium-volcanic-ash-flats", "cubium-volcanic-ash-light"}
+    local tiles = { "cubium-ash-soil", "cubium-soil-light", "cubium-soil-dark", "cubium-ash-cracks",
+        "cubium-volcanic-pumice-stones", "cubium-volcanic-ash-flats", "cubium-volcanic-ash-light" }
 
     for _, tile in ipairs(tiles) do
         table.insert(plant.autoplace.tile_restriction, tile)
@@ -176,7 +177,23 @@ if mods["Moshine"] and plant.autoplace.tile_restriction then
     end
 end
 
+if mods["alien-biomes"] and plant.autoplace.tile_restriction then
+    local tiles = data.raw["tile"]
 
+    for name, value in pairs(tiles) do
+        local dirt, grass = false, false
 
+        if string.find(name, "mineral%-") and string.find(name, "%-dirt") then
+            dirt = true
+        end
+        if string.find(name, "vegetation%-") and string.find(name, "%-grass") then
+            grass = true
+        end
 
-data:extend({plant})
+        if dirt or grass then
+            table.insert(plant.autoplace.tile_restriction, name)
+        end
+    end
+end
+
+data:extend({ plant })
