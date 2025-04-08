@@ -442,13 +442,14 @@ local furnace_cold_item = table.deepcopy(data.raw["item"]["cubeine-plasma-furnac
 furnace_cold_item.name = furnace_cold_item.name .. "-cold"
 furnace_cold_item.place_result = furnace_cold_item.place_result .. "-cold"
 furnace_cold_item.order = "m[cubeine-plasma-furnace-cold]"
+furnace_cold_item.hidden = true
 
 local furnace_cold = table.deepcopy(data.raw["furnace"]["cubeine-plasma-furnace"])
 furnace_cold.name = furnace_cold.name .. "-cold"
 furnace_cold.order = "m[cubeine-plasma-furnace-cold]"
 furnace_cold.minable.result = furnace_cold.minable.result .. "-cold"
 furnace_cold.energy_source.burns_fluid = true
-
+furnace_cold.hidden = true
 
 table.insert(furnace_cold_item.icons,
     {
@@ -464,6 +465,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeine-plasma-furnace-cold",
+        hidden = true,
         icons = {
             {
                 icon = "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-icon.png",
@@ -495,6 +497,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeine-plasma-furnace-cold-not",
+        hidden = true,
         icons = {
             {
                 icon = "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-icon.png",

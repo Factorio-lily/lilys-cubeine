@@ -11,8 +11,8 @@ fluid.icons = {
 }
 
 fluid.default_temperature = fluid.default_temperature
-fluid.max_temperature = fluid.max_temperature * 2 
-fluid.heat_capacity = tostring(util.parse_energy(fluid.heat_capacity) / 10) .. "J"
+fluid.max_temperature = fluid.max_temperature * 20
+fluid.heat_capacity = tostring(util.parse_energy(fluid.heat_capacity) / 100) .. "J"
 fluid.emissions_multiplier = 2
 
 fluid.base_color = { 1, fluid.base_color[2] * 0.2, fluid.base_color[3] * 0.5 , 1}

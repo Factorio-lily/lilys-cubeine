@@ -35,10 +35,11 @@ reactor.resistances = {
         percent = 70
     }
 }
+reactor.target_temperature = 10 * 1e6
 reactor.power_input = "20MW" -- at normal quality
 reactor.max_fluid_usage = 80/second -- at normal quality
 table.insert(reactor.flags, "get-by-unit-number")
-reactor.neighbour_bonus = 2
+reactor.neighbour_bonus = 10
 reactor.burner =
     {
       type = "burner",
@@ -201,6 +202,7 @@ table.insert(generator2_item.icons,
         icon_size = 64,
         tint = { 0.65, 0.65, 0.65, 0.65 }
     })
+generator2_item.hidden = true
 
 local generator2 = table.deepcopy(generator)
 generator2.name = generator2.name.."-cold"
@@ -215,6 +217,7 @@ generator2.energy_source =
     output_flow_limit = "400MW",   -- This is used to define max power output. 100MW at normal quality
 }
 generator2.max_fluid_usage = 160 / second
+generator2.hidden = true
 
 ---@diagnostic disable-next-line: assign-type-mismatch
 data:extend({reactor_item, reactor, generator_item, generator, generator2_item, generator2})
@@ -274,6 +277,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeine-fusion-generator-cold",
+        hidden = true,
         icons = {
             {
                 icon = "__space-age__/graphics/icons/fusion-generator.png",
@@ -305,6 +309,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeine-fusion-generator-cold-not",
+        hidden = true,
         icons = {
             {
                 icon = "__space-age__/graphics/icons/fusion-generator.png",
