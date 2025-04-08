@@ -15,9 +15,9 @@ item1.icons = {
     {
         icon = "__base__/graphics/icons/fluid/petroleum-gas.png",
         icon_size = 64,
-        --scale = 0.25,
-        --shift = { 6, -6 }
-        tint = { 0.7, 0.7, 0.7, 0.7 }
+        scale = 0.25,
+        shift = { -6, -6 }
+        --tint = { 0.7, 0.7, 0.7, 0.7 }
     },
 
 }
@@ -60,9 +60,9 @@ item2.icons = {
     {
         icon = "__lilys-cubeine__/graphics/icons/fluid/cubonium-gas.png",
         icon_size = 64,
-        --scale = 0.25,
-        --shift = { 6, -6 }
-        tint = { 0.7, 0.7, 0.7, 0.7 }
+        scale = 0.25,
+        shift = { -6, -6 }
+        --tint = { 0.7, 0.7, 0.7, 0.7 }
     },
     {
         icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",

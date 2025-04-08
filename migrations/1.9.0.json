@@ -1,0 +1,22 @@
+{
+    "entity": [
+        [
+            "cubeine-fusion-generator-cold",
+            "cubeine-fusion-generator"
+        ],
+        [
+            "cubeine-plasma-furnace-cold",
+            "cubeine-plasma-furnace"
+        ]
+    ],
+    "item": [
+        [
+            "cubeine-fusion-generator-cold",
+            "cubeine-fusion-generator"
+        ],
+        [
+            "cubeine-plasma-furnace-cold",
+            "cubeine-plasma-furnace"
+        ]
+    ]
+}

@@ -82,8 +82,9 @@ require("prototypes.nuke.nukubeine")
 require("prototypes.nuke.nukubeine-artillery-shell")
 require("prototypes.nuke.nukubeine-reactor")
 
-require("prototypes.cubonium-monopropellant-thruster")
 
+require("prototypes.cubonium-monopropellant-thruster")
+require("prototypes.cubonium-artillery-shell")
 require("prototypes.drill.cubeine-giga-thermal-drill")
 -- debug 
 --[[
