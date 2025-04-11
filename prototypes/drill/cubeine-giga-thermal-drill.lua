@@ -550,8 +550,15 @@ data:extend ({
         name = "cubeine-giga-thermal-drill",
         icons = {
             {
-                icon = "__lilys-cubeine__/graphics/entity/reactor/research-center-icon-big.png",
+                icon = "__lilys-cubeine__/graphics/entity/drill/core-extractor-icon-big.png",
                 icon_size = 640,
+                tint = base_tint
+            },
+            {
+                icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
+                icon_size = 64,
+                scale = 0.5,
+                shift = { 48, 48 }
             }
         },
         prerequisites = { "nukubeine-reactor" },

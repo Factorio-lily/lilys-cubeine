@@ -84,7 +84,7 @@ data:extend({
         result_inventory_size = 3,
         burns_fluid = false,
         crafting_speed = 20,
-        energy_usage = "50MW",
+        energy_usage = "100MW",
         source_inventory_size = 1,
         energy_source =
         {

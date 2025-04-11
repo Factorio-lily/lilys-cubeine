@@ -122,7 +122,7 @@ local shell = {
                     action =
                     {
                         type = "area",
-                        radius = 16.0,
+                        radius = 12.0,
                         action_delivery =
                         {
                             type = "instant",
@@ -142,7 +142,7 @@ local shell = {
                     {
                         type = "cluster",
                         distance_deviation = 12,
-                        cluster_count = 32,
+                        cluster_count = 16,
                         distance = 6,
                         action_delivery =
                         {

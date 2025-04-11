@@ -31,7 +31,7 @@ data:extend({
         name = "cubonium-gas",
         icon_size = 64,
         icon = "__lilys-cubeine__/graphics/icons/fluid/cubonium-gas.png",
-        prerequisites = { "cubeine-cut-fuel" },
+        prerequisites = { "cubeine-cut-fuel", "cubeine-solution" },
 
         unit = {
             count = 1500,

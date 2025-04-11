@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.9.1
+Date: 2025-04-11
+  Changes:
+    - Slightly rediced cubonium artillery shell radius
+    - Added missing tech prerequisite to cubonium gas processing
+    - Fixed wrong tech icon for gigadrill
+    - Doubled the power usage of plasma furnace
+---------------------------------------------------------------------------------------------------
 Version: 1.9.0
 Date: 2025-04-08
   Changes:
