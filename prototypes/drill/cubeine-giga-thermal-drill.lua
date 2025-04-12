@@ -261,14 +261,18 @@ local drill = {
             width = 704,
             height = 704,
             scale = 0.5,
-            tint = {1, 0.3, 0.1, 0.3}
+            tint = {1, 0.3, 0.1, 0.3},
+            draw_as_glow = true, 
+            blend_mode = "additive"
         },
         heat_glow_picture = {
             filename = "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-heat-1.png",
             width = 704,
             height = 704,
             scale = 0.5,
-            tint = { 1, 0.3, 0.1, 0.3 }
+            tint = { 1, 0.3, 0.1, 0.3 },
+            draw_as_glow = true,
+            blend_mode = "additive"
         },
 
     },
