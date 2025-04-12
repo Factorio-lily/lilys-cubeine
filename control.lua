@@ -1,5 +1,40 @@
 local oc = require("prototypes.modules.oc")
 
+local function cleanup_virtual()
+    local names = {
+
+    }
+    for i = 0, 80, 1 do
+        table.insert(names, "nukubeine-reactor-vhp-" .. i)
+        table.insert(names, "nukubeine-reactor-vlt-" .. i)
+    end
+
+
+    local all = {}
+    for _, surface in pairs(game.surfaces) do
+        local nodes = surface.find_entities_filtered { name = names }
+
+        for _, node in ipairs(nodes or {}) do
+            all[node] = true
+        end
+    end
+
+    for vhp, data in pairs(storage.vhp) do
+        all[vhp] = nil
+    end
+
+    for vlt, data in pairs(storage.vlt) do
+        all[vlt] = nil
+    end
+
+    for v, _ in pairs(all) do
+        if v.valid then
+            v.destroy()
+        end
+    end
+end
+
+
 
 local function call_rsl()
     local list1 = prototypes.get_item_filtered({ { filter = "type", type = "module" }, { filter = "subgroup", subgroup = "module-overclocked", mode = "and" } })
@@ -75,6 +110,7 @@ function OnInit()
     storage.vhp_del = storage.vhp_del or {} --virtual heatpipes - to be deleted
     storage.fusion = storage.fusion or {}
     call_rsl()
+    cleanup_virtual()
 end
 
 --script.on_load(call_rsl)
