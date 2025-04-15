@@ -153,6 +153,30 @@ local shell = {
                                     type = "create-fire",
                                     entity_name = "cubeine-flame"
                                 }
+                            },
+                            {
+                                type = "create-entity",
+                                probability = 0.04,
+                                show_in_tooltip = false,
+                                entity_name = "redleaf-cubeplant",
+                                trigger_created_entity = true,
+                                check_buildability = true,
+                                find_non_colliding_position = true,
+                                tile_collision_mask =
+                                {
+                                    layers = {
+                                        water_tile = true,
+                                        player = true,
+                                        object = true,
+                                        is_object = true,
+                                        is_lower_object = true,
+                                        ghost = true,
+                                        lava_tile = true,
+                                        rail = true,
+                                        rail_support = true,
+                                        empty_space = true
+                                    },
+                                },
                             }
                         }
                     }
