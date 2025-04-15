@@ -464,7 +464,7 @@ script.on_event(defines.events.on_script_trigger_effect, function(event)
 
 
         if event.cause_entity and event.cause_entity.valid and event.cause_entity.stickers then
-            for _, sticker in ipairs(event.cause_entity.stickers) do
+            for _, sticker in ipairs(event.cause_entity.stickers or {}) do
                 if sticker.valid and (string.find(sticker.name, "cubeine%-powder%-sticker%-wd") or string.find(sticker.name, "cubeine%-crystal%-sticker%-wd")) then
                     sticker.destroy()
                 end
@@ -522,7 +522,7 @@ script.on_event(defines.events.on_script_trigger_effect, function(event)
 
         if event.cause_entity and event.cause_entity.valid then
             local found = false
-            for _, sticker in ipairs(event.cause_entity.stickers) do
+            for _, sticker in ipairs(event.cause_entity.stickers or {}) do
                 if sticker.valid and (string.find(sticker.name, "cubeine%-powder%-sticker") or string.find(sticker.name, "cubeine%-crystal%-sticker")) then
                     found = true
                 end
