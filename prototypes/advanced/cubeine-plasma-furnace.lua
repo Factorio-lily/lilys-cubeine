@@ -18,9 +18,8 @@ data:extend({
         name = "cubeine-plasma-furnace",
         icons = {
             {
-                icon = "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-icon.png",
+                icon = "__lilys-cubeine-asset-pack__/graphics/entity/furnace/arc-furnace-icon.png",
                 icon_size = 64,
-                tint = base_tint
             },
             {
                 icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -43,9 +42,8 @@ data:extend({
         name = "cubeine-plasma-furnace",
         icons = {
             {
-                icon = "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-icon.png",
+                icon = "__lilys-cubeine-asset-pack__/graphics/entity/furnace/arc-furnace-icon.png",
                 icon_size = 64,
-                tint = {1, 0.8, 0.8, 1}
             },
             {
                 icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -104,7 +102,7 @@ data:extend({
                     north = {
                         layers = {
                             {--do not use
-                                filename = "__lilys-cubeine__/graphics/entity/pipes/cubeine-fusion-pipe-cover-west.png",
+                                filename = "__lilys-cubeine-asset-pack__/graphics/entity/plasma-pipes/cubeine-fusion-pipe-cover-west.png",
                                 width = 64,
                                 height = 64,
                                 scale = 0.5,
@@ -115,7 +113,7 @@ data:extend({
                     west = {
                         layers = {
                             {
-                                filename = "__lilys-cubeine__/graphics/entity/pipes/cubeine-fusion-pipe-cover-west.png",
+                                filename = "__lilys-cubeine-asset-pack__/graphics/entity/plasma-pipes/cubeine-fusion-pipe-cover-west.png",
                                 width = 64,
                                 height = 64,
                                 scale = 0.5,
@@ -127,7 +125,7 @@ data:extend({
                     east = {
                         layers = {
                             {
-                                filename = "__lilys-cubeine__/graphics/entity/pipes/cubeine-fusion-pipe-cover-east.png",
+                                filename = "__lilys-cubeine-asset-pack__/graphics/entity/plasma-pipes/cubeine-fusion-pipe-cover-east.png",
                                 width = 64,
                                 height = 64,
                                 scale = 0.5,
@@ -139,7 +137,7 @@ data:extend({
                     south = {--do not use
                         layers = {
                             {
-                                filename = "__lilys-cubeine__/graphics/entity/pipes/cubeine-fusion-pipe-cover-east.png",
+                                filename = "__lilys-cubeine-asset-pack__/graphics/entity/plasma-pipes/cubeine-fusion-pipe-cover-east.png",
                                 width = 17,
                                 height = 63,
                                 scale = 0.5,
@@ -214,7 +212,7 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-hr-animation-1.png",
+                        filename = "__lilys-cubeine-asset-pack__/graphics/entity/furnace/arc-furnace-hr-animation-1.png",
                         priority = "high",
                         width = 320,
                         height = 320,
@@ -223,10 +221,9 @@ data:extend({
                         animation_speed = 1,
                         --shift = util.by_pixel(0.75, 5.75),
                         scale = 0.5,
-                        tint = base_tint
                     },
                     {
-                        filename = "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-hr-shadow.png",
+                        filename = "__lilys-cubeine-asset-pack__/graphics/entity/furnace/arc-furnace-hr-shadow.png",
                         priority = "high",
                         width = 600,
                         height = 400,
@@ -250,7 +247,7 @@ data:extend({
                         {
                             {
                                 filename =
-                                "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-hr-emission-1.png",
+                                "__lilys-cubeine-asset-pack__/graphics/entity/furnace/arc-furnace-hr-emission-1.png",
                                 priority = "high",
                                 width = 320,
                                 height = 320,
@@ -261,11 +258,10 @@ data:extend({
                                 blend_mode="additive",
                                 --shift = util.by_pixel(1.75, 32.75),
                                 scale = 0.5,
-                                tint = emissive_tint,
                             },
                             {
                                 filename =
-                                "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-hr-emission-1.png",
+                                "__lilys-cubeine-asset-pack__/graphics/entity/furnace/arc-furnace-hr-emission-1.png",
                                 priority = "high",
                                 width = 320,
                                 height = 320,
@@ -276,14 +272,13 @@ data:extend({
                                 blend_mode = "additive",
                                 --shift = util.by_pixel(1.75, 32.75),
                                 scale = 0.5,
-                                tint = emissive_tint,
                             },
                         }
                     },
                 },
                 {
                     animation = {
-                        filename = "__lilys-cubeine__/graphics/entity/pipes/cubeine-fusion-pipe-cover-west-glow.png",
+                        filename = "__lilys-cubeine-asset-pack__/graphics/entity/plasma-pipes/cubeine-fusion-pipe-cover-west-glow.png",
                         width = 64,
                         height = 64,
                         scale = 0.5,
@@ -296,7 +291,7 @@ data:extend({
                 },
                 {
                     animation = {
-                        filename = "__lilys-cubeine__/graphics/entity/pipes/cubeine-fusion-pipe-cover-west-glow.png",
+                        filename = "__lilys-cubeine-asset-pack__/graphics/entity/plasma-pipes/cubeine-fusion-pipe-cover-west-glow.png",
                         width = 64,
                         height = 64,
                         scale = 0.5,
@@ -309,7 +304,7 @@ data:extend({
                 },
                 {
                     animation = {
-                        filename = "__lilys-cubeine__/graphics/entity/pipes/cubeine-fusion-pipe-cover-east.png",
+                        filename = "__lilys-cubeine-asset-pack__/graphics/entity/plasma-pipes/cubeine-fusion-pipe-cover-east.png",
                         width = 64,
                         height = 64,
                         scale = 0.5,
@@ -322,7 +317,7 @@ data:extend({
                 },
                 {
                     animation = {
-                        filename = "__lilys-cubeine__/graphics/entity/pipes/cubeine-fusion-pipe-cover-east.png",
+                        filename = "__lilys-cubeine-asset-pack__/graphics/entity/plasma-pipes/cubeine-fusion-pipe-cover-east.png",
                         width = 64,
                         height = 64,
                         scale = 0.5,
@@ -382,9 +377,8 @@ data:extend({
         name = "cubeine-plasma-furnace",
         icons = {
             {
-                icon = "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-icon-big.png",
+                icon = "__lilys-cubeine-asset-pack__/graphics/entity/furnace/arc-furnace-icon-big.png",
                 icon_size = 640,
-                tint = { 1, 0.8, 0.8, 1 }
             },
             {
                 icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -468,9 +462,8 @@ data:extend({
         hidden = true,
         icons = {
             {
-                icon = "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-icon.png",
+                icon = "__lilys-cubeine-asset-pack__/graphics/entity/furnace/arc-furnace-icon.png",
                 icon_size = 64,
-                tint = { 1, 0.8, 0.8, 1 }
             },
             {
                 icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -500,9 +493,8 @@ data:extend({
         hidden = true,
         icons = {
             {
-                icon = "__lilys-cubeine__/graphics/entity/furnace/arc-furnace-icon.png",
+                icon = "__lilys-cubeine-asset-pack__/graphics/entity/furnace/arc-furnace-icon.png",
                 icon_size = 64,
-                tint = { 1, 0.8, 0.8, 1 }
             },
             {
                 icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",

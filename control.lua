@@ -1,4 +1,6 @@
 local oc = require("prototypes.modules.oc")
+require("util")
+
 
 local function cleanup_virtual()
     local names = {
@@ -327,7 +329,7 @@ local function manage_reactors(tick)
         data.current_radius = data.current_radius or -1
 
         local t = reactor.temperature
-        local trigger_chance = t > 1000 and math.pow((t - 1000) / 5000, 2) or 0
+        local trigger_chance = t > 1000 and math.pow((t - 1200) / 5000, 2) or 0
 
         local light_radius = math.floor(6e-6 * t * t + 0)
         local heat_radius = math.ceil(6e-6 * t * t + 5)
@@ -395,7 +397,38 @@ local function manage_reactors(tick)
 
             local num = math.random()
             if (num < trigger_chance) then
-                for i = 1, danger_intensity, 1 do
+                local danger_entities = reactor.surface.find_entities_filtered { position = reactor.position, radius = danger_radius }
+                local safe_entities = reactor.surface.find_entities_filtered { position = reactor.position, radius = safe_radius }
+                for key, value in pairs(safe_entities) do
+                    danger_entities[key] = nil
+                end
+
+                for key, value in pairs(danger_entities) do
+                    if value.valid and value.max_health ~= nil and value.type ~= 'construction-robot' and value.type ~= 'logistic-robot' then
+                        if (math.random() < danger_intensity / 100.0) then
+                            if (value.type == "tree" or value.type == "plant") and not value.has_flag("not-flammable") then
+                                reactor.surface.create_entity({
+                                    name = "cubeine-flame",
+                                    position = value.position,
+                                    force = "neutral"
+                                })
+                            elseif value.health then
+                                local damage = math.min(t, danger_radius * t / util.distance(reactor.position, value.position))
+                                value.damage(damage, reactor.force, "fire", reactor, reactor)
+                                --[[value.damage{
+                                    damage = damage,
+                                    force = reactor.force,
+                                    type = "fire",
+                                    source = reactor,
+                                    cause = reactor
+                                }--]]
+                            end
+                        end
+                    end
+                end
+
+
+                --[[for i = 1, danger_intensity, 1 do
                     angle = math.pi * 2 * math.random()
                     range = safe_radius + math.random() * (danger_radius - safe_radius)
 
@@ -404,7 +437,7 @@ local function manage_reactors(tick)
                         position = { reactor.position.x + math.cos(angle) * range, reactor.position.y + math.sin(angle) * range },
                         force = "neutral"
                     })
-                end
+                end--]]
             end
         end
 

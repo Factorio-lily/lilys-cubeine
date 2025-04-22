@@ -196,4 +196,9 @@ if mods["alien-biomes"] and plant.autoplace.tile_restriction then
     end
 end
 
+
+if mods["zen-garden"] then
+    table.insert(plant.autoplace.tile_restriction, "artificial-grass")
+end
+
 data:extend({ plant })

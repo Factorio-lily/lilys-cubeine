@@ -1,11 +1,10 @@
-
 --local multispoil = require("__multispoil__.api")
 local rsl = require("__runtime-spoilage-library__/data_registry")
 --------
 ---groups
 
 if not data.raw["item-group"]["module"] then
-    data.extend({{
+    data.extend({ {
         type = "item-group",
         name = "module",
         icons = {
@@ -13,12 +12,12 @@ if not data.raw["item-group"]["module"] then
                 icon = "__base__/graphics/technology/speed-module-3.png",
                 icon_size = 256,
                 scale = 0.25,
-                shift = {0, 0},
+                shift = { 0, 0 },
             }
         },
         order = "h"
 
-    }})
+    } })
     data.raw["item-subgroup"]["module"].group = "module"
     data.raw["item-subgroup"]["module"].order = "a"
 end
@@ -86,9 +85,9 @@ local function create_degraded(m, tier, icons)
     module.effect = effectutils.degrade_effect(module.category, module.effect)
 
     module.subgroup = "module-degraded"
-    module.localised_name = {"?",{"", {"module-strings.degraded"}, " ", {"item-name." .. m.name}}, {"module-strings.degraded-fallback"}}
+    module.localised_name = { "?", { "", { "module-strings.degraded" }, " ", { "item-name." .. m.name } }, { "module-strings.degraded-fallback" } }
     module.localised_description = { "?", { "", { "item-description." .. m.name }, " ", { "module-strings.degraded-desc" } }, { "module-strings.degraded-fallback-desc" } }
-    module.beacon_tint = {primary = { 0.5, 0.5, 0.5 }, secondary = { 0.5, 0.5, 0.5 } }
+    module.beacon_tint = { primary = { 0.5, 0.5, 0.5 }, secondary = { 0.5, 0.5, 0.5 } }
     return module
 end
 
@@ -127,7 +126,7 @@ local function create_hyper(m, tier, icons)
     module.localised_description = { "?", { "", { "item-description." .. m.name }, " ", { "module-strings.hyper-desc" } }, { "module-strings.hyper-fallback-desc" } }
     if module.beacon_tint then
         if module.beacon_tint.primary and (module.beacon_tint.primary[2] and module.beacon_tint.primary[3]) then
-            if  module.beacon_tint.primary[2] < module.beacon_tint.primary[3] then
+            if module.beacon_tint.primary[2] < module.beacon_tint.primary[3] then
                 module.beacon_tint.primary[1] = 1
                 module.beacon_tint.primary[2] = (module.beacon_tint.primary[2] and module.beacon_tint.primary[2] / 3 or 0.2)
                 module.beacon_tint.primary[3] = (module.beacon_tint.primary[3] and module.beacon_tint.primary[3] or 1)
@@ -153,20 +152,19 @@ local function create_hyper(m, tier, icons)
             end
         end
     end
-    
+
     return module
 end
 
 local function add_oc_icons(icons, amount)
-
     for i = 1, 6, 1 do
         table.insert(icons, {
-            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-framed.png",
+            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-bar-2.png",
             icon_size = 64,
             scale = 0.25,
             floating = true,
-            shift = { 12, 14 - 4*i },
-            tint = (i > amount and {0.0, 0.0, 0.0, 0.4} or {1, 1, 1, 1})
+            shift = { 12, 14 - 6 * i },
+            tint = (i > amount and { 0.0, 0.0, 0.0, 0.9 } or { 1, 1, 1, 1 })
         })
     end
 
@@ -176,19 +174,19 @@ end
 
 local function create_overclocked(m, tier, icons, level)
     local module = table.deepcopy(m)
-    module.name = m.name .. "-overclocked-".. level
+    module.name = m.name .. "-overclocked-" .. level
     module.icons = table.deepcopy(icons)
     table.insert(module.icons, {
         icon = "__lilys-cubeine__/graphics/icons/speed-module-mask-overclocked.png",
         icon_size = 64,
-        --tint = {0.5, 0.5, 0.5, 0.5}
+        tint = { 1, 1, 1, 0.4 + level / 10.0 }
     })
     add_oc_icons(module.icons, level)
 
     module.effect = effectutils.overclock_effect(module.category, module.effect, level, m.subgroup == "module-degraded")
     module.subgroup = m.subgroup == "module-degraded" and "module-degraded-overclocked" or "module-overclocked"
 
-    module.localised_name = { "?", { "", { "module-strings.overclocked" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } },  " (" .. tostring(level) .. ")"}, { "module-strings.overclocked-fallback" } }
+    module.localised_name = { "?", { "", { "module-strings.overclocked" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } }, " (" .. tostring(level) .. ")" }, { "module-strings.overclocked-fallback" } }
     module.localised_description = { "?", { "", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } }, " ", { "module-strings.overclocked-desc" } }, { "module-strings.overclocked-fallback-desc" } }
     module.spoil_ticks = (oc[level].t / tier) * (m.subgroup == "module-degraded" and 0.5 or 1)
     --module.spoil_to_trigger = get_spoil_effect(m, module, level, m.subgroup == "module-degraded")
@@ -196,19 +194,19 @@ local function create_overclocked(m, tier, icons, level)
 
     if module.beacon_tint ~= nil then
         if not module.beacon_tint.primary then
-            module.beacon_tint.primary = {1, 0, 0}
+            module.beacon_tint.primary = { 1, 0, 0 }
         end
         module.beacon_tint.primary[1] = 1
         module.beacon_tint.primary[2] = module.beacon_tint.primary[2] and (module.beacon_tint.primary[2] / 2) or 0
         module.beacon_tint.primary[3] = module.beacon_tint.primary[3] and (module.beacon_tint.primary[2] / 3) or 0
         if not module.beacon_tint.secondary then
-            module.beacon_tint.secondary = {1, 0, 0}
+            module.beacon_tint.secondary = { 1, 0, 0 }
         end
         module.beacon_tint.secondary[1] = 1
         module.beacon_tint.secondary[2] = module.beacon_tint.secondary[2] and (module.beacon_tint.secondary[2] / 2) or 0
         module.beacon_tint.secondary[3] = module.beacon_tint.secondary[3] and (module.beacon_tint.secondary[3] / 2) or 0
     else
-        module.beacon_tint = {primary = {1, 0, 0}, secondary = {1, 0, 0}}
+        module.beacon_tint = { primary = { 1, 0, 0 }, secondary = { 1, 0, 0 } }
     end
     return module
 end
@@ -220,14 +218,14 @@ local function create_oc_recipe(module, level)
     local recipe = {
         type = "recipe",
         name = module.name .. "-overclocked-" .. tostring(level),
-        localised_name = { "?", { "", { "module-strings.overclocking" }, " ", { "?", { "item-name." .. module.name }, { "item-name." .. tostring(string.gsub(module.name, "%-degraded", "")) } },  " (" .. tostring(level) .. ")" }, { "module-strings.overclocking-fallback" } },
+        localised_name = { "?", { "", { "module-strings.overclocking" }, " ", { "?", { "item-name." .. module.name }, { "item-name." .. tostring(string.gsub(module.name, "%-degraded", "")) } }, " (" .. tostring(level) .. ")" }, { "module-strings.overclocking-fallback" } },
         subgroup = is_degraded and "module-degraded-overclocked" or "module-overclocked",
         enabled = false,
         energy_required = level * module.tier,
         category = mods["lilys-injector"] and "injection" or "crafting-with-fluid",
         ingredients = {
-            {type = "item", name = module.name, amount = 1},
-            {type = "fluid", name = "cubeine-solution", amount = 10 * module.tier * level * level * (is_degraded and 2 or 1)}
+            { type = "item",  name = module.name,        amount = 1 },
+            { type = "fluid", name = "cubeine-solution", amount = 10 * module.tier * level * level * (is_degraded and 2 or 1) }
         },
         results = { { type = "item", name = module.name .. "-overclocked-" .. tostring(level), amount = 1 } },
         allow_productivity = false,
@@ -236,10 +234,10 @@ local function create_oc_recipe(module, level)
         --hide_from_signal_gui = false,
         main_product = module.name .. "-overclocked-" .. tostring(level),
         crafting_machine_tint = {
-            primary = { r = 0.882, g = 0.6, b = 0.675, a = 1.000 }, --#e199ac
+            primary = { r = 0.882, g = 0.6, b = 0.675, a = 1.000 },     --#e199ac
             secondary = { r = 0.655, g = 0.349, b = 0.459, a = 1.000 }, --#a75975
-            tertiary = { r = 0.62, g = 0.09, b = 0.145, a = 1.000 }, --#9e1725
-            quaternary = { r = 0.62, g = 0.09, b = 0.145, a = 1.000 }, --#9e1725
+            tertiary = { r = 0.62, g = 0.09, b = 0.145, a = 1.000 },    --#9e1725
+            quaternary = { r = 0.62, g = 0.09, b = 0.145, a = 1.000 },  --#9e1725
         },
         auto_recycle = false
     }
@@ -247,7 +245,7 @@ local function create_oc_recipe(module, level)
         type = "unlock-recipe",
         recipe = recipe.name
     })
-    data:extend({recipe})
+    data:extend({ recipe })
 end
 
 
@@ -259,11 +257,11 @@ local function add_overclocking(module)
     local name = module.name
     local icons
     if module.icon == nil then
-    icons = module.icons
+        icons = module.icons
     else
-        icons = {{
+        icons = { {
             icon = module.icon,
-        }}
+        } }
     end
     if module.icon_size then
         icons[1].icon_size = module.icon_size
@@ -278,9 +276,7 @@ local function add_overclocking(module)
     local d_oc_list = {}
 
     for _, data in ipairs(oc) do
-
         if (_ <= settings.startup["max-overclock"].value) then
-
             local oc1 = create_overclocked(module, tier, icons, _)
             local oc2 = create_overclocked(degraded_version, tier, degraded_version.icons, _)
             table.insert(oc_list, oc1)
@@ -296,7 +292,7 @@ local function add_overclocking(module)
     --data:extend(d_oc_list)
 
 
-    data:extend({degraded_version, destroyed_version, hyper_version})
+    data:extend({ degraded_version, destroyed_version, hyper_version })
 end
 
 
@@ -315,26 +311,26 @@ local tech = {
             scale = 4,
         }
     },
-    
+
     prerequisites = { "cubeine-solution", "agricultural-science-pack", "electromagnetic-science-pack" },
 
     unit = {
         count = 5000,
         ingredients =
         {
-            { "automation-science-pack",   1 },
-            { "logistic-science-pack",     1 },
-            { "chemical-science-pack",     1 },
-            { "production-science-pack",   1 },
-            { "agricultural-science-pack", 1 },
-            { "electromagnetic-science-pack" , 1}
+            { "automation-science-pack",       1 },
+            { "logistic-science-pack",         1 },
+            { "chemical-science-pack",         1 },
+            { "production-science-pack",       1 },
+            { "agricultural-science-pack",     1 },
+            { "electromagnetic-science-pack",  1 }
         },
         time = 60
 
     },
 
     effects = effects
-    
+
 }
 --[[
 local allrecipes = data.raw["recipe"]
@@ -349,7 +345,7 @@ end
 --]]
 
 if settings.startup["max-overclock"].value > 0 then
-    data:extend({tech})
+    data:extend({ tech })
 
 
     local allmodules = data.raw["module"]
@@ -364,12 +360,12 @@ if settings.startup["max-overclock"].value > 0 then
 
     for name, module in pairs(allmodules) do
         if categories[module.category] then
-        table.insert(modules, module) 
+            table.insert(modules, module)
         end
     end
 
     for _, module in ipairs(modules) do
-        if module.tier > 0 and (not module.hidden)then
+        if module.tier > 0 and (not module.hidden) then
             add_overclocking(module)
         end
     end

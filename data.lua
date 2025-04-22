@@ -86,6 +86,15 @@ require("prototypes.nuke.nukubeine-reactor")
 require("prototypes.cubonium-monopropellant-thruster")
 require("prototypes.cubonium-artillery-shell")
 require("prototypes.drill.cubeine-giga-thermal-drill")
+require("prototypes.advanced.lily-katie-enrichment-process")
+require("prototypes.advanced.synthetic-cubeplant")
+
+
+require("prototypes.fuel.cubeine-combustion-center")
+
+require("prototypes.fluid-handling.pipes")
+require("prototypes.fluid-handling.tanks")
+require("prototypes.fluid-handling.pumps")
 -- debug 
 --[[
 data:extend({

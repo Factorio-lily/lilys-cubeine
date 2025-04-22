@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 2025-04-16
+  Changes:
+    - Moved most of the large graphics assets to a separate mod
+    - New visuals for most entities/buildings
+    - A LOT of minor changes and fixes
+    - Added Cubeine Combution Center
+    - Added Cubeine fluid handling
+    - Added turbopumps
+    - Changed the way reactor calculation is done (no longer starts fires, does heat damage instead, ignites trees)
+---------------------------------------------------------------------------------------------------
 Version: 1.9.4
 Date: 2025-04-15
   Changes:
@@ -93,7 +104,7 @@ Date: 2025-03-26
 Version: 1.5.1
 Date: 2025-03-23
   Changes:
-    -  [REDACTED] Reactor animation speed increases with  quality now
+    -  REDACTED Reactor animation speed increases with  quality now
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.0
 Date: 2025-03-19
@@ -132,7 +143,7 @@ Date: 2025-03-14
 Version: 1.2.9
 Date: 2025-03-13
   Changes:
-    - Update to [Redacted] delivery properties
+    - Update to REDACTED delivery properties
     - Hopefully fixed some issues
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.8
@@ -165,7 +176,7 @@ Date: 2025-03-10
 Version: 1.2.3
 Date: 2025-03-10
   Changes:
-    - Added [REDACTED] fire
+    - Added REDACTED fire
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.2
 Date: 2025-03-10
@@ -183,7 +194,7 @@ Date: 2025-03-07
   Changes:
     - Cubeine charged battery packs now spoil (into discharged packs) after an hour
     - Cubeine purification now gives 4-5 units of powder (used to be 3-5)
-    - Added [Redacted]
+    - Added REDACTED
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.4
 Date: 2025-03-08

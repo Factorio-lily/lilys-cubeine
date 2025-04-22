@@ -1,4 +1,3 @@
-
 local sounds = require("__base__.prototypes.entity.sounds")
 local space_age_sounds = require("__space-age__.prototypes.entity.sounds")
 local item_sounds = require("__base__.prototypes.item_sounds")
@@ -21,15 +20,14 @@ local function animationLayer()
         animation_speed = 0.5,
         --shift = util.by_pixel(0, -8),
         scale = 0.5,
-        tint = base_tint,
         stripes = {
             {
-                filename = "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-1.png",
+                filename = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-hr-animation-1.png",
                 width_in_frames = 8,
                 height_in_frames = 8
             },
             {
-                filename = "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-2.png",
+                filename = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-hr-animation-2.png",
                 width_in_frames = 8,
                 height_in_frames = 7
             }
@@ -83,12 +81,11 @@ local pipepictures = {
 local drill_item = {
     type = "item",
     name = "cubeine-giga-thermal-drill",
-    icon = "__lilys-cubeine__/graphics/entity/drill/core-extractor-icon.png",
+    icon = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-icon.png",
     icons = {
         {
-            icon = "__lilys-cubeine__/graphics/entity/drill/core-extractor-icon.png",
+            icon = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-icon.png",
             icon_size = 64,
-            tint = { 1, 0.8, 0.8, 1 }
         },
         {
             icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -115,12 +112,11 @@ local drill_item = {
 local drill = {
     type = "mining-drill",
     name = "cubeine-giga-thermal-drill",
-    icon = "__lilys-cubeine__/graphics/entity/drill/core-extractor-icon.png",
+    icon = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-icon.png",
     icons = {
         {
-            icon = "__lilys-cubeine__/graphics/entity/drill/core-extractor-icon.png",
+            icon = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-icon.png",
             icon_size = 64,
-            tint = {1, 0.8, 0.8, 1}
         },
         {
             icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -148,7 +144,7 @@ local drill = {
             percent = 60
         }
     },
-    
+
     flags = { "placeable-neutral", "player-creation" },
     minable = { mining_time = 1, result = "cubeine-giga-thermal-drill" },
     resource_categories = { "basic-fluid", "basic-solid", "hard-solid" },
@@ -159,7 +155,7 @@ local drill = {
     selection_box = { { -4.5, -4.5 }, { 4.5, 4.5 } },
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 10,
-    vector_to_place_result = {0, -6, x = 0, y = -6},
+    vector_to_place_result = { 0, -6, x = 0, y = -6 },
     resource_searching_radius = 32,
     energy_source =
     {
@@ -169,7 +165,7 @@ local drill = {
         max_transfer = "5GJ",
         min_working_temperature = 990,
         minimum_glow_temperature = 900,
-        
+
         connections =
         {
             {
@@ -254,23 +250,23 @@ local drill = {
             }
 
         },
-           
+
         heat_picture =
         {
-            filename = "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-heat-1.png",
+            filename = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-hr-animation-heat-1.png",
             width = 704,
             height = 704,
             scale = 0.5,
-            tint = {1, 0.3, 0.1, 0.3},
-            draw_as_glow = true, 
+            tint = { 0.25, 0.025, 0.01, 0.25 },
+            draw_as_glow = true,
             blend_mode = "additive"
         },
-        heat_glow_picture = {
-            filename = "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-animation-heat-1.png",
+        heat_glow = {
+            filename = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-hr-animation-heat-1.png",
             width = 704,
             height = 704,
             scale = 0.5,
-            tint = { 1, 0.3, 0.1, 0.3 },
+            tint = { 0.25, 0.025, 0.01, 0.25 },
             draw_as_glow = true,
             blend_mode = "additive"
         },
@@ -286,7 +282,7 @@ local drill = {
         {
             {
                 direction = defines.direction.south,
-                position = {-1, 4},
+                position = { -1, 4 },
                 flow_direction = "output"
             },
             {
@@ -316,12 +312,12 @@ local drill = {
         secondary_draw_orders = { north = -1, east = -1, west = -1 },
         pipe_connections =
         {
-            { direction = defines.direction.west,  position = { -4, -3 } },
-            { direction = defines.direction.east,  position = { 4, -3 } },
+            { direction = defines.direction.west, position = { -4, -3 } },
+            { direction = defines.direction.east, position = { 4, -3 } },
             { direction = defines.direction.west, position = { -4, 3 } },
             { direction = defines.direction.east, position = { 4, 3 } },
         }
-    
+
     },
     energy_usage = "500MW",
     mining_speed = 40,
@@ -377,7 +373,7 @@ local drill = {
     graphics_set =
     {
         frozen_patch = {
-            filename = "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-frozen-1.png",
+            filename = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-hr-frozen-1.png",
             width = 704,
             height = 704,
             scale = 0.5,
@@ -386,7 +382,7 @@ local drill = {
         {
             layers = {
                 {
-                    filename = "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-shadow.png",
+                    filename = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-hr-shadow.png",
                     priority = "high",
                     width = 1400,
                     height = 1400,
@@ -419,21 +415,49 @@ local drill = {
                             animation_speed = 0.5,
                             --shift = util.by_pixel(0, -8),
                             scale = 0.5,
-                            tint = emissive_tint,
                             stripes = {
                                 {
                                     filename =
-                                    "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-emission-1.png",
+                                    "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-hr-emission-1.png",
                                     width_in_frames = 8,
                                     height_in_frames = 8
                                 },
                                 {
                                     filename =
-                                    "__lilys-cubeine__/graphics/entity/drill/core-extractor-hr-emission-2.png",
+                                    "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-hr-emission-2.png",
                                     width_in_frames = 8,
                                     height_in_frames = 7
                                 }
                             }
+                        }
+                    }
+                }
+            },
+            {
+                name = "light",
+                --fadeout = true,
+                light = { color = { 1, 0.5, 0.5, 1 }, size = 20, intensity = 0.6 }
+            },
+            {
+                name = "drill-animation-2",
+                animation = {
+                    layers = {
+                        {
+                            filenames = {
+                                "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-hr-emission-1.png",
+                                "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-hr-emission-2.png",
+                            },
+                            priority = "high",
+                            draw_as_glow = true,
+                            blend_mode = "additive",
+                            width = 704,
+                            height = 704,
+                            frame_count = 120,
+                            lines_per_file = 8,
+                            line_length = 8,
+                            animation_speed = 0.5,
+                            --shift = util.by_pixel(0, -8),
+                            scale = 0.5,
                         }
                     }
                 }
@@ -498,7 +522,7 @@ local drill = {
     filter_count = 5,
     circuit_connector = table.deepcopy(circuit_connector_definitions["big-mining-drill"]),
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    
+
     collision_mask = default_collision_masks["mining-drill"],
 }
 drill.wet_graphics_set = drill.graphics_set
@@ -516,11 +540,11 @@ drill.collision_mask.layers["meltable"] = nil
 drill.collision_mask.layers["is_object"] = nil
 drill.collision_mask.layers["is_lower_object"] = nil
 
-data:extend({drill_item, drill})
+data:extend({ drill_item, drill })
 drill.tile_buildability_rules = nil
-drill.collision_mask = {layers = {object = true}}
+drill.collision_mask = { layers = { object = true } }
 
-data:extend ({
+data:extend({
     {
         type = "recipe",
         name = "cubeine-giga-thermal-drill",
@@ -554,9 +578,8 @@ data:extend ({
         name = "cubeine-giga-thermal-drill",
         icons = {
             {
-                icon = "__lilys-cubeine__/graphics/entity/drill/core-extractor-icon-big.png",
+                icon = "__lilys-cubeine-asset-pack__/graphics/entity/drill/core-extractor-icon-big.png",
                 icon_size = 640,
-                tint = base_tint
             },
             {
                 icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
