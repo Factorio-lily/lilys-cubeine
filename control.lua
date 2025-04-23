@@ -320,6 +320,9 @@ end
 
 local function manage_reactors(tick)
     for reactor, data in pairs(storage.reactors) do
+        if not reactor.valid then
+            return nil
+        end
         data.acc_ticks = data.acc_ticks or 0
         data.last_managed = data.last_managed or tick
 
@@ -447,7 +450,7 @@ local function manage_reactors(tick)
         end
 
         local working_animation_speed = 0.5
-        if reactor then
+        if reactor and reactor.valid then
             working_animation_speed = working_animation_speed + reactor.quality.level * 0.3 * working_animation_speed
         end
 
