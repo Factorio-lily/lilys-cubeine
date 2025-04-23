@@ -1,5 +1,5 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
-
+local meld = require("meld")
 local charger_item = table.deepcopy(data.raw["item"]["space-train-battery-charging-station"])
 charger_item.name = "cubeine-space-train-battery-charging-station"
 charger_item.place_result = "cubeine-space-train-battery-charging-station"
@@ -313,6 +313,10 @@ local tech = {
         },
         {
             type = "unlock-recipe",
+            recipe = "cubeine-space-train-battery-discharging-station"
+        },
+        {
+            type = "unlock-recipe",
             recipe = "cubeine-space-train-battery-pack"
         },
         {
@@ -322,9 +326,82 @@ local tech = {
         {
             type = "unlock-recipe",
             recipe = "cubeine-space-train-battery-pack-refurbish"
-        }
+        },
     }
 }
 
 
-data:extend({battery_charged, battery_discharged, battery_fried, charger, charger_item, crafting_battery, crafting_charger, charging, repair, tech})
+local discharger_item = table.deepcopy(charger_item)
+discharger_item.name = "cubeine-space-train-battery-discharging-station"
+discharger_item.place_result = "cubeine-space-train-battery-discharging-station"
+discharger_item.icons = {
+    {
+        icon = "__se-space-trains__/graphics/icons/space-train-charging-station.png",
+        icon_size = 64,
+        tint = {1, 0.8, 0.8, 1}
+    },
+    {
+        icon = "__lilys-cubeine__/graphics/icons/misc/signal-lightning.png",
+        icon_size = 64,
+        tint = { 0.8, 0.1, 0.1, 0.8 }
+    },
+    {
+        icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
+        icon_size = 64,
+        scale = 0.25,
+        shift = {6, 6}
+    }
+}
+local discharger = meld.meld(table.deepcopy(charger), {
+    type = "burner-generator",
+    name = "cubeine-space-train-battery-discharging-station",
+    icons = table.deepcopy(discharger_item.icons),
+    energy_source = {
+        type = "electric",
+        buffer_capacity = "100MJ",
+        usage_priority = "secondary-output",
+        input_flow_limit = "0MW",
+        output_flow_limit = "40MW",
+    },
+    max_power_output = "40MW",
+    burner = {
+        type = "burner",
+        fuel_inventory_size = 1,
+        burnt_inventory_size = 1,
+        fuel_categories = { "electrical" },
+        effectivity = 0.95,
+        initial_fuel_percent = 0,
+        light_flicker = {
+            minimum_light_size = 9.9,
+            color = {
+                r = 1,
+                g = 0.2,
+                b = 0.2,
+                a = 1
+            }
+        }
+    },
+    idle_animation = table.deepcopy(charger.graphics_set.idle_animation),
+    always_draw_idle_animation = true,
+    animation = table.deepcopy(charger.graphics_set.working_visualisations[2].animation)
+})
+
+local crafting_discharger = {
+    type = "recipe",
+    name = "cubeine-space-train-battery-discharging-station",
+    energy_required = 30,
+    enabled = false,
+    category = "electromagnetics",
+    ingredients = {
+        { type = "item",  name = "space-train-battery-discharging-station", amount = 1 },
+        { type = "item",  name = "cubeine-crystal",                      amount = 5 },
+        { type = "item",  name = "low-density-structure",                amount = 50 },
+        { type = "fluid", name = "cubeine-solution",                     amount = 2000 },
+    },
+    subgroup = "train-transport",
+    order = "c[rolling-stock]-hb[cubeine-space-train-battery-discharging-station]",
+    results = { { type = "item", name = "cubeine-space-train-battery-discharging-station", amount = 1 } },
+}
+
+---@diagnostic disable-next-line: assign-type-mismatch
+data:extend({battery_charged, battery_discharged, battery_fried, charger, charger_item, crafting_battery, crafting_charger, charging, repair, discharger_item, discharger, crafting_discharger, tech})
