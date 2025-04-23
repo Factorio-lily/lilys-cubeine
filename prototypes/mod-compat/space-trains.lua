@@ -370,7 +370,7 @@ local discharger = meld.meld(table.deepcopy(charger), {
         burnt_inventory_size = 1,
         fuel_categories = { "electrical" },
         effectivity = 0.95,
-        initial_fuel_percent = 0,
+        --initial_fuel_percent = 0,
         light_flicker = {
             minimum_light_size = 9.9,
             color = {
@@ -386,6 +386,13 @@ local discharger = meld.meld(table.deepcopy(charger), {
     animation = table.deepcopy(charger.graphics_set.working_visualisations[2].animation)
 })
 
+---@diagnostic disable-next-line: undefined-field
+for _, layer in ipairs(discharger.idle_animation.layers) do
+    layer.repeat_count = 30
+end
+
+
+
 local crafting_discharger = {
     type = "recipe",
     name = "cubeine-space-train-battery-discharging-station",
@@ -393,7 +400,7 @@ local crafting_discharger = {
     enabled = false,
     category = "electromagnetics",
     ingredients = {
-        { type = "item",  name = "space-train-battery-discharging-station", amount = 1 },
+        { type = "item",  name = "space-train-battery-charging-station", amount = 1 },
         { type = "item",  name = "cubeine-crystal",                      amount = 5 },
         { type = "item",  name = "low-density-structure",                amount = 50 },
         { type = "fluid", name = "cubeine-solution",                     amount = 2000 },

@@ -399,23 +399,28 @@ local function manage_reactors(tick)
             if (num < trigger_chance) then
                 local danger_entities = reactor.surface.find_entities_filtered { position = reactor.position, radius = danger_radius }
                 local safe_entities = reactor.surface.find_entities_filtered { position = reactor.position, radius = safe_radius }
+                local safe = {}
                 for key, value in pairs(safe_entities) do
-                    danger_entities[key] = nil
+                    if value.valid and value.unit_number then
+                        safe[value.unit_number] = true
+                    end
                 end
 
-                for key, value in pairs(danger_entities) do
-                    if value.valid and value.max_health ~= nil and value.type ~= 'construction-robot' and value.type ~= 'logistic-robot' then
+                for _, entity in pairs(danger_entities) do
+                    if entity.valid and ((entity.unit_number and safe[entity.unit_number] == nil) or entity.unit_number == nil) and entity.max_health ~= nil and entity.type ~= 'construction-robot' and entity.type ~= 'logistic-robot' then
                         if (math.random() < danger_intensity / 100.0) then
-                            if (value.type == "tree" or value.type == "plant") and not value.has_flag("not-flammable") then
+                            if (entity.type == "tree" or entity.type == "plant") and not entity.has_flag("not-flammable") then
                                 reactor.surface.create_entity({
                                     name = "cubeine-flame",
-                                    position = value.position,
+                                    position = entity.position,
                                     force = "neutral"
                                 })
-                            elseif value.health then
-                                local damage = math.min(t, danger_radius * t / util.distance(reactor.position, value.position))
-                                value.damage(damage, reactor.force, "fire", reactor, reactor)
-                                --[[value.damage{
+                            elseif entity.health then
+                                local damage = math.min(t,
+                                    math.max(0,
+                                        t * (1 - util.distance(reactor.position, entity.position) / danger_radius)))
+                                entity.damage(damage, reactor.force, "fire", reactor, reactor)
+                                --[[entity.damage{
                                     damage = damage,
                                     force = reactor.force,
                                     type = "fire",

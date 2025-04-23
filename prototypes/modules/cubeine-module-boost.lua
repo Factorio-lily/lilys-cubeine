@@ -163,7 +163,7 @@ local function add_oc_icons(icons, amount)
             icon_size = 64,
             scale = 0.25,
             floating = true,
-            shift = { 12, 14 - 6 * i },
+            shift = { 10, 13 - 5 * i },
             tint = (i > amount and { 0.0, 0.0, 0.0, 0.9 } or { 1, 1, 1, 1 })
         })
     end
@@ -179,7 +179,7 @@ local function create_overclocked(m, tier, icons, level)
     table.insert(module.icons, {
         icon = "__lilys-cubeine__/graphics/icons/speed-module-mask-overclocked.png",
         icon_size = 64,
-        tint = { 1, 1, 1, math.min((math.pow(0.4 + level, 2)), 1) / 10.0 }
+        tint = { 1, 1, 1, math.min((math.pow(0.4 + level / 10.0, 2)), 1) }
     })
     add_oc_icons(module.icons, level)
 

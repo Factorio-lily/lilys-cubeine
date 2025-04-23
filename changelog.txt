@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.1
+Date: 2025-04-23
+  Changes:
+    - (se-space-trains) Added discharging stations that discharge batteries back to the grid
+    - Changed graphics of overclocked modules - again
+    - Fixed incorrect reactor thermal calculations
+---------------------------------------------------------------------------------------------------
 Version: 2.0.0
 Date: 2025-04-16
   Changes:
