@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.3
+Date: 2025-04-24
+  Changes:
+    - Changelog should be fixed now
+---------------------------------------------------------------------------------------------------
 Version: 2.0.2
 Date: 2025-04-23
   Changes:
@@ -116,12 +121,12 @@ Date: 2025-03-26
 Version: 1.5.1
 Date: 2025-03-23
   Changes:
-    -  REDACTED Reactor animation speed increases with  quality now
+    - REDACTED Reactor animation speed increases with quality now
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.0
 Date: 2025-03-19
   Changes:
-    - With the proper release of lilys-injector mod the dependncy is now mandatory.
+    - With the proper release of lilys-injector mod the dependency is now mandatory.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
 Date: 2025-03-19
