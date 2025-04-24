@@ -42,7 +42,10 @@ return {
             if effect.pollution and effect.pollution > 0 then
                 effect.pollution = effect.pollution * 2
             end
-
+        elseif category == "pollution" then
+            if effect.pollution then
+                effect.pollution = effect.pollution / 2
+            end
         end
         return effect
     end,
@@ -55,15 +58,17 @@ return {
             return {}
         end
         if category == "speed" then
-            e.speed = d and e.speed * oc[level].db or e.speed * oc[level].db
+            e.speed = d and e.speed * oc[level].db or e.speed * oc[level].b
         elseif category == "quality" then
-            e.quality = d and e.quality * oc[level].db or e.quality * oc[level].db
+            e.quality = d and e.quality * oc[level].db or e.quality * oc[level].b
         elseif category == "productivity" then
-            e.productivity = d and e.productivity * oc[level].db or e.productivity * oc[level].db
+            e.productivity = d and e.productivity * oc[level].db or e.productivity * oc[level].b
         elseif category == "efficiency" then
-            e.consumption = d and e.consumption * oc[level].db or e.consumption * oc[level].db
+            e.consumption = d and e.consumption * oc[level].db or e.consumption * oc[level].b
         elseif category == "overclock" then
-            e.productivity = d and e.productivity * oc[level].db or e.productivity * oc[level].db
+            e.productivity = d and e.productivity * oc[level].db or e.productivity * oc[level].b
+        elseif category == "pollution" then
+            e.pollution = d and e.pollution * oc[level].db or e.pollution * oc[level].b
         end
         return effect
     end,
@@ -104,6 +109,12 @@ return {
             e.speed = e.speed and (e.speed > 0 and e.speed * 2 or e.speed / 2) or 0.20
             e.productivity = (e.productivity and (e.productivity > 0 and e.productivity * 2 or 0) or 0)
             e.pollution = (e.pollution and (e.pollution > 0 and 0 or e.pollution * 2) or 0)
+        elseif category == "pollution" then
+            e.quality = (e.quality and (e.quality > 0 and e.quality * 2 or 0) or 0)
+            e.consumption = (e.consumption and (e.consumption > 0 and (math.floor(e.consumption * 7.5) / 10) or e.consumption * 2) or (e.pollution > 0 and 0.20 or -0.20))
+            e.speed = e.speed and (e.speed > 0 and e.speed * 2 or e.speed / 2)
+            e.productivity = (e.productivity and (e.productivity > 0 and e.productivity * 2 or 0) or 0)
+            e.pollution = (e.pollution and e.pollution * 2 or 0)
         end
         return effect
     end

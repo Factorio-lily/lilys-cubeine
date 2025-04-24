@@ -85,8 +85,8 @@ local function create_degraded(m, tier, icons)
     module.effect = effectutils.degrade_effect(module.category, module.effect)
 
     module.subgroup = "module-degraded"
-    module.localised_name = { "?", { "", { "module-strings.degraded" }, " ", { "item-name." .. m.name } }, { "module-strings.degraded-fallback" } }
-    module.localised_description = { "?", { "", { "item-description." .. m.name }, " ", { "module-strings.degraded-desc" } }, { "module-strings.degraded-fallback-desc" } }
+    module.localised_name = { "?", { "", { "module-strings.degraded" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. string.gsub(m.name, "%-%d$", "") } } }, { "module-strings.degraded-fallback" } }
+    module.localised_description = { "?", { "", { "?", { "item-description." .. m.name }, { "item-description." .. string.gsub(m.name, "%-%d$", "") } }, " - ", { "module-strings.degraded-desc" } }, { "module-strings.degraded-fallback-desc" } }
     module.beacon_tint = { primary = { 0.5, 0.5, 0.5 }, secondary = { 0.5, 0.5, 0.5 } }
     return module
 end
@@ -102,8 +102,8 @@ local function create_destroyed(m, tier, icons)
     })
     module.effect = {}
     module.subgroup = "module-destroyed"
-    module.localised_name = { "?", { "", { "module-strings.destroyed" }, " ", { "item-name." .. m.name } }, { "module-strings.destroyed-fallback" } }
-    module.localised_description = { "?", { "", { "item-description." .. m.name }, " ", { "module-strings.destroyed-desc" } }, { "module-strings.destroyed-fallback-desc" } }
+    module.localised_name = { "?", { "", { "module-strings.destroyed" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. string.gsub(m.name, "%-%d$", "") } } }, { "module-strings.destroyed-fallback" } }
+    module.localised_description = { "?", { "", { "?", { "item-description." .. m.name }, { "item-description." .. string.gsub(m.name, "%-%d$", "") } }, " - ", { "module-strings.destroyed-desc" } }, { "module-strings.destroyed-fallback-desc" } }
     module.beacon_tint = {}
     return module
 end
@@ -122,8 +122,8 @@ local function create_hyper(m, tier, icons)
     end
     module.hidden = not settings.startup["hyper-allowed"].value
     module.subgroup = "module-hyper"
-    module.localised_name = { "?", { "", { "module-strings.hyper" }, " ", { "item-name." .. m.name } }, { "module-strings.hyper-fallback" } }
-    module.localised_description = { "?", { "", { "item-description." .. m.name }, " ", { "module-strings.hyper-desc" } }, { "module-strings.hyper-fallback-desc" } }
+    module.localised_name = { "?", { "", { "module-strings.hyper" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. string.gsub(m.name, "%-%d$", "") } } }, { "module-strings.hyper-fallback" } }
+    module.localised_description = { "?", { "", { "?", { "item-description." .. m.name }, { "item-description." .. string.gsub(m.name, "%-%d$", "") } }, " - ", { "module-strings.hyper-desc" } }, { "module-strings.hyper-fallback-desc" } }
     if module.beacon_tint then
         if module.beacon_tint.primary and (module.beacon_tint.primary[2] and module.beacon_tint.primary[3]) then
             if module.beacon_tint.primary[2] < module.beacon_tint.primary[3] then
@@ -186,8 +186,8 @@ local function create_overclocked(m, tier, icons, level)
     module.effect = effectutils.overclock_effect(module.category, module.effect, level, m.subgroup == "module-degraded")
     module.subgroup = m.subgroup == "module-degraded" and "module-degraded-overclocked" or "module-overclocked"
 
-    module.localised_name = { "?", { "", { "module-strings.overclocked" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } }, " (" .. tostring(level) .. ")" }, { "module-strings.overclocked-fallback" } }
-    module.localised_description = { "?", { "", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) } }, " ", { "module-strings.overclocked-desc" } }, { "module-strings.overclocked-fallback-desc" } }
+    module.localised_name = { "?", { "", { "module-strings.overclocked" }, " ", { "?", { "item-name." .. m.name }, { "item-name." .. tostring(string.gsub(m.name, "%-degraded", "")) }, { "item-name." .. tostring(string.gsub(string.gsub(m.name, "%-degraded", ""), "%-%d$", "")) } }, " (" .. tostring(level) .. ")" }, { "module-strings.overclocked-fallback" } }
+    module.localised_description = { "?", { "", { "?", { "item-description." .. m.name }, { "item-description." .. tostring(string.gsub(m.name, "%-degraded", ""))}, { "item-description." .. tostring(string.gsub(string.gsub(m.name, "%-degraded", ""), "%-%d$", "")) } } , " - ", { "module-strings.overclocked-desc" } }, { "module-strings.overclocked-fallback-desc" } }
     module.spoil_ticks = (oc[level].t / tier) * (m.subgroup == "module-degraded" and 0.5 or 1)
     --module.spoil_to_trigger = get_spoil_effect(m, module, level, m.subgroup == "module-degraded")
     module.spoil_result = nil
@@ -357,6 +357,7 @@ if settings.startup["max-overclock"].value > 0 then
     categories["quality"] = settings.startup["overclock-all"].value
     categories["efficiency"] = settings.startup["overclock-all"].value
     categories["overclock"] = settings.startup["overclock-all"].value
+    categories["pollution"] = settings.startup["overclock-all"].value
 
     for name, module in pairs(allmodules) do
         if categories[module.category] then
