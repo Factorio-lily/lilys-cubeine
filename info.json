@@ -1,13 +1,15 @@
 {
 	"name": "lilys-cubeine",
-	"version": "2.0.5",
+	"version": "2.0.6",
 	"title": "Lily's Cubeine Technologies",
 	"author": "MsBinaryLily",
 	"description": "Cubeine - a novel substance that can be extracted from certain plant and has excellent fuel and catalytic properties. Grow, harvest, extract and exploit it for your needs with this mod's advanced technologies.",
 	"factorio_version": "2.0",
+	"space_travel_required": true,
+	"freezing_required": true,
 	"dependencies": [
-		"base >= 2.0.44",
-		"space-age",
+		"base >= 2.0.45",
+		"space-age >= 2.0.45",
 		"lilys-cubeine-asset-pack",
 		"lilys-injector",
 		"bioprocessing-tab",
