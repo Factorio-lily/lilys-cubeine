@@ -420,7 +420,7 @@ local fuel = {
         { type = "fluid", name = "fluoroketone-cold", amount = 200, ignored_by_stats = 200 },
     },
     results = {
-        { type = "fluid", name = "liquid-cubonium",  amount = 100 },
+        { type = "fluid", name = "liquid-cubonium",  amount = 100, ignored_by_productivity = 10000 },
         { type = "fluid", name = "fluoroketone-hot", amount = 200, ignored_by_stats = 200 },
     },
     category = "cryogenics",
@@ -457,7 +457,7 @@ local no_fuel = {
         { type = "fluid", name = "liquid-cubonium",   amount = 100 },
     },
     results = {
-        { type = "fluid", name = "cubonium-gas",     amount = 1000 },
+        { type = "fluid", name = "cubonium-gas", amount = 1000, ignored_by_productivity = 10000 },
     },
     category = "cryogenics",
     main_product = "cubonium-gas",
