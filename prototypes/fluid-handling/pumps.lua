@@ -6,11 +6,20 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
 local item_tints = require("__base__.prototypes.item-tints")
 
-local base_tint = { r = 1, g = 0.8, b = 0.8, a = 1 }
+local base_tint = { r = 1, g = 0.6, b = 0.6, a = 1 }
 
 local pipe_picture = table.deepcopy(require("__space-age__.prototypes.entity.electromagnetic-plant-pictures")
 .pipe_pictures)
 for _, pic in pairs(pipe_picture or {}) do
+    if not pic.layers then
+        pic.tint = base_tint
+    else
+        pic.layers[1].tint = base_tint
+    end
+end
+
+local pipe_covers = table.deepcopy(pipecoverspictures())
+for _, pic in pairs(pipe_covers or {}) do
     if not pic.layers then
         pic.tint = base_tint
     else
@@ -95,7 +104,7 @@ local pump = {
     fluid_box =
     {
         volume = 400,
-        pipe_covers = pipecoverspictures(),
+        pipe_covers = pipe_covers,
         pipe_connections =
         {
             { direction = defines.direction.north, position = { 0, -0.5 }, flow_direction = "output" },
@@ -125,7 +134,7 @@ local pump = {
             line_length = 8,
             frame_count = 32,
             animation_speed = 0.5,
-            shift = util.by_pixel(8, 3.5)
+            shift = util.by_pixel(8, -0.85)
         },
         east =
         {
@@ -250,7 +259,7 @@ local pump = {
     circuit_connector = circuit_connector_definitions["pump"],
     circuit_wire_max_distance = default_circuit_wire_max_distance
 }
-
+--[[
 for _, pic in pairs(pump.fluid_box.pipe_covers or {}) do
     if not pic.layers then
         pic.tint = base_tint
@@ -258,7 +267,7 @@ for _, pic in pairs(pump.fluid_box.pipe_covers or {}) do
         pic.layers[1].tint = base_tint
     end
 end
-
+--]]
 
 local pump_r = {
     type = "recipe",
@@ -368,7 +377,7 @@ local pump_turbo = {
     fluid_box =
     {
         volume = 400,
-        pipe_covers = pipecoverspictures(),
+        pipe_covers = pipe_covers,
         pipe_connections =
         {
             { direction = defines.direction.north, position = { 0, -1 }, flow_direction = "output" },
@@ -411,7 +420,7 @@ local pump_turbo = {
                     line_length = 8,
                     frame_count = 32,
                     animation_speed = 2,
-                    shift = util.by_pixel(8, 3.5 - 16)
+                    shift = util.by_pixel(8, -0.85 - 16)
                 },
                 {
                     filename = "__lilys-cubeine-asset-pack__/graphics/entity/pump/speed/south.png",
@@ -594,7 +603,7 @@ local pump_turbo = {
     circuit_connector = circuit_connector_definitions["pump"],
     circuit_wire_max_distance = default_circuit_wire_max_distance
 }
-
+--[[
 for _, pic in pairs(pump_turbo.fluid_box.pipe_covers or {}) do
     if not pic.layers then
         pic.tint = base_tint
@@ -602,7 +611,7 @@ for _, pic in pairs(pump_turbo.fluid_box.pipe_covers or {}) do
         pic.layers[1].tint = base_tint
     end
 end
-
+--]]
 
 local pump_turbo_r = {
     type = "recipe",

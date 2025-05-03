@@ -58,19 +58,19 @@ local item = {
 
     type = "item",
     name = "nukubeine-crystal",
-    icons = { { icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-3.png"
+    icons = { { icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png"
 
     } },
     pictures = {
         layers = {
             {
-                filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-3.png",
+                filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
                 size = 64,
                 scale = 0.5,
                 draw_as_glow = true
             },
             {
-                filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-3.png",
+                filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
                 size = 64,
                 scale = 0.5,
                 draw_as_glow = true
@@ -117,7 +117,7 @@ local item = {
         name = "nukubeine-boom-shard",
         acceleration = 0.001,
         animation = {
-            filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-3.png",
+            filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
             size = 64,
             scale = 0.25,
             draw_as_glow = true
@@ -144,7 +144,7 @@ data:extend {
         particle_buffer_size = 1,
         particle_spawn_timeout = 2,
         particle = {
-            filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-3.png",
+            filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
             size = 64,
             scale = 0.25,
             draw_as_glow = true
@@ -178,7 +178,7 @@ local cube = {
     subgroup = "cubeine-products",
     icons = {
         {
-            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-3.png",
+            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
             icon_size = 64,
         }
     },
@@ -213,7 +213,7 @@ local cooling = {
     subgroup = "cubeine-products",
     icons = {
         {
-            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-3.png",
+            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
             icon_size = 64,
         },
         {
@@ -254,7 +254,7 @@ data:extend({
         icon_size = 64,
         icons = {
             {
-                icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-3.png",
+                icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
                 scale = 4,
             }
         },

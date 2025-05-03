@@ -34,8 +34,28 @@ function make_rotated_animation_variations_from_sheet(variation_count, sheet) --
 end
 
 
-local base_tint = { r = 1, g = 0.8, b = 0.8, a = 1 }
 local emissive_tint = { r = 1, g = 0.2, b = 0.2, a = 1 }
+
+
+local base_tint = { r = 1, g = 0.6, b = 0.7, a = 1 }
+
+local pipe_picture = table.deepcopy(require("__space-age__.prototypes.entity.electromagnetic-plant-pictures")
+    .pipe_pictures)
+for _, pic in pairs(pipe_picture or {}) do
+    if not pic.layers then
+        pic.tint = base_tint
+    else
+        pic.layers[1].tint = base_tint
+    end
+end
+local pipe_covers = table.deepcopy(pipecoverspictures())
+for _, pic in pairs(pipe_covers or {}) do
+    if not pic.layers then
+        pic.tint = base_tint
+    else
+        pic.layers[1].tint = base_tint
+    end
+end
 
 
 data.extend({
@@ -144,13 +164,18 @@ entity2.minable.result = "cubeine-gas-turbine"
 entity2.corpse = "cubeine-turbine-remnants"
 entity2.effectivity = 2
 entity2.burns_fluid = true
+entity2.fluid_box.pipe_covers = pipe_covers
 entity2.fluid_box.filter = "cubonium-gas"
 entity2.fluid_box.minimum_temperature = nil
 entity2.icons = table.deepcopy(item2.icons)
 entity2.scale_fluid_usage = true
 entity1.fluid_usage_per_tick = entity2.fluid_usage_per_tick / 5
 entity2.max_power_output = "36MW"
-entity2.horizontal_animation =
+entity2.horizontal_animation.layers[1].filename = 
+"__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/steam-turbine-H.png"
+entity2.vertical_animation.layers[1].filename =
+"__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/steam-turbine-V.png"
+--[[entity2.horizontal_animation =
     {
       layers =
       {
@@ -187,7 +212,7 @@ entity2.vertical_animation =
           height = 347,
           frame_count = 8,
           line_length = 4,
-          shift = util.by_pixel(4.75, 6.75),
+          shift = util.by_pixel(4.75, -32),
           run_mode = "backward",
           scale = 0.5
         },
@@ -204,6 +229,7 @@ entity2.vertical_animation =
         }
       }
     }
+    --]]
 --entity2.horizontal_animation.layers[1].tint = base_tint
 --entity2.vertical_animation.layers[1].tint = base_tint
 entity2.smoke[1].name = "cubeine-gas-turbine-smoke"
