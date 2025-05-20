@@ -94,7 +94,7 @@ local reactor = {
         { property = "pressure",       min = 500 },
         { property = "magnetic-field", max = 200 }
     },
-    neighbour_bonus                      = 0.5,
+    neighbour_bonus                      = 0.25,
     corpse                               = "cubeine-combustion-center-remnants",
     dying_explosion                      = "nuclear-reactor-explosion",
     consumption                          = "750MW",

@@ -149,12 +149,6 @@ local shell = {
                             type = "instant",
                             target_effects =
                             {
-                                {
-                                    type = "create-fire",
-                                    entity_name = "cubeine-flame"
-                                }
-                            },
-                            {
                                 type = "create-entity",
                                 probability = 0.04,
                                 show_in_tooltip = false,
@@ -202,6 +196,10 @@ local shell = {
                 {
                     type = "create-entity",
                     entity_name = "big-artillery-explosion"
+                },
+                {
+                    type = "create-entity",
+                    entity_name = "shockwave-1"
                 },
                 {
                     type = "show-explosion-on-chart",
@@ -256,7 +254,7 @@ data:extend({ {
     ingredients =
     {
         { type = "item", name = "artillery-shell",   amount = 1 },
-        { type = "item", name = "liquid-cubonium-barrel", amount = 4 }
+        { type = "item", name = "liquid-cubonium-barrel", amount = 2 }
     },
     results = { { type = "item", name = "cubonium-artillery-shell", amount = 1 } }
 } })
@@ -269,13 +267,13 @@ data:extend({
         name = "cubonium-artillery-shell",
         icon_size = 64,
         icon = "__lilys-cubeine__/graphics/icons/cubonium-artillery-shell-icon.png",
-        prerequisites = { "artillery", "cubonium-monopropellant-thruster" },
+        prerequisites = { "artillery", "cubeine-military-2" },
 
         research_trigger =
         {
             type = "craft-item",
             item = "liquid-cubonium-barrel",
-            amount = 1
+            amount = 10
         },
         effects =
         {
