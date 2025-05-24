@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.1
+Date: 2025-05-24
+  Changes:
+    - Changes to graphical asset mods
+    - Added new Cubeine railgun technology
+    - Reduced the pollution emission and lifetime of nukubeine flames
+---------------------------------------------------------------------------------------------------
 Version: 2.1.0
 Date: 2025-05-20
   Changes:

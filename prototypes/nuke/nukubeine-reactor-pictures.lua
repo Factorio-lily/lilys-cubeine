@@ -7,8 +7,8 @@ local base_animation = {
     height = 640,
 
     filenames = {
-        "__lilys-cubeine-asset-pack__/graphics/entity/reactor/research-center-hr-animation-1.png",
-        "__lilys-cubeine-asset-pack__/graphics/entity/reactor/research-center-hr-animation-2.png"
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-animation-1.png",
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-animation-2.png"
     }, 
     scale = 0.5,
     lines_per_file = 8,
@@ -24,8 +24,8 @@ local emissive_animation = {
     name = "nukubeine-reactor-emissive-animation",
 
     filenames = {
-        "__lilys-cubeine-asset-pack__/graphics/entity/reactor/research-center-hr-emission-1.png",
-        "__lilys-cubeine-asset-pack__/graphics/entity/reactor/research-center-hr-emission-2.png"
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-emission-1.png",
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-emission-2.png"
     },
     scale = 0.5,
     lines_per_file = 8,
@@ -49,8 +49,8 @@ local frozen_animation = {
     height = 640,
 
     filenames = {
-        "__lilys-cubeine-asset-pack__/graphics/entity/reactor/research-center-hr-frozen-1.png",
-        "__lilys-cubeine-asset-pack__/graphics/entity/reactor/research-center-hr-frozen-2.png"
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-frozen-1.png",
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-frozen-2.png"
     },
     scale = 0.5,
     lines_per_file = 8,
@@ -69,8 +69,8 @@ local heat_animation = {
     width = 590,
     height = 640,
     filenames = {
-        "__lilys-cubeine-asset-pack__/graphics/entity/reactor/research-center-hr-animation-bwl-1.png",
-        "__lilys-cubeine-asset-pack__/graphics/entity/reactor/research-center-hr-animation-bwl-2.png"
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-animation-bwl-1.png",
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-animation-bwl-2.png"
     },
     blend_mode = "additive",
     --tint = { 0.5, 0.2, 0.5, 0.5 },

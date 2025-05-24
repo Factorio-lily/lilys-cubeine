@@ -104,6 +104,7 @@ require("prototypes.military.cubonium-artillery-shell")
 require("prototypes.military.cubonium-cannon-shells")
 require("prototypes.military.cubonium-rocket")
 require("prototypes.military.cubonium-railgun-ammo")
+require("prototypes.military.cubeine-railgun")
 
 -- debug 
 --[[

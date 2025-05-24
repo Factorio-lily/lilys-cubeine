@@ -32,7 +32,7 @@ local cuburn3 = {
     },
     {
         type = "cluster",
-        cluster_count = 64,
+        cluster_count = 32,
         distance = 12,
         distance_deviation = 80,
         action_delivery = {
@@ -100,6 +100,18 @@ local item = {
                 cluster_count = 16,
                 distance = 40,
                 distance_deviation = 80,
+                action_delivery = {
+                    type = "stream",
+                    stream = "nukubeine-boom-shard",
+                    starting_speed_deviation = 0.4,
+                    starting_speed = 0.1
+                }
+            },
+            {
+                type = "cluster",
+                cluster_count = 8,
+                distance = 400,
+                distance_deviation = 800,
                 action_delivery = {
                     type = "stream",
                     stream = "nukubeine-boom-shard",
@@ -294,10 +306,10 @@ data:extend({
 
 local nukubeine_flame = table.deepcopy(data.raw["fire"]["fire-flame"])
 nukubeine_flame.name = "nukubeine-flame"
-nukubeine_flame.initial_lifetime = 12000
+nukubeine_flame.initial_lifetime = 6000
 nukubeine_flame.lifetime_increase_by = 1500
-nukubeine_flame.maximum_lifetime = 180000
-nukubeine_flame.emissions_per_second = { pollution = 10, spores = 1 }
+nukubeine_flame.maximum_lifetime = 60000
+nukubeine_flame.emissions_per_second = { pollution = 2, spores = 0.5 }
 nukubeine_flame.flame_alpha = 0.8
 nukubeine_flame.light.color = { 1, 0.1, 0.8, 1 }
 nukubeine_flame.maximum_damage_multiplier = 100
