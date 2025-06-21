@@ -63,7 +63,7 @@ local shell = {
     },
     chart_picture =
     {
-        filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant.png",
+        filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
         flags = { "icon" },
         width = 64,
         height = 64,

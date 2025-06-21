@@ -7,8 +7,8 @@ local base_animation = {
     height = 640,
 
     filenames = {
-        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-1.png",
-        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-2.png"
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-animation-1.png",
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-animation-2.png"
     }, 
     scale = 0.5,
     lines_per_file = 8,
@@ -16,7 +16,6 @@ local base_animation = {
     line_length = 8,
     frame_count = 80,
     shift = { 0, -0.5 },
-    tint = {1, 0.8, 0.8, 1}
 
 }
 
@@ -25,8 +24,8 @@ local emissive_animation = {
     name = "nukubeine-reactor-emissive-animation",
 
     filenames = {
-        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-emission-1.png",
-        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-emission-2.png"
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-emission-1.png",
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-emission-2.png"
     },
     scale = 0.5,
     lines_per_file = 8,
@@ -36,7 +35,7 @@ local emissive_animation = {
     priority = "medium",
     line_length = 8,
     frame_count = 80,
-    tint = { 1, 0.1, 0.8, 1 },
+    --tint = { 1, 0.1, 0.8, 1 },
     blend_mode = "additive",
     shift = { 0, -0.5 },
     draw_as_glow = true
@@ -50,8 +49,8 @@ local frozen_animation = {
     height = 640,
 
     filenames = {
-        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-frozen-1.png",
-        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-frozen-2.png"
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-frozen-1.png",
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-frozen-2.png"
     },
     scale = 0.5,
     lines_per_file = 8,
@@ -70,8 +69,8 @@ local heat_animation = {
     width = 590,
     height = 640,
     filenames = {
-        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-bwl-1.png",
-        "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-bwl-2.png"
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-animation-bwl-1.png",
+        "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-animation-bwl-2.png"
     },
     blend_mode = "additive",
     --tint = { 0.5, 0.2, 0.5, 0.5 },

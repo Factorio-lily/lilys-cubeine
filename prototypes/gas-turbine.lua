@@ -1,6 +1,92 @@
-local base_tint = { r = 1, g = 0.8, b = 0.8, a = 1 }
+require("util")
+
+function make_rotated_animation_variations_from_sheet(variation_count, sheet) --makes remnants work with more than 1 variation
+    local result = {}
+
+    local function set_y_offset(variation, i)
+        local frame_count = variation.frame_count or 1
+        local line_length = variation.line_length or frame_count
+        if (line_length < 1) then
+            line_length = frame_count
+        end
+
+        local height_in_frames = math.floor((frame_count * variation.direction_count + line_length - 1) / line_length)
+        -- if (height_in_frames ~= 1) then
+        --   log("maybe broken sheet: h=" .. height_in_frames .. ", vc=" .. variation_count .. ", " .. variation.filename)
+        -- end
+        variation.y = variation.height * (i - 1) * height_in_frames
+    end
+
+    for i = 1, variation_count do
+        local variation = util.table.deepcopy(sheet)
+
+        if variation.layers then
+            for _, layer in pairs(variation.layers) do
+                set_y_offset(layer, i)
+            end
+        else
+            set_y_offset(variation, i)
+        end
+
+        table.insert(result, variation)
+    end
+    return result
+end
+
+
 local emissive_tint = { r = 1, g = 0.2, b = 0.2, a = 1 }
 
+
+local base_tint = { r = 1, g = 0.6, b = 0.7, a = 1 }
+
+local pipe_picture = table.deepcopy(require("__space-age__.prototypes.entity.electromagnetic-plant-pictures")
+    .pipe_pictures)
+for _, pic in pairs(pipe_picture or {}) do
+    if not pic.layers then
+        pic.tint = base_tint
+    else
+        pic.layers[1].tint = base_tint
+    end
+end
+local pipe_covers = table.deepcopy(pipecoverspictures())
+for _, pic in pairs(pipe_covers or {}) do
+    if not pic.layers then
+        pic.tint = base_tint
+    else
+        pic.layers[1].tint = base_tint
+    end
+end
+
+
+data.extend({
+    {
+        type = "corpse",
+        name = "cubeine-turbine-remnants",
+        icon = "__lilys-cubeine__/graphics/icons/gas-turbine.png",
+        flags = { "placeable-neutral", "not-on-map" },
+        hidden_in_factoriopedia = true,
+        subgroup = "energy-remnants",
+        order = "a-h-a",
+        selection_box = { { -1.5, -2.5 }, { 1.5, 2.5 } },
+        tile_width = 3,
+        tile_height = 5,
+        selectable_in_game = false,
+        time_before_removed = 60 * 60 * 15, -- 15 minutes
+        expires = false,
+        final_render_layer = "remnants",
+        remove_on_tile_placement = false,
+        animation = make_rotated_animation_variations_from_sheet(1,
+            {
+                filename = "__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/remnants/steam-turbine-remnants.png",
+                line_length = 1,
+                width = 460,
+                height = 408,
+                direction_count = 4,
+                shift = util.by_pixel(6, 0),
+                scale = 0.5
+            })
+    },
+})
 
 
 local item1 = table.deepcopy(data.raw["item"]["steam-turbine"])
@@ -37,14 +123,14 @@ entity1.energy_source.emissions_per_minute = { ["pollution"] = 5 }
 entity1.surface_conditions = {
     {
         property = "pressure",
-        min = 300
+        min = 800
     }
 }
 
 
 local smoke1 = table.deepcopy(data.raw["trivial-smoke"]["turbine-smoke"])
 smoke1.name = "lilys-gas-turbine-smoke"
-smoke1.color = { 0.1, 0.1, 0.1, 0.1 }
+smoke1.color = { 0.1, 0.1, 0.1, 0.3 }
 
 
 
@@ -54,7 +140,7 @@ item2.name = "cubeine-gas-turbine"
 item2.place_result = "cubeine-gas-turbine"
 item2.icons = {
     {
-        icon = "__base__/graphics/icons/steam-turbine.png",
+        icon = "__lilys-cubeine__/graphics/icons/gas-turbine.png",
         icon_size = 64,
     },
     {
@@ -75,16 +161,77 @@ local entity2 = table.deepcopy(data.raw["generator"]["steam-turbine"])
 entity2.name = "cubeine-gas-turbine"
 entity2.max_health = 600
 entity2.minable.result = "cubeine-gas-turbine"
+entity2.corpse = "cubeine-turbine-remnants"
 entity2.effectivity = 2
 entity2.burns_fluid = true
+entity2.fluid_box.pipe_covers = pipe_covers
 entity2.fluid_box.filter = "cubonium-gas"
 entity2.fluid_box.minimum_temperature = nil
 entity2.icons = table.deepcopy(item2.icons)
 entity2.scale_fluid_usage = true
 entity1.fluid_usage_per_tick = entity2.fluid_usage_per_tick / 5
 entity2.max_power_output = "36MW"
-entity2.horizontal_animation.layers[1].tint = base_tint
-entity2.vertical_animation.layers[1].tint = base_tint
+entity2.horizontal_animation.layers[1].filename = 
+"__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/steam-turbine-H.png"
+entity2.vertical_animation.layers[1].filename =
+"__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/steam-turbine-V.png"
+--[[entity2.horizontal_animation =
+    {
+      layers =
+      {
+        {
+          filename = "__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/steam-turbine-H.png",
+          width = 320,
+          height = 245,
+          frame_count = 8,
+          line_length = 4,
+          shift = util.by_pixel(0, -2.75),
+          run_mode = "backward",
+          scale = 0.5
+        },
+        {
+          filename = "__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
+          width = 435,
+          height = 150,
+          repeat_count = 8,
+          line_length = 1,
+          draw_as_shadow = true,
+          shift = util.by_pixel(28.5, 18),
+          run_mode = "backward",
+          scale = 0.5
+        }
+      }
+    }
+entity2.vertical_animation =
+    {
+     layers =
+     {
+        {
+          filename = "__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/steam-turbine-V.png",
+          width = 217,
+          height = 347,
+          frame_count = 8,
+          line_length = 4,
+          shift = util.by_pixel(4.75, -32),
+          run_mode = "backward",
+          scale = 0.5
+        },
+        {
+          filename = "__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
+          width = 302,
+          height = 260,
+          repeat_count = 8,
+          line_length = 1,
+          draw_as_shadow = true,
+          shift = util.by_pixel(39.5, 24.5),
+          run_mode = "backward",
+          scale = 0.5
+        }
+      }
+    }
+    --]]
+--entity2.horizontal_animation.layers[1].tint = base_tint
+--entity2.vertical_animation.layers[1].tint = base_tint
 entity2.smoke[1].name = "cubeine-gas-turbine-smoke"
 entity2.energy_source.emissions_per_minute = { ["pollution"] = 10 }
 --[[entity2.surface_conditions = {
@@ -97,7 +244,7 @@ entity2.energy_source.emissions_per_minute = { ["pollution"] = 10 }
 
 local smoke2 = table.deepcopy(data.raw["trivial-smoke"]["turbine-smoke"])
 smoke2.name = "cubeine-gas-turbine-smoke"
-smoke2.color = { 0.3, 0.5, 0.1, 0.4 }
+smoke2.color = { 0.3, 0.1, 0.1, 0.4 }
 
 
 ---@diagnostic disable-next-line: assign-type-mismatch
@@ -135,10 +282,10 @@ data:extend({
         type = "technology",
         name = "cubeine-gas-turbine",
         icon_size = 64,
-        icon = "__base__/graphics/icons/steam-turbine.png",
+        icon = "__lilys-cubeine__/graphics/icons/gas-turbine.png",
         icons = {
             {
-                icon = "__base__/graphics/icons/steam-turbine.png",
+                icon = "__lilys-cubeine__/graphics/icons/gas-turbine.png",
                 icon_size = 64,
             },
             {

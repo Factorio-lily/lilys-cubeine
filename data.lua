@@ -33,6 +33,7 @@ require("prototypes.packaging")
 
 require("prototypes.cubeine-cut-solution")
 require("prototypes.cubeine-biochamber")
+require("prototypes.cubeine-agricultural-tower")
 
 require("prototypes.fuel.cubeine-cut-fuel")
 require("prototypes.cubeine-thruster")
@@ -41,6 +42,7 @@ require("prototypes.cubeine-thruster")
 require("prototypes.fuel.cuboil-processing")
 require("prototypes.fuel.cubonium-gas-processing")
 require("prototypes.gas-turbine")
+require("prototypes.fuel.liquid-cubonium")
 
 if mods["astroponics"] then
     require("prototypes.mod-compat.astroponics")
@@ -51,6 +53,10 @@ end
 
 if mods["Age-of-Production"] then
     require("prototypes.mod-compat.age-of-production")
+end
+
+if mods["cubium"] then
+    require("prototypes.mod-compat.cubium")
 end
 
 data:extend({
@@ -84,8 +90,27 @@ require("prototypes.nuke.nukubeine-reactor")
 
 
 require("prototypes.cubonium-monopropellant-thruster")
-require("prototypes.cubonium-artillery-shell")
 require("prototypes.drill.cubeine-giga-thermal-drill")
+require("prototypes.advanced.lily-katie-enrichment-process")
+require("prototypes.advanced.synthetic-cubeplant")
+require("prototypes.advanced.glow-redleaf-cubeplant")
+
+require("prototypes.fuel.cubeine-combustion-center")
+
+require("prototypes.fluid-handling.pipes")
+require("prototypes.fluid-handling.tanks")
+require("prototypes.fluid-handling.pumps")
+
+require("prototypes.military.tech")
+require("prototypes.military.explosions")
+require("prototypes.military.cubeine-cannon-shells")
+require("prototypes.military.cubeine-railgun-ammo")
+require("prototypes.military.cubonium-artillery-shell")
+require("prototypes.military.cubonium-cannon-shells")
+require("prototypes.military.cubonium-rocket")
+require("prototypes.military.cubonium-railgun-ammo")
+require("prototypes.military.cubeine-railgun")
+
 -- debug 
 --[[
 data:extend({

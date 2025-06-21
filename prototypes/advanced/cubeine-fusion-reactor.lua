@@ -2,15 +2,67 @@ require("__lilys-cubeine__.prototypes.fluid.cubeine-fusion-plasma")
 local base_tint = { r = 1, g = 0.8, b = 0.8, a = 1 }
 local emissive_tint = { r = 1, g = 0.2, b = 0.2, a = 1 }
 
+local gfx = require("__lilys-cubeine__.prototypes.advanced.fusion-system-pictures")
+
+
+data.extend({
+    {
+        type = "corpse",
+        name = "cubeine-fusion-reactor-remnants",
+        icon = "__lilys-cubeine__/graphics/icons/fusion-reactor.png",
+        flags = { "placeable-neutral", "not-on-map" },
+        hidden_in_factoriopedia = true,
+        subgroup = "energy-remnants",
+        order = "g[fusion-energy]-a[reactor]",
+        selection_box = { { -3, -3 }, { 3, 3 } },
+        tile_width = 6,
+        tile_height = 6,
+        selectable_in_game = false,
+        time_before_removed = 60 * 60 * 15, -- 15 minutes
+        expires = false,
+        final_render_layer = "remnants",
+        remove_on_tile_placement = false,
+        animation = util.sprite_load("__lilys-cubeine-asset-pack__/graphics/entity/fusion-reactor/fusion-reactor-remnants", {
+            scale = 0.5,
+            direction_count = 1
+        })
+    },
+    {
+        type = "corpse",
+        name = "cubeine-fusion-generator-remnants",
+        icon = "__lilys-cubeine__/graphics/icons/fusion-generator.png",
+        flags = { "placeable-neutral", "not-on-map" },
+        hidden_in_factoriopedia = true,
+        subgroup = "energy-remnants",
+        order = "g[fusion-energy]-b[generator]",
+        selection_box = { { -1.5, -2.5 }, { 1.5, 2.5 } },
+        tile_width = 3,
+        tile_height = 5,
+        selectable_in_game = false,
+        time_before_removed = 60 * 60 * 15, -- 15 minutes
+        expires = false,
+        final_render_layer = "remnants",
+        remove_on_tile_placement = false,
+        animation = util.sprite_load(
+        "__lilys-cubeine-asset-pack__/graphics/entity/fusion-generator/fusion-generator-remnants",
+            {
+                scale = 0.5,
+                direction_count = 4
+            })
+    },
+})
+
+
+
+
 local reactor_item = table.deepcopy(data.raw["item"]["fusion-reactor"])
 reactor_item.name = "cubeine-fusion-reactor"
 reactor_item.order = "mc[cubeine-fusion-energy]-a[reactor]"
 reactor_item.place_result = "cubeine-fusion-reactor"
 reactor_item.icons = {
     {
-        icon = reactor_item.icon,
+        icon = "__lilys-cubeine__/graphics/icons/fusion-reactor.png",
         icon_size = reactor_item.icon_size,
-        tint = {1, 0.8, 0.8, 1}
     },
     {
         icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -35,6 +87,7 @@ reactor.resistances = {
         percent = 70
     }
 }
+reactor.corpse = "cubeine-fusion-reactor-remnants"
 reactor.target_temperature = 10 * 1e6
 reactor.power_input = "20MW" -- at normal quality
 reactor.max_fluid_usage = 80/second -- at normal quality
@@ -89,7 +142,7 @@ reactor.output_fluid_box =
     }
 }
 
-reactor.graphics_set = require("fusion-system-pictures").reactor_graphics_set
+reactor.graphics_set = gfx.reactor_graphics_set
 
 
 
@@ -101,9 +154,7 @@ generator_item.place_result = "cubeine-fusion-generator"
 generator_item.order = "mc[cubeine-fusion-energy]-b[generator]"
 generator_item.icons = {
     {
-        icon = generator_item.icon,
-        icon_size = generator_item.icon_size,
-        tint = { 1, 0.8, 0.8, 1 }
+        icon = "__lilys-cubeine__/graphics/icons/fusion-generator.png",
     },
     {
         icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -117,6 +168,7 @@ local generator = table.deepcopy(data.raw["fusion-generator"]["fusion-generator"
 generator.name = "cubeine-fusion-generator"
 generator.minable.result = "cubeine-fusion-generator"
 generator.max_health = 2000
+generator.corpse = "cubeine-fusion-generator-remnants"
 generator.resistances = {
     {
         type = "fire",
@@ -127,7 +179,7 @@ generator.resistances = {
         percent = 70
     }
 }
-graphics_set = require("fusion-system-pictures").generator_graphics_set
+generator.graphics_set = gfx.generator_graphics_set
 
 generator.energy_source =
     {
@@ -178,25 +230,12 @@ generator.output_fluid_box =
     }
 
 generator.graphics_set.glow_color = { 1, 0, 0.05, 1 }
-for dir, data in pairs(generator.graphics_set) do
-    if data.animation and data.working_light and data.fluid_input_graphics then
-        data.animation.layers[1].tint = base_tint
-        data.working_light.layers[1].tint = emissive_tint
-        for _, input in ipairs(data.fluid_input_graphics) do
-            if input.sprite and input.working_light then
-                input.sprite.layers[1].tint = base_tint
-                input.working_light.layers[1].tint = emissive_tint
-            end
-            
-        end
-    end
-end
 
 
 local generator2_item = table.deepcopy(generator_item)
 generator2_item.name = generator2_item.name .."-cold"
 generator2_item.place_result = generator2_item.place_result .. "-cold"
-table.insert(generator2_item.icons, 
+table.insert(generator2_item.icons,
     {
         icon = "__lilys-cubeine__/graphics/icons/misc/signal-thermometer-blue.png",
         icon_size = 64,
@@ -280,9 +319,8 @@ data:extend({
         hidden = true,
         icons = {
             {
-                icon = "__space-age__/graphics/icons/fusion-generator.png",
+                icon = "__lilys-cubeine__/graphics/icons/fusion-generator.png",
                 icon_size = 64,
-                tint = { 1, 0.8, 0.8, 1 }
             },
             {
                 icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -312,9 +350,8 @@ data:extend({
         hidden = true,
         icons = {
             {
-                icon = "__space-age__/graphics/icons/fusion-generator.png",
+                icon = "__lilys-cubeine__/graphics/icons/fusion-generator.png",
                 icon_size = 64,
-                tint = { 1, 0.8, 0.8, 1 }
             },
             {
                 icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -439,9 +476,8 @@ data:extend({
         name = "cubeine-fusion-reactor",
         icons = {
             {
-                icon = "__space-age__/graphics/technology/fusion-reactor.png",
+                icon = "__lilys-cubeine__/graphics/technology/fusion-reactor.png",
                 icon_size = 256,
-                tint = {1, 0.8, 0.8, 1}
             },
             {
                 icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",

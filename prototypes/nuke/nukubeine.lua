@@ -32,7 +32,7 @@ local cuburn3 = {
     },
     {
         type = "cluster",
-        cluster_count = 64,
+        cluster_count = 32,
         distance = 12,
         distance_deviation = 80,
         action_delivery = {
@@ -58,13 +58,19 @@ local item = {
 
     type = "item",
     name = "nukubeine-crystal",
-    icons = { { icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant.png"
+    icons = { { icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png"
 
     } },
     pictures = {
         layers = {
             {
-                filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant.png",
+                filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
+                size = 64,
+                scale = 0.5,
+                draw_as_glow = true
+            },
+            {
+                filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
                 size = 64,
                 scale = 0.5,
                 draw_as_glow = true
@@ -100,6 +106,18 @@ local item = {
                     starting_speed_deviation = 0.4,
                     starting_speed = 0.1
                 }
+            },
+            {
+                type = "cluster",
+                cluster_count = 8,
+                distance = 400,
+                distance_deviation = 800,
+                action_delivery = {
+                    type = "stream",
+                    stream = "nukubeine-boom-shard",
+                    starting_speed_deviation = 0.4,
+                    starting_speed = 0.1
+                }
             }
         }
     }
@@ -111,7 +129,7 @@ local item = {
         name = "nukubeine-boom-shard",
         acceleration = 0.001,
         animation = {
-            filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant.png",
+            filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
             size = 64,
             scale = 0.25,
             draw_as_glow = true
@@ -138,7 +156,7 @@ data:extend {
         particle_buffer_size = 1,
         particle_spawn_timeout = 2,
         particle = {
-            filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant.png",
+            filename = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
             size = 64,
             scale = 0.25,
             draw_as_glow = true
@@ -172,7 +190,7 @@ local cube = {
     subgroup = "cubeine-products",
     icons = {
         {
-            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant.png",
+            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
             icon_size = 64,
         }
     },
@@ -207,7 +225,7 @@ local cooling = {
     subgroup = "cubeine-products",
     icons = {
         {
-            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant.png",
+            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
             icon_size = 64,
         },
         {
@@ -248,7 +266,7 @@ data:extend({
         icon_size = 64,
         icons = {
             {
-                icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant.png",
+                icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal-radiant-4.png",
                 scale = 4,
             }
         },
@@ -288,10 +306,10 @@ data:extend({
 
 local nukubeine_flame = table.deepcopy(data.raw["fire"]["fire-flame"])
 nukubeine_flame.name = "nukubeine-flame"
-nukubeine_flame.initial_lifetime = 12000
+nukubeine_flame.initial_lifetime = 6000
 nukubeine_flame.lifetime_increase_by = 1500
-nukubeine_flame.maximum_lifetime = 180000
-nukubeine_flame.emissions_per_second = { pollution = 10, spores = 1 }
+nukubeine_flame.maximum_lifetime = 60000
+nukubeine_flame.emissions_per_second = { pollution = 2, spores = 0.5 }
 nukubeine_flame.flame_alpha = 0.8
 nukubeine_flame.light.color = { 1, 0.1, 0.8, 1 }
 nukubeine_flame.maximum_damage_multiplier = 100

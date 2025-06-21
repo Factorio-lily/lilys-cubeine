@@ -35,7 +35,7 @@ end
 local reactor = {
   type                                 = "reactor",
   name                                 = "nukubeine-reactor",
-  icon                                 = "__lilys-cubeine__/graphics/entity/reactor/research-center-icon.png",
+  icon                                 = "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-icon.png",
   flags                                = { "placeable-neutral", "player-creation" },
   minable                              = { mining_time = 0.5, result = "nukubeine-reactor" },
   fast_replaceable_group               = "reactor",
@@ -192,7 +192,7 @@ local reactor = {
   {
     sheet =
     {
-      filename = "__lilys-cubeine__/graphics/entity/reactor/reactor-connect-patches-large.png",
+      filename = "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/reactor-connect-patches-large.png",
       width = 64,
       height = 64,
       variation_count = 21,
@@ -205,7 +205,7 @@ local reactor = {
   {
     sheet =
     {
-      filename = "__lilys-cubeine__/graphics/entity/reactor/reactor-connect-patches-large.png",
+      filename = "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/reactor-connect-patches-large.png",
       width = 64,
       height = 64,
       variation_count = 21,
@@ -219,7 +219,7 @@ local reactor = {
   {
     sheet = apply_heat_pipe_glow
         {
-          filename = "__lilys-cubeine__/graphics/entity/reactor/reactor-connect-patches-heated-large.png",
+          filename = "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/reactor-connect-patches-heated-large.png",
           width = 64,
           height = 64,
           variation_count = 21,
@@ -232,7 +232,7 @@ local reactor = {
   {
     sheet = apply_heat_pipe_glow
         {
-          filename = "__lilys-cubeine__/graphics/entity/reactor/reactor-connect-patches-heated-large.png",
+          filename = "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/reactor-connect-patches-heated-large.png",
           width = 64,
           height = 64,
           variation_count = 21,
@@ -249,7 +249,7 @@ local reactor = {
     layers =
     {
       {
-        filename = "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-animation-1.png",
+        filename = "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-animation-1.png",
         width = 590,
         height = 640,
         scale = 0.5,
@@ -258,7 +258,7 @@ local reactor = {
         --shift = util.by_pixel(-5, -7)
       },
       {
-        filename = "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-shadow.png",
+        filename = "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-shadow.png",
         width = 1200,
         height = 700,
         scale = 0.5,
@@ -271,8 +271,8 @@ local reactor = {
   --[[working_light_picture =
     {
     filenames = {
-      "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-emission-1.png",
-      "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-emission-2.png"
+      "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-emission-1.png",
+      "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-emission-2.png"
     },
     lines_per_file = 8,
       blend_mode = "additive",
@@ -398,7 +398,7 @@ local reactor = {
       },--]]
     },
     --[[heat_picture = {
-        filename = "__lilys-cubeine__/graphics/entity/reactor/research-center-hr-emission-1.png",
+        filename = "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-hr-emission-1.png",
         mode = "additive-soft",
         tint = {1, 0.4, 0.1, 1},
       render_layer = "higher-object-above",
@@ -452,9 +452,8 @@ local item = {
   name = "nukubeine-reactor",
   icons = {
     {
-      icon = "__lilys-cubeine__/graphics/entity/reactor/research-center-icon.png",
+      icon = "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-icon.png",
       icon_size = 64,
-      tint = { 1, 0.8, 0.8, 1 },
     },
     {
       icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
@@ -650,9 +649,8 @@ data:extend({
     name = "nukubeine-reactor",
     icons = {
       {
-        icon = "__lilys-cubeine__/graphics/entity/reactor/research-center-icon-big.png",
+        icon = "__lilys-cubeine-asset-pack-2__/graphics/entity/reactor/research-center-icon-big.png",
         icon_size = 640,
-        tint = base_tint
         --scale = 640/256,
       },
       {
