@@ -33,6 +33,7 @@ require("prototypes.packaging")
 
 require("prototypes.cubeine-cut-solution")
 require("prototypes.cubeine-biochamber")
+require("prototypes.cubeine-agricultural-tower")
 
 require("prototypes.fuel.cubeine-cut-fuel")
 require("prototypes.cubeine-thruster")
@@ -52,6 +53,10 @@ end
 
 if mods["Age-of-Production"] then
     require("prototypes.mod-compat.age-of-production")
+end
+
+if mods["cubium"] then
+    require("prototypes.mod-compat.cubium")
 end
 
 data:extend({
@@ -88,7 +93,7 @@ require("prototypes.cubonium-monopropellant-thruster")
 require("prototypes.drill.cubeine-giga-thermal-drill")
 require("prototypes.advanced.lily-katie-enrichment-process")
 require("prototypes.advanced.synthetic-cubeplant")
-
+require("prototypes.advanced.glow-redleaf-cubeplant")
 
 require("prototypes.fuel.cubeine-combustion-center")
 

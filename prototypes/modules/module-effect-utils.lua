@@ -1,23 +1,28 @@
 local oc = require("prototypes.modules.oc")
 return {
-        
-    degrade_effect = function (category, effect)
+
+    degrade_effect = function(category, effect)
         if effect == nil or category == nil then
             return {}
         end
         if category == "speed" then
-            effect.speed = effect.speed * 0.75
+            if effect.speed then
+                effect.speed = effect.speed * 0.7
+            end
             if effect.quality and effect.quality < 0 then
                 effect.quality = effect.quality * 4
             end
         elseif category == "quality" then
-            effect.quality = effect.quality * 0.5
+            if effect.quality then
+                effect.quality = effect.quality * 0.5
+            end
             if effect.speed and effect.speed < 0 then
                 effect.speed = effect.speed * 4
             end
         elseif category == "productivity" then
-            effect.productivity = effect.productivity * 0.75
-
+            if effect.productivity then
+                effect.productivity = effect.productivity * 0.75
+            end
             if effect.speed and effect.speed < 0 then
                 effect.speed = effect.speed * 2
             end
@@ -28,10 +33,13 @@ return {
                 effect.pollution = effect.pollution * 2
             end
         elseif category == "efficiency" then
-            effect.consumption = effect.consumption * 0.5
-
+            if effect.consumption then
+                effect.consumption = effect.consumption * 0.5
+            end
         elseif category == "overclock" then
-            effect.productivity = effect.productivity * 0.75
+            if effect.productivity then
+                effect.productivity = effect.productivity * 0.75
+            end
 
             if effect.speed and effect.speed < 0 then
                 effect.speed = effect.speed * 2
@@ -52,21 +60,31 @@ return {
 
 
 
-    overclock_effect = function (category, effect, level, d)
+    overclock_effect = function(category, effect, level, d)
         local e = effect
         if effect == nil or category == nil then
             return {}
         end
         if category == "speed" then
-            e.speed = d and e.speed * oc[level].db or e.speed * oc[level].b
+            if e.speed then
+                e.speed = d and e.speed * oc[level].db or e.speed * oc[level].b
+            end
         elseif category == "quality" then
-            e.quality = d and e.quality * oc[level].db or e.quality * oc[level].b
+            if e.quality then
+                e.quality = d and e.quality * oc[level].db or e.quality * oc[level].b
+            end
         elseif category == "productivity" then
-            e.productivity = d and e.productivity * oc[level].db or e.productivity * oc[level].b
+            if e.productivity then
+                e.productivity = d and e.productivity * oc[level].db or e.productivity * oc[level].b
+            end
         elseif category == "efficiency" then
-            e.consumption = d and e.consumption * oc[level].db or e.consumption * oc[level].b
+            if e.consumption then
+                e.consumption = d and e.consumption * oc[level].db or e.consumption * oc[level].b
+            end
         elseif category == "overclock" then
-            e.productivity = d and e.productivity * oc[level].db or e.productivity * oc[level].b
+            if e.productivity then
+                e.productivity = d and e.productivity * oc[level].db or e.productivity * oc[level].b
+            end
         elseif category == "pollution" then
             e.pollution = d and e.pollution * oc[level].db or e.pollution * oc[level].b
         end

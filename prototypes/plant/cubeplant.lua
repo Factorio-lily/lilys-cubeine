@@ -202,3 +202,264 @@ if mods["zen-garden"] then
 end
 
 data:extend({ plant })
+
+
+
+
+
+
+
+
+
+
+local superplant = table.deepcopy(plant)
+superplant.name = "redleaf-cubeplant-super"
+superplant.icon = "__lilys-cubeine__/graphics/technology/cubeplant-processing-2.png"
+superplant.growth_ticks = 2 * minutes
+superplant.harvest_emissions = { spores = 5, pollution = 100 }
+superplant.emissions_per_second = { pollution = -0.03 }
+superplant.max_health = 500
+superplant.resistances = {
+    {
+        type = "fire",
+        amount = 50,
+        percent = 99
+    },
+    {
+        type = "explosion",
+        amount = 50,
+        percent = 99
+    }
+}
+superplant.dying_trigger_effect = {
+    type = "nested-result",
+    action = {
+        type = "direct",
+        action_delivery =
+        {
+            type = "instant",
+            target_effects =
+            {
+                {
+                    type = "create-entity",
+                    entity_name = "big-explosion"
+                },
+                {
+                    type = "create-entity",
+                    entity_name = "shockwave-3"
+                },
+                {
+                    type = "nested-result",
+                    action =
+                    {
+                        {
+                            type = "area",
+                            radius = 4,
+                            action_delivery =
+                            {
+                                type = "instant",
+                                target_effects =
+                                {
+                                    {
+                                        type = "damage",
+                                        damage = { amount = 300, type = "explosion" }
+                                    },
+                                    {
+                                        type = "create-entity",
+                                        entity_name = "explosion"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            type = "area",
+                            radius = 8,
+                            action_delivery =
+                            {
+                                type = "instant",
+                                target_effects =
+                                {
+                                    {
+                                        type = "damage",
+                                        damage = { amount = 150, type = "explosion" }
+                                    },
+                                    {
+                                        type = "create-entity",
+                                        entity_name = "explosion"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            type = "area",
+                            radius = 12,
+                            action_delivery =
+                            {
+                                type = "instant",
+                                target_effects =
+                                {
+                                    {
+                                        type = "damage",
+                                        damage = { amount = 75, type = "explosion" }
+                                    },
+                                    {
+                                        type = "create-entity",
+                                        entity_name = "explosion"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    type = "invoke-tile-trigger",
+                    repeat_count = 1
+                },
+            }
+        }
+    }
+}
+superplant.order = "a[tree]-c[nauvis-gleba]-a[seedable]-d[redleaf-cubeplant-super]"
+superplant.autoplace.control = nil
+superplant.autoplace.probability_expression = "0"
+superplant.autoplace.richness_expression = "0"
+table.insert(superplant.autoplace.tile_restriction, "landfill")
+table.insert(superplant.autoplace.tile_restriction, "nuclear-ground")
+table.insert(superplant.autoplace.tile_restriction, "oil-ocean-shallow")
+table.insert(superplant.autoplace.tile_restriction, "oil-ocean-deep")
+if mods["castra"] then
+    table.insert(superplant.autoplace.tile_restriction, "light-oil-ocean-deep")
+end
+superplant.pictures = {
+    layers = {
+        {
+            filename = "__lilys-cubeine__/graphics/entity/cubeplant-shadow.png",
+            width = 500,
+            height = 356,
+            scale = 0.25,
+            shift = util.by_pixel(20, 0),
+            draw_as_shadow = true
+        },
+        {
+            filename = "__lilys-cubeine__/graphics/entity/cubeplant.png",
+            width = 500,
+            height = 356,
+            scale = 0.25,
+            shift = util.by_pixel(20, 0)
+        },
+        {
+            filename = "__lilys-cubeine__/graphics/entity/cubeplant-mask.png",
+            width = 500,
+            height = 356,
+            scale = 0.25,
+            shift = util.by_pixel(20, 0),
+            tint = { 1, 0, 0.25, 0.5 },
+            draw_as_glow = true,
+            blend_mode = "additive"
+        },
+    }
+}
+superplant.agricultural_tower_tint =
+{
+    primary = { r = 1, g = 0.218, b = 0.418, a = 1.000 },
+    secondary = { r = 1, g = 0.213, b = 0.408, a = 1.000 },
+}
+superplant.map_color = { 255, 100, 100 }
+superplant.minable.results = { { type = "item", name = "cubeplant-branch-super", amount = 20 } }
+superplant.collision_mask = { layers = { train = true, is_object = true, is_lower_object = true, player = true } }
+superplant.stateless_visualisation_variations = {
+    {
+        light = {
+            intensity = 0.4,
+            size = 15,
+            color = {1, 0, 0.05}
+        }
+    }
+}
+
+data:extend({ superplant })
+
+
+
+if mods["cubium"] then
+    local blueplant = table.deepcopy(plant)
+    blueplant.name = "redleaf-cubeplant-blue"
+    blueplant.icon = "__lilys-cubeine__/graphics/technology/cubeplant-processing-3.png"
+    blueplant.growth_ticks = 2 * minutes
+    blueplant.harvest_emissions = { spores = 5, pollution = -50 }
+    blueplant.emissions_per_second = { pollution = -0.1 }
+    blueplant.dying_trigger_effect = nil
+    blueplant.max_health = 500
+    blueplant.resistances = {
+        {
+            type = "fire",
+            amount = 50,
+            percent = 99
+        },
+        {
+            type = "impact",
+            amount = 50,
+            percent = 99
+        }
+    }
+    blueplant.order = "a[tree]-c[cubium]-a[seedable]-d[redleaf-cubeplant-blue]"
+    blueplant.autoplace.control = nil
+    blueplant.autoplace.probability_expression = "0"
+    blueplant.autoplace.richness_expression = "0"
+    blueplant.autoplace.tile_restriction = {
+        "cubium-ash-soil", "cubium-soil-light", "cubium-soil-dark", "cubium-ash-cracks",
+        "cubium-volcanic-pumice-stones", "cubium-volcanic-ash-flats", "cubium-volcanic-ash-light",
+        "cubium-volcanic-cracks-hot", "cubium-volcanic-cracks-warm", "cubium-volcanic-cracks",
+        "cubium-smooth-stone-warm", "cubium-volcanic-smooth-stone", "cubium-folds-warm",
+        "cubium-folds", "cubium-volcanic-folds-flat", "cubium-volcanic-jagged-ground",
+        "cubium-volcanic-pumice-stones", "cubium-volcanic-ash-dark",
+    }
+
+    blueplant.pictures = {
+        layers = {
+            {
+                filename = "__lilys-cubeine__/graphics/entity/cubeplant-shadow.png",
+                width = 500,
+                height = 356,
+                scale = 0.25,
+                shift = util.by_pixel(20, 0),
+                draw_as_shadow = true
+            },
+            {
+                filename = "__lilys-cubeine__/graphics/entity/cubeplant-blue.png",
+                width = 500,
+                height = 356,
+                scale = 0.25,
+                shift = util.by_pixel(20, 0)
+            },
+            {
+                filename = "__lilys-cubeine__/graphics/entity/cubeplant-mask.png",
+                width = 500,
+                height = 356,
+                scale = 0.25,
+                shift = util.by_pixel(20, 0),
+                tint = { 0, 0.25, 1, 0.5 },
+                draw_as_glow = true,
+                blend_mode = "additive"
+            },
+        }
+    }
+    blueplant.agricultural_tower_tint =
+    {
+        primary = { r = 0.218, g = 0.218, b = 1, a = 1.000 },
+        secondary = { r = 0.308, g = 0.613, b = 1, a = 1.000 },
+    }
+    blueplant.map_color = { 100, 100, 255 }
+    blueplant.minable.results = { { type = "item", name = "cubeplant-branch-blue", amount = 20 } }
+
+    blueplant.stateless_visualisation_variations = {
+        {
+            light = {
+                intensity = 0.4,
+                size = 15,
+                color = { 0, 0.05, 1 }
+            }
+        }
+    }
+    data:extend({ blueplant })
+end
