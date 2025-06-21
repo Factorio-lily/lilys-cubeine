@@ -104,7 +104,7 @@ local proj = {
                         },
                         {
                             type = "area",
-                            radius = 4,
+                            radius = 8,
                             action_delivery =
                             {
                                 type = "instant",

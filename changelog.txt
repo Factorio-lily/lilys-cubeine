@@ -1,4 +1,23 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.2
+Date: 2025-06-21
+  Changes:
+    - Module overclock fixes (With Editor extensions in particular)
+    - Fixed hard deoendency on Cubium
+---------------------------------------------------------------------------------------------------
+Version: 2.2.1
+Date: 2025-06-09
+  Changes:
+    - Changed some Cubium related recipes / names
+    - Crafting category fix
+---------------------------------------------------------------------------------------------------
+Version: 2.2.0
+Date: 2025-06-08
+  Changes:
+    - Extra compatibility with Cubium mod (new tech / recipes
+    - Added new cubeplant types
+    - Added new agricultural tower technology
+---------------------------------------------------------------------------------------------------
 Version: 2.1.1
 Date: 2025-05-24
   Changes:

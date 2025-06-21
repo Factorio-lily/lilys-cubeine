@@ -128,8 +128,9 @@ local reactor = {
             pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures,
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures")
                 .pipe_pictures_frozen,
-            pipe_covers = pipecoverspictures(),
+            --pipe_covers = pipecoverspictures(),
             volume = 2000,
+            draw_only_when_connected = true,
             secondary_draw_orders = { north = -1, west = -1, east = -1 },
             pipe_connections = {
                 { direction = defines.direction.south, position = { 1, 2 } },
@@ -421,13 +422,13 @@ local reactor = {
     circuit_connector          = circuit_connector_definitions["nuclear-reactor"],
 
 }
-for _, pic in pairs(reactor.energy_source.fluid_box.pipe_covers or {}) do
+--[[for _, pic in pairs(reactor.energy_source.fluid_box.pipe_covers or {}) do
     if not pic.layers then
         pic.tint = base_tint
     else
         pic.layers[1].tint = base_tint
     end
-end
+end--]]
 for _, pic in pairs(reactor.energy_source.fluid_box.pipe_picture or {}) do
     if not pic.layers then
         pic.tint = base_tint
