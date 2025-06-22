@@ -96,6 +96,7 @@ require("prototypes.advanced.synthetic-cubeplant")
 require("prototypes.advanced.glow-redleaf-cubeplant")
 
 require("prototypes.fuel.cubeine-combustion-center")
+require("prototypes.fluid-handling.cubeine-thermal-boiler")
 
 require("prototypes.fluid-handling.pipes")
 require("prototypes.fluid-handling.tanks")

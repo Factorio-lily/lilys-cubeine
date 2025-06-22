@@ -15,12 +15,12 @@ local emissive_tint = { r = 1, g = 0.2, b = 0.2, a = 1 }
 
 local smoke = table.deepcopy(data.raw["trivial-smoke"]["turbine-smoke"])
 smoke.name = "cubeine-combustion-center-smoke"
-smoke.color = { 0.3, 0.1, 0.1, 0.6 }
+smoke.color = { 0.05, 0.02, 0.02, 0.15 }
 smoke.start_scale = smoke.start_scale / 2
 smoke.duration = smoke.duration * 4
 smoke.cyclic = true
 ---@diagnostic disable-next-line: assign-type-mismatch
-data:extend({smoke})
+data:extend({ smoke })
 
 apply_heat_pipe_glow = function(layer)
     layer.tint = heated_pipes_tint
@@ -113,7 +113,7 @@ local reactor = {
                 vertical_speed_slowdown = 0.5,
                 starting_vertical_speed = 2,
                 starting_vertical_speed_deviation = 0.5,
-                position = {-0.75, -1.0}
+                position = { -0.75, -1.0 }
             }
         },
         light_flicker =

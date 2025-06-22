@@ -1,9 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.3.0
+Date: 2025-06-21
+  Changes:
+    - Added cubeine thermal boiler for massive steam production
+    - Reduced the alpha of cubeine combustion center smoke
+---------------------------------------------------------------------------------------------------
 Version: 2.2.2
 Date: 2025-06-21
   Changes:
     - Module overclock fixes (With Editor extensions in particular)
-    - Fixed hard deoendency on Cubium
+    - Fixed hard dependency on Cubium
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.1
 Date: 2025-06-09
