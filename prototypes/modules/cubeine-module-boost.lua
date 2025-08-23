@@ -283,8 +283,8 @@ local function add_overclocking(module)
             table.insert(d_oc_list, oc2)
             create_oc_recipe(module, _)
             create_oc_recipe(degraded_version, _)
-            rsl.register_spoilable_item(oc1, nil, degraded_version.name)
-            rsl.register_spoilable_item(oc2, nil, degraded_version.name)
+            --rsl.register_spoilable_item(oc1, nil, degraded_version.name)
+            --rsl.register_spoilable_item(oc2, nil, degraded_version.name)
         end
     end
 

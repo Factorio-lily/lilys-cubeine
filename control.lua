@@ -38,72 +38,6 @@ end
 
 
 
-local function call_rsl()
-    local list1 = prototypes.get_item_filtered({ { filter = "type", type = "module" }, { filter = "subgroup", subgroup = "module-overclocked", mode = "and" } })
-    local list2 = prototypes.get_item_filtered({ { filter = "type", type = "module" }, { filter = "subgroup", subgroup = "module-degraded-overclocked", mode = "and" } })
-
-    for name, proto in pairs(list1) do
-        local level = tonumber(string.sub(name, string.len(name)))
-        local base_name = string.gsub(name, "%-overclocked%-" .. tostring(level), "")
-        local degraded_name = base_name .. "-degraded"
-        local destroyed_name = base_name .. "-destroyed"
-        local hyper_name = base_name .. "-hyper"
-
-        local hyper_chance = oc[level].su
-        local destroyed_chance = oc[level].x
-        if (hyper_chance + destroyed_chance) > 1 then
-            destroyed_chance = math.max(0, destroyed_chance - (hyper_chance + destroyed_chance - 1))
-        end
-        local degraded_chance = oc[level].d
-        if (hyper_chance + destroyed_chance + degraded_chance) > 1 then
-            degraded_chance = math.max(0, degraded_chance - ((hyper_chance + destroyed_chance + degraded_chance - 1)))
-        end
-        local base_chance = math.max(0, 1 - hyper_chance - destroyed_chance - degraded_chance)
-
-        remote.call("rsl_registry", "register_rsl_definition", name,
-            { -- You call the "rsl_registry" to use "register_rsl_definition" and pass it the name of your custom item "mutation-a"
-                mode = { random = true, conditional = false, weighted = true },
-                condition = true,
-                possible_results = {
-                    [true] = { { name = base_name, weight = base_chance }, { name = degraded_name, weight = degraded_chance }, { name = destroyed_name, weight = destroyed_chance }, { name = hyper_name, weight = hyper_chance } },
-                    [false] = {}
-                }
-            }
-        )
-    end
-
-    for name, proto in pairs(list2) do
-        local level = tonumber(string.sub(name, string.len(name)))
-        local degraded_name = string.gsub(name, "%-overclocked%-" .. tostring(level), "")
-        local destroyed_name = string.gsub(degraded_name, "%-degraded", "-destroyed")
-        local hyper_name = string.gsub(degraded_name, "%-degraded", "-hyper")
-
-        local hyper_chance = oc[level].su
-        local destroyed_chance = oc[level].dx
-        if (hyper_chance + destroyed_chance) > 1 then
-            destroyed_chance = math.max(0, destroyed_chance - (hyper_chance + destroyed_chance - 1))
-        end
-        local degraded_chance = math.max(0, 1 - hyper_chance - destroyed_chance)
-        if (hyper_chance + destroyed_chance + degraded_chance) > 1 then
-            degraded_chance = math.max(0, degraded_chance - ((hyper_chance + destroyed_chance + degraded_chance - 1)))
-        end
-
-        remote.call("rsl_registry", "register_rsl_definition", name,
-            { -- You call the "rsl_registry" to use "register_rsl_definition" and pass it the name of your custom item "mutation-a"
-                mode = { random = true, conditional = false, weighted = true },
-                condition = true,
-                possible_results = {
-                    [true] = { { name = degraded_name, weight = degraded_chance }, { name = destroyed_name, weight = destroyed_chance }, { name = hyper_name, weight = hyper_chance } },
-                    [false] = {}
-                }
-            }
-        )
-    end
-end
-
-
-
-
 function OnInit()
     storage = storage or {}
     storage.reactors = storage.reactors or {}
@@ -111,7 +45,6 @@ function OnInit()
     storage.vlt = storage.vlt or {}         --virtual lights
     storage.vhp_del = storage.vhp_del or {} --virtual heatpipes - to be deleted
     storage.fusion = storage.fusion or {}
-    call_rsl()
     cleanup_virtual()
 end
 
