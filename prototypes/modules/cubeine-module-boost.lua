@@ -288,8 +288,8 @@ local function add_overclocking(module)
         end
     end
 
-    --data:extend(oc_list)
-    --data:extend(d_oc_list)
+    data:extend(oc_list)
+    data:extend(d_oc_list)
 
 
     data:extend({ degraded_version, destroyed_version, hyper_version })
