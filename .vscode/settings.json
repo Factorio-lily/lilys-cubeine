@@ -16,5 +16,8 @@
         "assembler3pipepictures",
         "circuit_connector_definitions",
         "default_circuit_wire_max_distance"
+    ],
+    "Lua.workspace.library": [
+        "${addons}/ftl-hyperspace/module/library"
     ]
 }

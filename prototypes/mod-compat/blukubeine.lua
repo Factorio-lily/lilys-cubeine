@@ -35,6 +35,7 @@ local blukubeine = {
     weight = 1000 * kg,
     fuel_category = "cubic",
     fuel_value = "0.1TJ",
+    burnt_result = "depleted-blukubeine-crystal",
     fuel_acceleration_multiplier = 30,
     fuel_top_speed_multiplier = 5,
     fuel_emissions_multiplier = 0,

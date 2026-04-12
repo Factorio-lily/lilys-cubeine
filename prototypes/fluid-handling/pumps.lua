@@ -355,7 +355,7 @@ local pump_turbo = {
     working_sound =
     {
         sound = {
-            { filename = "__lilys-cubeine__/sounds/turbopump.wav", volume = 1, audibledistance_modifier = 1 },
+            { filename = "__lilys-cubeine__/sounds/turbopump.wav", volume = 0.35, audibledistance_modifier = 0.5 },
             --{ filename = "__base__/sound/pump.ogg", volume = 0.5, audibledistance_modifier = 0.5 },
         },
         max_sounds_per_prototype = 10,

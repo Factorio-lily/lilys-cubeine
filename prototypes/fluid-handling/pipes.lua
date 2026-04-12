@@ -4,19 +4,35 @@ local function make_cubeine_version(item, entity)
     local i = table.deepcopy(item)
     i.name = "cubeine-" .. i.name
     i.localised_name = { "", { "mod-cube-strings.cubeine" }, " ", { "entity-name." .. entity.name } }
-    i.icons = {
-        {
-            icon = i.icon,
-            icon_size = i.icon_size,
-            tint = base_tint
-        },
-        {
-            icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
-            icon_size = 64,
-            scale = 0.25,
-            shift = { 6, 6 }
+    if i.icon then
+        i.icons = {
+            {
+                icon = i.icon,
+                icon_size = i.icon_size,
+                tint = base_tint
+            },
+            {
+                icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
+                icon_size = 64,
+                scale = 0.25,
+                shift = { 6, 6 }
+            }
         }
-    }
+    elseif i.icons[0] then
+        i.icons = {
+            {
+                icon = i.icons[0],
+                icon_size = i.icons[0].icon_size,
+                tint = base_tint
+            },
+            {
+                icon = "__lilys-cubeine__/graphics/icons/cubeine-crystal.png",
+                icon_size = 64,
+                scale = 0.25,
+                shift = { 6, 6 }
+            }
+        }
+    end
     i.place_result = "cubeine-" .. i.place_result
 
     local p = table.deepcopy(entity)

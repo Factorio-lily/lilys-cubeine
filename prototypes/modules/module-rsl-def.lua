@@ -51,7 +51,7 @@ for name, proto in pairs(list1) do
                 {name = base_name, weight = math.floor(base_chance * 1000)},
                 {name = degraded_name, weight = math.floor(degraded_chance * 1000)},
                 {name = destroyed_name, weight = math.floor(destroyed_chance * 1000)}, 
-                { name = hyper_name,     weight = math.floor(hyper_chance * 1000)}
+                {name = hyper_name, weight = math.floor(hyper_chance * 1000)}
             }
         }
     }

@@ -184,7 +184,7 @@ local tower = {
     close_sound            = { filename = "__base__/sound/open-close/nuclear-close.ogg", volume = 0.8 },
     working_sound          =
     {
-        sound = { filename = "__lilys-cubeine__/sounds/turbopump.wav", volume = 0.75 },
+        sound = { filename = "__lilys-cubeine__/sounds/turbopump.wav", volume = 0.25 },
         max_sounds_per_type = 2,
         fade_in_ticks = 4,
         fade_out_ticks = 20

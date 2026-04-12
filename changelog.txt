@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.4.2
+Date: 2026-04-12
+  Changes:
+    - Fixed compatibility with Zithorian Storage Tanks
+    - Lowered volume of turbopumps to approximately 1/3
+    - Added burnt result to Blukubeine crystals
+    - Added Esperanto translation (thanks trentmkelly)
+---------------------------------------------------------------------------------------------------
 Version: 2.4.1
 Date: 2025-08-24
   Changes:

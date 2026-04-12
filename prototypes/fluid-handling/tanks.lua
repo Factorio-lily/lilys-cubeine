@@ -144,139 +144,140 @@ table.insert(tech.effects, {
 
 
 if mods["zithorian-extra-storage-tanks-port"] then
-    local tank1_i, tank1 = make_cubeine_version(data.raw.item["fluid-tank-1x1"],
-        data.raw["storage-tank"]["fluid-tank-1x1"])
-    local tank1_r = {
+    if data.raw.item["zith-storage-tank-1x1"] and data.raw["storage-tank"]["zith-storage-tank-1x1"] then
+        local tank1_i, tank1 = make_cubeine_version(data.raw.item["zith-storage-tank-1x1"],
+        data.raw["storage-tank"]["zith-storage-tank-1x1"])
+        local tank1_r = {
         type = "recipe",
-        name = "cubeine-fluid-tank-1x1",
-        localised_name = { "", { "mod-cube-strings.cubeine" }, { "entity-name.fluid-tank-1x1" } },
+        name = "cubeine-zith-storage-tank-1x1",
+        localised_name = { "", { "mod-cube-strings.cubeine" }, { "entity-name.zith-storage-tank-1x1" } },
         enabled = false,
         energy_required = 10,
         pollution_multiplier = 1,
         ingredients = {
             { type = "item", name = "low-density-structure", amount = 5 },
             { type = "item", name = "cubeine-crystal",       amount = 1, },
-            { type = "item", name = "fluid-tank-1x1",        amount = 1 },
+            { type = "item", name = "zith-storage-tank-1x1",        amount = 1 },
         },
         results = {
-            { type = "item", name = "cubeine-fluid-tank-1x1", amount = 1 },
-
+            { type = "item", name = "cubeine-zith-storage-tank-1x1", amount = 1 },
         },
         category = "metallurgy-or-assembling",
-        main_product = "cubeine-fluid-tank-1x1",
+        main_product = "cubeine-zith-storage-tank-1x1",
         allow_productivity = false,
         allow_quality = true,
         hide_from_signal_gui = false,
         show_amount_in_title = false,
         order = "n[cubeine]-t[storage-tank]"
     }
-    data.extend({ tank1, tank1_i, tank1_r })
-    table.insert(tech.effects, {
-        type = "unlock-recipe",
-        recipe = "cubeine-fluid-tank-1x1"
-    })
+        data.extend({ tank1, tank1_i, tank1_r })
+        table.insert(tech.effects, {
+            type = "unlock-recipe",
+            recipe = "cubeine-zith-storage-tank-1x1"
+        })
+    end
 
 
+    if data.raw.item["zith-storage-tank-2x2"] and data.raw["storage-tank"]["zith-storage-tank-2x2"] then
+        local tank2_i, tank2 = make_cubeine_version(data.raw.item["zith-storage-tank-2x2"],
+            data.raw["storage-tank"]["zith-storage-tank-2x2"])
+        local tank2_r = {
+            type = "recipe",
+            name = "cubeine-zith-storage-tank-2x2",
+            localised_name = { "", { "mod-cube-strings.cubeine" }, { "entity-name.zith-storage-tank-2x2" } },
+            enabled = false,
+            energy_required = 10,
+            pollution_multiplier = 1,
+            ingredients = {
+                { type = "item", name = "low-density-structure", amount = 15 },
+                { type = "item", name = "cubeine-crystal",       amount = 2, },
+                { type = "item", name = "zith-storage-tank-2x2",        amount = 1 },
+            },
+            results = {
+                { type = "item", name = "cubeine-zith-storage-tank-2x2", amount = 1 },
+
+            },
+            category = "metallurgy-or-assembling",
+            main_product = "cubeine-zith-storage-tank-2x2",
+            allow_productivity = false,
+            allow_quality = true,
+            hide_from_signal_gui = false,
+            show_amount_in_title = false,
+            order = "n[cubeine]-t[storage-tank]"
+        }
+        data.extend({ tank2, tank2_i, tank2_r })
+        table.insert(tech.effects, {
+            type = "unlock-recipe",
+            recipe = "cubeine-zith-storage-tank-2x2"
+        })
+    end
+
+    if data.raw.item["zith-storage-tank-3x4"] and data.raw["storage-tank"]["zith-storage-tank-3x4"] then
+        local tank3_i, tank3 = make_cubeine_version(data.raw.item["zith-storage-tank-3x4"],
+            data.raw["storage-tank"]["zith-storage-tank-3x4"])
+        local tank3_r = {
+            type = "recipe",
+            name = "cubeine-zith-storage-tank-3x4",
+            localised_name = { "", { "mod-cube-strings.cubeine" }, { "entity-name.zith-storage-tank-3x4" } },
+            enabled = false,
+            energy_required = 10,
+            pollution_multiplier = 1,
+            ingredients = {
+                { type = "item", name = "low-density-structure", amount = 24 },
+                { type = "item", name = "cubeine-crystal",       amount = 12, },
+                { type = "item", name = "zith-storage-tank-3x4",        amount = 1 },
+            },
+            results = {
+                { type = "item", name = "cubeine-zith-storage-tank-3x4", amount = 1 },
+
+            },
+            category = "metallurgy-or-assembling",
+            main_product = "cubeine-zith-storage-tank-3x4",
+            allow_productivity = false,
+            allow_quality = true,
+            hide_from_signal_gui = false,
+            show_amount_in_title = false,
+            order = "n[cubeine]-t[storage-tank]"
+        }
+        data.extend({ tank3, tank3_i, tank3_r })
+        table.insert(tech.effects, {
+            type = "unlock-recipe",
+            recipe = "cubeine-zith-storage-tank-3x4"
+        })
+    end
 
 
-    local tank2_i, tank2 = make_cubeine_version(data.raw.item["fluid-tank-2x2"],
-        data.raw["storage-tank"]["fluid-tank-2x2"])
-    local tank2_r = {
-        type = "recipe",
-        name = "cubeine-fluid-tank-2x2",
-        localised_name = { "", { "mod-cube-strings.cubeine" }, { "entity-name.fluid-tank-2x2" } },
-        enabled = false,
-        energy_required = 10,
-        pollution_multiplier = 1,
-        ingredients = {
-            { type = "item", name = "low-density-structure", amount = 15 },
-            { type = "item", name = "cubeine-crystal",       amount = 2, },
-            { type = "item", name = "fluid-tank-2x2",        amount = 1 },
-        },
-        results = {
-            { type = "item", name = "cubeine-fluid-tank-2x2", amount = 1 },
+    if data.raw.item["zith-storage-tank-5x5"] and data.raw["storage-tank"]["zith-storage-tank-5x5"] then
+        local tank4_i, tank4 = make_cubeine_version(data.raw.item["zith-storage-tank-5x5"],
+            data.raw["storage-tank"]["zith-storage-tank-5x5"])
+        local tank4_r = {
+            type = "recipe",
+            name = "cubeine-zith-storage-tank-5x5",
+            localised_name = { "", { "mod-cube-strings.cubeine" }, { "entity-name.zith-storage-tank-5x5" } },
+            enabled = false,
+            energy_required = 10,
+            pollution_multiplier = 1,
+            ingredients = {
+                { type = "item", name = "low-density-structure", amount = 40 },
+                { type = "item", name = "cubeine-crystal",       amount = 20, },
+                { type = "item", name = "zith-storage-tank-5x5",        amount = 1 },
+            },
+            results = {
+                { type = "item", name = "cubeine-zith-storage-tank-5x5", amount = 1 },
 
-        },
-        category = "metallurgy-or-assembling",
-        main_product = "cubeine-fluid-tank-2x2",
-        allow_productivity = false,
-        allow_quality = true,
-        hide_from_signal_gui = false,
-        show_amount_in_title = false,
-        order = "n[cubeine]-t[storage-tank]"
-    }
-    data.extend({ tank2, tank2_i, tank2_r })
-    table.insert(tech.effects, {
-        type = "unlock-recipe",
-        recipe = "cubeine-fluid-tank-2x2"
-    })
-
-
-
-    local tank3_i, tank3 = make_cubeine_version(data.raw.item["fluid-tank-3x4"],
-        data.raw["storage-tank"]["fluid-tank-3x4"])
-    local tank3_r = {
-        type = "recipe",
-        name = "cubeine-fluid-tank-3x4",
-        localised_name = { "", { "mod-cube-strings.cubeine" }, { "entity-name.fluid-tank-3x4" } },
-        enabled = false,
-        energy_required = 10,
-        pollution_multiplier = 1,
-        ingredients = {
-            { type = "item", name = "low-density-structure", amount = 24 },
-            { type = "item", name = "cubeine-crystal",       amount = 12, },
-            { type = "item", name = "fluid-tank-3x4",        amount = 1 },
-        },
-        results = {
-            { type = "item", name = "cubeine-fluid-tank-3x4", amount = 1 },
-
-        },
-        category = "metallurgy-or-assembling",
-        main_product = "cubeine-fluid-tank-3x4",
-        allow_productivity = false,
-        allow_quality = true,
-        hide_from_signal_gui = false,
-        show_amount_in_title = false,
-        order = "n[cubeine]-t[storage-tank]"
-    }
-    data.extend({ tank3, tank3_i, tank3_r })
-    table.insert(tech.effects, {
-        type = "unlock-recipe",
-        recipe = "cubeine-fluid-tank-3x4"
-    })
-
-
-
-
-    local tank4_i, tank4 = make_cubeine_version(data.raw.item["fluid-tank-5x5"],
-        data.raw["storage-tank"]["fluid-tank-5x5"])
-    local tank4_r = {
-        type = "recipe",
-        name = "cubeine-fluid-tank-5x5",
-        localised_name = { "", { "mod-cube-strings.cubeine" }, { "entity-name.fluid-tank-5x5" } },
-        enabled = false,
-        energy_required = 10,
-        pollution_multiplier = 1,
-        ingredients = {
-            { type = "item", name = "low-density-structure", amount = 40 },
-            { type = "item", name = "cubeine-crystal",       amount = 20, },
-            { type = "item", name = "fluid-tank-5x5",        amount = 1 },
-        },
-        results = {
-            { type = "item", name = "cubeine-fluid-tank-5x5", amount = 1 },
-
-        },
-        category = "metallurgy-or-assembling",
-        main_product = "cubeine-fluid-tank-5x5",
-        allow_productivity = false,
-        allow_quality = true,
-        hide_from_signal_gui = false,
-        show_amount_in_title = false,
-        order = "n[cubeine]-t[storage-tank]"
-    }
-    data.extend({ tank4, tank4_i, tank4_r })
-    table.insert(tech.effects, {
-        type = "unlock-recipe",
-        recipe = "cubeine-fluid-tank-5x5"
-    })
+            },
+            category = "metallurgy-or-assembling",
+            main_product = "cubeine-zith-storage-tank-5x5",
+            allow_productivity = false,
+            allow_quality = true,
+            hide_from_signal_gui = false,
+            show_amount_in_title = false,
+            order = "n[cubeine]-t[storage-tank]"
+        }
+        data.extend({ tank4, tank4_i, tank4_r })
+        table.insert(tech.effects, {
+            type = "unlock-recipe",
+            recipe = "cubeine-zith-storage-tank-5x5"
+        })
+    end
 end
