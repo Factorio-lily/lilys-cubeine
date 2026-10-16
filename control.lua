@@ -502,19 +502,28 @@ script.on_event(defines.events.on_script_trigger_effect, function(event)
                 end
             end
 
-            local name = storage.last_consumed[event.cause_entity.unit_number].sticker_name
+            -- last_consumed lives in storage.last_consumed[unit_number] (see the consumed branch above).
+            -- This used to read storage[unit_number].last_consumed, which is always nil -> the
+            -- reported "Error after eating" crash at this line.
+            local consumed = storage.last_consumed and storage.last_consumed[event.cause_entity.unit_number]
+            if not consumed then
+                return
+            end
+
+            local name = consumed.sticker_name
             local name2 = string.sub(name, 1, #name - 1)
 
-            if not found and storage[event.cause_entity.unit_number].last_consumed then
+            if not found then
                 local sticker = event.cause_entity.surface.create_entity {
-                    name = name2 .. "wd-" .. tostring(storage.last_consumed[event.cause_entity.unit_number].level),
+                    name = name2 .. "wd-" .. tostring(consumed.level),
                     position = event.cause_entity.position,
                     cause = event.cause_entity,
                     force = event.cause_entity.force,
                     source = event.cause_entity,
                     target = event.cause_entity
                 }
-                storage[event.cause_entity.unit_number].last_consumed = nil
+                consumed = nil
+                storage.last_consumed[event.cause_entity.unit_number] = nil
             end
         end
     end

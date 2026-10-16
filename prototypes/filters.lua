@@ -37,11 +37,11 @@ data:extend {{
         {type = "fluid", name = "water",                          amount = 500},
     },
     results = {
-        {type = "item",  name = "cubeslurry-filter",    amount = 1, probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 10},
-        {type = "item",  name = "steel-plate",            amount = 1, probability = 0.05},
+        {type = "item",  name = "cubeslurry-filter",    amount = 1, independent_probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 10},
+        {type = "item",  name = "steel-plate",            amount = 1, independent_probability = 0.05},
         {type = "item", name = "spoilage", amount = 10},
     },
-    category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
+    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
     --main_product = "cubeslurry-filter",
     allow_productivity = true,
     icons = {
@@ -74,7 +74,7 @@ data:extend { {
     results = {
         { type = "item", name = "cubeslurry-filter", amount = 1 }
     },
-    category = "advanced-crafting",
+    categories = { "advanced-crafting" },
     main_product = "cubeslurry-filter",
     allow_productivity = true,
     subgroup = "intermediate-product"

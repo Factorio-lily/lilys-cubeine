@@ -9,7 +9,7 @@ data:extend({
       { icon = "__lilys-cubeine__/graphics/icons/cubeplant-branch.png" },
       { icon = "__astroponics__/graphics/icons/fluid/liquid-fertilizer.png", shift = { -8, -8 }, scale = 0.3 }
     },
-    category = "astroponics",
+    categories = { "astroponics" },
     subgroup = subgroup,
     order = "d[xeno]-e[cubeplant]",
     energy_required = 18,

@@ -127,7 +127,7 @@ local recipe = {
     name = "cubeine-railgun-turret",
     enabled = false,
     energy_required = 60,
-    category = "metallurgy",
+    categories = { "metallurgy" },
     ingredients = {
         { type = "item", name = "railgun-turret",     amount = 1 },
         { type = "item", name = "refined-concrete", amount = 1000 },

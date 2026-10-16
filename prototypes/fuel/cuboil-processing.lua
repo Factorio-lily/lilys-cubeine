@@ -5,7 +5,7 @@ data:extend({
         enabled = false,
         energy_required = 10,
         emissions_multiplier = 10,
-        category = (mods["Age-of-Production"] and "petrochemistry-or-oil-processing" or "oil-processing"),
+        categories = { "oil-processing", (mods["Age-of-Production"] and "petrochemistry" or nil) },
         ingredients = {
             { type = "fluid", name = "light-oil", amount = 50 },
             { type = "fluid", name = "heavy-oil", amount = 250 },

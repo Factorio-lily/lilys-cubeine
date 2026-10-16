@@ -19,7 +19,7 @@ local raw_slurry = {
     results = {
         { type = "fluid", name = "raw-cubeplant-slurry", amount = 600 },
     },
-    category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
+    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
     main_product = "raw-cubeplant-slurry",
     allow_productivity = true
 }
@@ -47,7 +47,7 @@ local filtered_slurry = {
         { type = "fluid", name = "filtered-cubeplant-slurry", amount = 600 },
         { type = "item", name = "cubeslurry-filter-dirty",         amount = 1, ignored_by_stats = 1},
     },
-    category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
+    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
     main_product = "filtered-cubeplant-slurry",
     allow_productivity = false
 
@@ -78,7 +78,7 @@ local pure_fluid = {
         { type = "fluid", name = "petroleum-gas",        amount = 960 },
         { type = "fluid", name = "lubricant",            amount = 180 },
     },
-    category = (mods["Age-of-Production"] and "petrochemistry-or-oil-processing" or "oil-processing"),
+    categories = { "oil-processing", (mods["Age-of-Production"] and "petrochemistry" or nil) },
     main_product = "pure-cubeplant-fluid",
     allow_productivity = true
 
@@ -108,10 +108,10 @@ local cubeine = {
     },
     results = {
         { type = "item", name = "cubeine-powder", amount = 1 },
-        { type = "item", name = "cubeslurry-filter", amount = 1, probability = 0.9, ignored_by_stats = 1 },
-        { type = "item", name = "cubeslurry-filter-dirty", amount = 1, probability = 0.1, ignored_by_stats = 1 },
+        { type = "item", name = "cubeslurry-filter", amount = 1, independent_probability = 0.9, ignored_by_stats = 1 },
+        { type = "item", name = "cubeslurry-filter-dirty", amount = 1, independent_probability = 0.1, ignored_by_stats = 1 },
     },
-    category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
+    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
     --main_product = "cubeine-powder",
     allow_productivity = true,
     order = "n[cubeine]-a[powder-extraction]"

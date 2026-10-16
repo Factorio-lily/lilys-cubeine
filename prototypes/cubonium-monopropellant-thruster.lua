@@ -392,7 +392,7 @@ local recipe = {
     results = {
         { type = "item", name = "cubonium-monopropellant-thruster", amount = 1 },
     },
-    category = "cryogenics",
+    categories = { "cryogenics" },
     main_product = "cubonium-monopropellant-thruster",
     allow_productivity = false
 

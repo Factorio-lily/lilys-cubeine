@@ -161,7 +161,7 @@ local recipe = {
     results = {
         { type = "item", name = "cubeine-agricultural-tower", amount = 1 },
     },
-    category = "organic-or-assembling",
+    categories = { "organic", "crafting-with-fluid" },
     main_product = "cubeine-agricultural-tower",
     allow_productivity = false
 

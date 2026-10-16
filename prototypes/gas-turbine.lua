@@ -113,7 +113,9 @@ entity1.minable.result = "lilys-gas-turbine"
 entity1.effectivity = 2
 entity1.burns_fluid = true
 entity1.fluid_box.filter = "petroleum-gas"
-entity1.fluid_box.minimum_temperature = nil
+-- 2.1: FluidBox::minimum_temperature was removed -- the equivalent on a generator is the machine-level
+-- minimum_input_temperature, so clear that instead (no minimum input temperature for this turbine).
+entity1.minimum_input_temperature = nil
 entity1.icons = table.deepcopy(item1.icons)
 entity1.scale_fluid_usage = true
 entity1.fluid_usage_per_tick = entity1.fluid_usage_per_tick / 5
@@ -166,14 +168,16 @@ entity2.effectivity = 2
 entity2.burns_fluid = true
 entity2.fluid_box.pipe_covers = pipe_covers
 entity2.fluid_box.filter = "cubonium-gas"
-entity2.fluid_box.minimum_temperature = nil
+entity2.minimum_input_temperature = nil
 entity2.icons = table.deepcopy(item2.icons)
 entity2.scale_fluid_usage = true
 entity1.fluid_usage_per_tick = entity2.fluid_usage_per_tick / 5
 entity2.max_power_output = "36MW"
-entity2.horizontal_animation.layers[1].filename = 
+-- 2.1: GeneratorPrototype::horizontal_animation/vertical_animation were replaced by
+-- pictures = { north = {animation=...}, east = {animation=...} } (two_direction_only).
+entity2.pictures.east.animation.layers[1].filename =
 "__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/steam-turbine-H.png"
-entity2.vertical_animation.layers[1].filename =
+entity2.pictures.north.animation.layers[1].filename =
 "__lilys-cubeine-asset-pack__/graphics/entity/steam-turbine/steam-turbine-V.png"
 --[[entity2.horizontal_animation =
     {
@@ -257,7 +261,7 @@ data:extend({
         name = "lilys-gas-turbine",
         enabled = false,
         energy_required = 6,
-        category = "crafting-with-fluid",
+        categories = { "crafting-with-fluid" },
         ingredients = {
             { type = "item",  name = "iron-gear-wheel", amount = 50 },
             { type = "item",  name = "copper-plate",    amount = 50 },

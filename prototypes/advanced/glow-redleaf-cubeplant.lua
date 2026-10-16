@@ -12,7 +12,7 @@ data:extend({
                 scale = 0.25,
                 shift = { 6, 6 }
             }, },
-        category = "organic",
+        categories = { "organic" },
         subgroup = "cubeplant-processing",
         crafting_machine_tint = {
             primary = { r = 1.000, g = 0.235, b = 0.243, a = 1.000 }, -- #ffbba4ff

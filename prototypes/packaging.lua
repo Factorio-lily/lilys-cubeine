@@ -231,7 +231,7 @@ data:extend({
         {
             type = "craft-item",
             item = "cubeine-powder",
-            amount = 1000
+            count = 1000
         },
         effects =
         {

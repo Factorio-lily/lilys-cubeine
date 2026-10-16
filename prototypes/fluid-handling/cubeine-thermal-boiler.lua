@@ -1,7 +1,25 @@
 require("util")
 require("__base__/prototypes/entity/pipecovers")
 require("circuit-connector-sprites")
-require("__base__/prototypes/entity/assemblerpipes")
+-- 2.1: __base__/prototypes/entity/assemblerpipes.lua no longer exists. The only thing this file
+-- used from it was apply_heat_pipe_glow, which base now defines inside prototypes/entity/entities.lua.
+-- Define it locally so we don't depend on base's load order.
+local heated_pipes_tint = { 0.5, 0.4, 0.3, 0.5 }
+local heat_glow_tint = { 1, 1, 1, 1 }
+local function apply_heat_pipe_glow(layer)
+    layer.tint = heated_pipes_tint
+    local light_layer = util.copy(layer)
+    light_layer.draw_as_light = true
+    light_layer.tint = heat_glow_tint
+    return
+    {
+        layers =
+        {
+            layer,
+            light_layer
+        }
+    }
+end
 local hit_effects = require("__base__/prototypes/entity/hit-effects")
 local sounds = require("__base__/prototypes/entity/sounds")
 local movement_triggers = require("__base__/prototypes/entity/movement-triggers")
@@ -433,7 +451,7 @@ data:extend {
             { type = "fluid", name = "steam",                    amount = 1000, temperature = 1000 },
             { type = "fluid", name = "residue-cubeine-solution", amount = 100,  temperature = 1000 },
         },
-        category = "cubeine-boiling",
+        categories = { "cubeine-boiling" },
         main_product = "steam",
         allow_productivity = false,
         hidden = true
@@ -459,7 +477,7 @@ data:extend {
         results = {
             { type = "item", name = "cubeine-thermal-boiler", amount = 1 },
         },
-        category = "advanced-crafting",
+        categories = { "advanced-crafting" },
         main_product = "cubeine-thermal-boiler",
         allow_productivity = false,
         order = "c[cubeine]-b[boiler-fluid]",

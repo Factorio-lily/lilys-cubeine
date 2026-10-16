@@ -33,7 +33,7 @@ local blukubeine = {
     stack_size = 1,
     default_import_location = "cubium",
     weight = 1000 * kg,
-    fuel_category = "cubic",
+    fuel_categories = { "cubic" },
     fuel_value = "0.1TJ",
     burnt_result = "depleted-blukubeine-crystal",
     fuel_acceleration_multiplier = 30,
@@ -100,7 +100,7 @@ local inversion = {
         { type = "item", name = "blukubeine-crystal",         amount = 1 },
         { type = "item", name = "inverted-dormant-microcube", amount = 6, ignored_by_productivity = 100 },
     },
-    category = "cubic",
+    categories = { "cubic" },
     order = "n[cubeine]-k[nukubeine-inversion]",
     main_product = "blukubeine-crystal",
     allow_productivity = false
@@ -139,7 +139,7 @@ local recharging_hot = {
     results = {
         { type = "item", name = "blukubeine-crystal", amount = 1 },
     },
-    category = "organic",
+    categories = { "organic" },
     order = "n[cubeine]-x[blukubeine-hot-charging]",
     main_product = "blukubeine-crystal",
     allow_productivity = false
@@ -178,7 +178,7 @@ local recharging_cold = {
     results = {
         { type = "item", name = "blukubeine-crystal", amount = 1 },
     },
-    category = "organic",
+    categories = { "organic" },
     order = "n[cubeine]-x[blukubeine-cold-charging]",
     main_product = "blukubeine-crystal",
     allow_productivity = false
@@ -207,7 +207,7 @@ local cubonium = {
         { type = "item",  name = "inverted-dormant-microcube",  amount = 1,   ignored_by_productivity = 100 },
         { type = "fluid", name = "liquid-cubonium",             amount = 3000 },
     },
-    category = "organic",
+    categories = { "organic" },
     order = "n[cubeine]-z[blukubeine-cubonium-extraction]",
     main_product = "liquid-cubonium",
     allow_productivity = true
@@ -236,7 +236,7 @@ local azure = {
         { type = "item",  name = "dormant-microcube",           amount = 1,   ignored_by_productivity = 100 },
         { type = "fluid", name = "liquid-azure",                amount = 3000 },
     },
-    category = "organic",
+    categories = { "organic" },
     order = "n[cubeine]-z[blukubeine-azure-extraction]",
     main_product = "liquid-azure",
     allow_productivity = true
@@ -263,7 +263,7 @@ local purification = {
         { type = "item",  name = "depleted-blukubeine-crystal", amount = 1,   ignored_by_productivity = 100 },
         { type = "fluid", name = "purification-fluid",          amount = 3000 },
     },
-    category = "organic",
+    categories = { "organic" },
     order = "n[cubeine]-z[blukubeine-purification-extraction]",
     main_product = "purification-fluid",
     allow_productivity = true

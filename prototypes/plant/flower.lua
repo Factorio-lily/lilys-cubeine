@@ -14,7 +14,7 @@ local item = {
     drop_sound = space_age_item_sounds.agriculture_inventory_move,
     stack_size = 10,
     weight = 10 * kg,
-    fuel_category = "chemical",
+    fuel_categories = { "chemical" },
     fuel_value = "100kJ",
     fuel_emissions_multiplier = 10
 }
@@ -24,7 +24,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeplant-flower",
-        category = "organic-or-assembling",
+        categories = { "organic", "crafting" },
         subgroup = "cubeplant-processing",
         crafting_machine_tint = {
             primary = { r = 1.000, g = 0.735, b = 0.643, a = 1.000 },    -- #ffbba4ff
@@ -86,7 +86,7 @@ local item_super = {
     drop_sound = space_age_item_sounds.agriculture_inventory_move,
     stack_size = 10,
     weight = 10 * kg,
-    fuel_category = "chemical",
+    fuel_categories = { "chemical" },
     fuel_value = "100kJ",
     fuel_emissions_multiplier = 10
 }
@@ -96,7 +96,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeplant-flower-super",
-        category = "organic",
+        categories = { "organic" },
         subgroup = "cubeplant-processing",
         crafting_machine_tint = {
             primary = { r = 1.000, g = 0.735, b = 0.643, a = 1.000 }, -- #ffbba4ff
@@ -159,7 +159,7 @@ if mods["cubium"] then
         drop_sound = space_age_item_sounds.agriculture_inventory_move,
         stack_size = 10,
         weight = 10 * kg,
-        fuel_category = "chemical",
+        fuel_categories = { "chemical" },
         fuel_value = "100kJ",
         fuel_emissions_multiplier = 0.1
     }
@@ -169,7 +169,7 @@ if mods["cubium"] then
         {
             type = "recipe",
             name = "cubeplant-flower-blue-lava",
-            category = "organic",
+            categories = { "organic" },
             subgroup = "cubeplant-processing",
             crafting_machine_tint = {
                 primary = { r = 0.643, g = 0.735, b = 1, a = 1.000 }, -- #ffbba4ff
@@ -194,7 +194,7 @@ if mods["cubium"] then
         {
             type = "recipe",
             name = "cubeplant-flower-blue",
-            category = "organic",
+            categories = { "organic" },
             subgroup = "cubeplant-processing",
             crafting_machine_tint = {
                 primary = { r = 0.643, g = 0.735, b = 1, a = 1.000 },    -- #ffbba4ff

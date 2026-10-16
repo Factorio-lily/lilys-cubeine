@@ -250,7 +250,7 @@ local recipe = {
         { type = "item", name = "purification-tower",         amount = 1 },
         { type = "item", name = "inverted-dormant-microcube", amount = 1, ignored_by_productivity = 100 },
     },
-    category = "advanced-crafting",
+    categories = { "advanced-crafting" },
     main_product = "purification-tower",
     allow_productivity = false,
     --preserve_products_in_machine_output = true,
@@ -282,7 +282,7 @@ local operation_recipe = {
     results = {
 
     },
-    category = "purification",
+    categories = { "purification" },
     allow_productivity = true,
     allow_quality = false,
     --preserve_products_in_machine_output = true,

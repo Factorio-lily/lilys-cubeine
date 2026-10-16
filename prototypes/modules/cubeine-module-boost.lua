@@ -222,7 +222,7 @@ local function create_oc_recipe(module, level)
         subgroup = is_degraded and "module-degraded-overclocked" or "module-overclocked",
         enabled = false,
         energy_required = level * module.tier,
-        category = mods["lilys-injector"] and "injection" or "crafting-with-fluid",
+        categories = { mods["lilys-injector"] and "injection" or "crafting-with-fluid" },
         ingredients = {
             { type = "item",  name = module.name,        amount = 1 },
             { type = "fluid", name = "cubeine-solution", amount = 10 * module.tier * level * level * (is_degraded and 2 or 1) }

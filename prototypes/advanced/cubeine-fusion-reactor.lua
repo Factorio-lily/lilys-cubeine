@@ -247,7 +247,8 @@ local generator2 = table.deepcopy(generator)
 generator2.name = generator2.name.."-cold"
 generator2.order = "mc[cubeine-fusion-energy]-c[generator-cold]"
 generator2.minable.result = generator2.minable.result .. "-cold"
-generator2.input_fluid_box.maximum_temperature = 1001000
+    -- 2.1: FluidBox::maximum_temperature was removed; generator/reactor temperature limits now live on
+    -- the fluid itself (see cubeine-fusion-plasma max_temperature), so there is nothing to set here.
 generator2.energy_source.usage_priority = "primary-output"
 generator2.energy_source =
 {
@@ -266,7 +267,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeine-fusion-reactor",
-        category = "cryogenics",
+        categories = { "cryogenics" },
         energy_required = 60,
         enabled = false,
         ingredients =
@@ -291,7 +292,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeine-fusion-generator",
-        category = "cryogenics",
+        categories = { "cryogenics" },
         energy_required = 60,
         enabled = false,
         ingredients =
@@ -418,7 +419,7 @@ local solution = {
         { type = "fluid", name = "steam", temperature = 1000, amount = 4500 },
 
     },
-    category = "chemistry-or-cryogenics",
+    categories = { "chemistry", "cryogenics" },
     main_product = "steam",
     allow_productivity = false
 
@@ -460,7 +461,7 @@ local solution2 = {
         { type = "fluid", name = "water", amount = 450 },
 
     },
-    category = "cryogenics",
+    categories = { "cryogenics" },
     main_product = "water",
     allow_productivity = false
 

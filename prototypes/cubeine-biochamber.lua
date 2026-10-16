@@ -136,7 +136,7 @@ local biochamber = {
         fade_out_ticks = 20
     },
     heating_energy = "100kW",
-    crafting_categories = { "organic", "organic-or-hand-crafting", "organic-or-assembling", "organic-or-chemistry" },
+    crafting_categories = { "organic", "organic", "hand-crafting", "organic", "crafting", "organic", "chemistry" },
     fluid_boxes_off_when_no_fluid_recipe = true,
     fluid_boxes =
     {
@@ -253,7 +253,7 @@ local recipe = {
     results = {
         { type = "item", name = "cubeine-biochamber", amount = 1 },
     },
-    category = "organic-or-assembling",
+    categories = { "organic", "crafting-with-fluid" },
     main_product = "cubeine-biochamber",
     allow_productivity = false
 

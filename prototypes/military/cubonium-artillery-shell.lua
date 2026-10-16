@@ -273,7 +273,7 @@ data:extend({
         {
             type = "craft-item",
             item = "liquid-cubonium-barrel",
-            amount = 10
+            count = 10
         },
         effects =
         {

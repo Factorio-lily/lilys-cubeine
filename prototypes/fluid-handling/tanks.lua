@@ -125,7 +125,7 @@ local tank_r = {
         { type = "item", name = "cubeine-storage-tank", amount = 1 },
 
     },
-    category = "metallurgy-or-assembling",
+    categories = { "metallurgy", "crafting" },
     main_product = "cubeine-storage-tank",
     allow_productivity = false,
     allow_quality = true,
@@ -162,7 +162,7 @@ if mods["zithorian-extra-storage-tanks-port"] then
         results = {
             { type = "item", name = "cubeine-zith-storage-tank-1x1", amount = 1 },
         },
-        category = "metallurgy-or-assembling",
+        categories = { "metallurgy", "crafting" },
         main_product = "cubeine-zith-storage-tank-1x1",
         allow_productivity = false,
         allow_quality = true,
@@ -197,7 +197,7 @@ if mods["zithorian-extra-storage-tanks-port"] then
                 { type = "item", name = "cubeine-zith-storage-tank-2x2", amount = 1 },
 
             },
-            category = "metallurgy-or-assembling",
+            categories = { "metallurgy", "crafting" },
             main_product = "cubeine-zith-storage-tank-2x2",
             allow_productivity = false,
             allow_quality = true,
@@ -231,7 +231,7 @@ if mods["zithorian-extra-storage-tanks-port"] then
                 { type = "item", name = "cubeine-zith-storage-tank-3x4", amount = 1 },
 
             },
-            category = "metallurgy-or-assembling",
+            categories = { "metallurgy", "crafting" },
             main_product = "cubeine-zith-storage-tank-3x4",
             allow_productivity = false,
             allow_quality = true,
@@ -266,7 +266,7 @@ if mods["zithorian-extra-storage-tanks-port"] then
                 { type = "item", name = "cubeine-zith-storage-tank-5x5", amount = 1 },
 
             },
-            category = "metallurgy-or-assembling",
+            categories = { "metallurgy", "crafting" },
             main_product = "cubeine-zith-storage-tank-5x5",
             allow_productivity = false,
             allow_quality = true,

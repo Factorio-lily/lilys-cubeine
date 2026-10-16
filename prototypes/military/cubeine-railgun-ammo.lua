@@ -62,7 +62,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeine-railgun-ammo",
-        category = "advanced-crafting",
+        categories = { "advanced-crafting" },
         subgroup = "ammo",
         crafting_machine_tint = {
             primary = { r = 1, g = 0.5, b = 0.643, a = 1.000 },    -- #ff99a4ff
@@ -96,7 +96,7 @@ data:extend({
         {
             type = "craft-item",
             item = "railgun-ammo",
-            amount = 10
+            count = 10
         },
         effects =
         {

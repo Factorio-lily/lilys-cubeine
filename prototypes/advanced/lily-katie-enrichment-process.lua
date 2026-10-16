@@ -19,15 +19,16 @@ local recipe = {
         { type = "fluid", name = "pure-cubeplant-fluid", amount = 10000, ignored_by_stats = 1000 },
         { type = "fluid", name = "petroleum-gas",        amount = 4000,  ignored_by_stats = 2000 },
     },
+    -- 2.1: RecipePrototype::result_is_always_fresh moved onto each item product as always_fresh
     results = {
-        { type = "item",  name = "nukubeine-crystal",    amount = 1,     ignored_by_stats = 1,     ignored_by_productivity = 100 },
+        { type = "item", always_fresh = true,  name = "nukubeine-crystal",    amount = 1,     ignored_by_stats = 1,     ignored_by_productivity = 100 },
         { type = "fluid", name = "pure-cubeplant-fluid", amount = 10200, ignored_by_stats = 10000, ignored_by_productivity = 10000 },
         { type = "fluid", name = "petroleum-gas",        amount = 2000,  ignored_by_stats = 2000,  ignored_by_productivity = 10000 },
-        { type = "item",  name = "ice",                  amount = 100 },
-        { type = "item",  name = "spoilage",             amount = 200 },
+        { type = "item", always_fresh = true,  name = "ice",                  amount = 100 },
+        { type = "item", always_fresh = true,  name = "spoilage",             amount = 200 },
         { type = "fluid", name = "lubricant",            amount = 200 },
     },
-    category = "cryogenics",
+    categories = { "cryogenics" },
     main_product = "pure-cubeplant-fluid",
     crafting_machine_tint = {
         primary = { r = 1, g = 0.00, b = 0.0, a = 1.000 },           --#ff0000
@@ -40,7 +41,6 @@ local recipe = {
     auto_recycle = false,
     hide_from_signal_gui = false,
     show_amount_in_title = false,
-    result_is_always_fresh = true,
     preserve_products_in_machine_output = true,
     order = "n[cubeine]-l-k[enrichment]"
 }

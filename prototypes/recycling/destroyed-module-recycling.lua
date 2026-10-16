@@ -1,5 +1,11 @@
-if mods["quality"] then
-    local recycling = require("__quality__/prototypes/recycling.lua")
+if mods["quality"] and mods["recycler"] then
+    local function has_category(recipe, category)
+        for _, c in pairs(recipe.categories or {}) do
+            if c == category then return true end
+        end
+        return false
+    end
+    local recycling = require("__recycler__.recycling")
 
     local destroyed_modules = {}
 
@@ -11,7 +17,7 @@ if mods["quality"] then
 
     local allrecipes = data.raw["recipe"]
     for name, recipe in pairs(allrecipes) do
-        if recipe.category == "recycling" and recipe.ingredients and recipe.ingredients[1] then
+        if has_category(recipe, "recycling") and recipe.ingredients and recipe.ingredients[1] then 
             if (string.find(recipe.ingredients[1].name, "module") ~= nil) and (string.find(recipe.ingredients[1].name, "destroyed") ~= nil) then
                 local original_name = string.gsub(recipe.ingredients[1].name, "%-destroyed", "")
                 local original_recipe = data.raw["recipe"][original_name .. "-recycling"]
@@ -29,7 +35,7 @@ if mods["quality"] then
     end
 
     for name, recipe in pairs(allrecipes) do
-        if recipe.category == "recycling" and recipe.ingredients and recipe.ingredients[1] then
+        if has_category(recipe, "recycling") and recipe.ingredients and recipe.ingredients[1] then 
             if (string.find(recipe.ingredients[1].name, "module") ~= nil) and (string.find(recipe.ingredients[1].name, "destroyed") ~= nil) then
                 local original_name = string.gsub(recipe.ingredients[1].name, "%-destroyed", "")
                 local original_recipe = data.raw["recipe"][original_name .. "-recycling"]

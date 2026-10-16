@@ -548,7 +548,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeine-giga-thermal-drill",
-        category = "metallurgy",
+        categories = { "metallurgy" },
         energy_required = 60,
         enabled = false,
         ingredients =

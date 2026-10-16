@@ -132,7 +132,7 @@ local pipe_r = {
         { type = "item", name = "cubeine-pipe", amount = 1 },
 
     },
-    category = "metallurgy-or-assembling",
+    categories = { "metallurgy", "crafting" },
     main_product = "cubeine-pipe",
     allow_productivity = false,
     allow_quality = true,
@@ -156,7 +156,7 @@ local pipe_to_ground_r = {
         { type = "item", name = "cubeine-pipe-to-ground", amount = 1 },
 
     },
-    category = "metallurgy-or-assembling",
+    categories = { "metallurgy", "crafting" },
     main_product = "cubeine-pipe-to-ground",
     allow_productivity = false,
     allow_quality = true,

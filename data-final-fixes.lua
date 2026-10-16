@@ -1,5 +1,13 @@
 
 
+-- 2.1 validates that a recipe's fluid temperature is inside the fluid's own range. The cubeine thermal
+-- boiler makes superheated steam at 1000 C, so lift steam's cap to match (same trick this mod already
+-- uses for cubeine-fusion-plasma).
+if data.raw["fluid"]["steam"] then
+    data.raw["fluid"]["steam"].max_temperature = math.max(data.raw["fluid"]["steam"].max_temperature, 1000)
+end
+
+
 if mods["se-space-trains"] then
     
     local battery_discharged = data.raw["item"]["space-train-discharged-battery-pack"]
@@ -60,7 +68,8 @@ for name, value in pairs(data.raw["item"]) do
             value.fuel_top_speed_multiplier = 1
             value.burnt_result = "barrel"
             value.fuel_value = tostring(50 * util.parse_energy(fluid.fuel_value) / 1000) .. "kJ"
-            value.fuel_category = "chemical"
+            -- 2.1: ItemPrototype::fuel_category was renamed to fuel_categories (a table)
+            value.fuel_categories = { "chemical" }
         end
 
 

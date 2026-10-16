@@ -371,7 +371,7 @@ local recipe = {
     results = {
         { type = "item", name = "cubeine-thruster", amount = 1 },
     },
-    category = "advanced-crafting",
+    categories = { "advanced-crafting" },
     --main_product = "cubeine-assembler",
     allow_productivity = false
 
@@ -401,7 +401,7 @@ local fuel = {
     results = {
         { type = "fluid", name = "cubeine-fuel", amount = 10000 },
     },
-    category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
+    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
     main_product = "cubeine-fuel",
     allow_productivity = false
 

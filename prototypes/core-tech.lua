@@ -13,7 +13,7 @@ data:extend({
         research_trigger =
         {
             type = "mine-entity",
-            entity = "redleaf-cubeplant"
+            entities = { "redleaf-cubeplant" },
         },
         effects =
         {
@@ -39,7 +39,7 @@ data:extend({
         research_trigger =
         {
             type = "mine-entity",
-            entity = "redleaf-cubeplant"
+            entities = { "redleaf-cubeplant" },
         },
         effects =
         {
@@ -77,7 +77,7 @@ data:extend({
         {
             type = "craft-item",
             item = "cubeine-powder",
-            amount = 100
+            count = 100
         },
         effects =
         {

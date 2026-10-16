@@ -632,7 +632,7 @@ local pump_turbo_r = {
 
     },
     main_product = "cubeine-turbo-pump",
-    category = "crafting-with-fluid",
+    categories = { "crafting-with-fluid" },
     allow_productivity = false,
     allow_quality = true,
     hide_from_signal_gui = false,
@@ -800,7 +800,7 @@ local pump_turbovac_r = {
         { type = "item", name = "cubeine-turbovac-pump", amount = 1 },
 
     },
-    category = "crafting-with-fluid",
+    categories = { "crafting-with-fluid" },
     main_product = "cubeine-turbovac-pump",
     allow_productivity = false,
     allow_quality = true,

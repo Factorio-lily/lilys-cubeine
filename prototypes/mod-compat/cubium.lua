@@ -28,7 +28,7 @@ local raw_slurry = {
     results = {
         { type = "fluid", name = "acidic-cubeplant-slurry", amount = 600 },
     },
-    category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
+    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
     main_product = "acidic-cubeplant-slurry",
     allow_productivity = true
 }
@@ -55,8 +55,7 @@ local slurry_neutralization = {
         { type = "item", name = "cubeine-jelly", amount = 20 },
         { type = "fluid", name = "water", amount = 200 },
     },
-    category = "chemistry",
-    additional_categories = { "organic" },
+    categories = { "chemistry", "organic" },
     main_product = "cubeine-jelly",
     allow_productivity = true
 }
@@ -70,7 +69,7 @@ local jelly = {
     inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
     pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
     drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    fuel_category = "chemical",
+    fuel_categories = { "chemical" },
     fuel_value = "1MJ",
     stack_size = 100,
     default_import_location = "cubium",
@@ -101,7 +100,7 @@ local cube_forging = {
         { type = "item", name = "cubeine-crystal",   amount = 1 },
         { type = "item", name = "dormant-microcube", amount = 1, ignored_by_productivity = 100 },
     },
-    category = "cubic",
+    categories = { "cubic" },
     order = "n[cubeine]-e[crystal-jellyforging]",
     main_product = "cubeine-crystal",
     allow_productivity = true

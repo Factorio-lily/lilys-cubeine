@@ -350,7 +350,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubeine-plasma-furnace",
-        category = "metallurgy",
+        categories = { "metallurgy" },
         energy_required = 60,
         enabled = false,
         ingredients =

@@ -21,7 +21,7 @@ local solution = {
     results = {
         { type = "fluid", name = "cubeine-solution", amount = 120 },
     },
-    category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
+    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
     main_product = "cubeine-solution",
     allow_productivity = false
 

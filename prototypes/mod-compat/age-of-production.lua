@@ -17,7 +17,7 @@ local greenhouse_recipe = {
         { type = "item", name = "cubeplant-branch", amount = 200 },
     },
     allow_productivity = false,
-    category = "agriculture",
+    categories = { "agriculture" },
     auto_recycle = false,
     show_amount_in_title = false,
     surface_conditions = { { property = "pressure", min = 500, max = 3000 } },

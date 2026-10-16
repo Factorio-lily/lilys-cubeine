@@ -183,7 +183,7 @@ data:extend({
     {
         type = "recipe",
         name = "cubonium-cannon-shell",
-        category = "advanced-crafting",
+        categories = { "advanced-crafting" },
         subgroup = "ammo",
         crafting_machine_tint = {
             primary = { r = 1.0, g = 0.735, b = 0.643, a = 1.000 },    -- #ffbba4ff

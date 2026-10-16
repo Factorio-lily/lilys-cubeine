@@ -25,7 +25,7 @@ local purification = {
         { type = "item",  name = "cubeine-powder", amount_min = 4, amount_max = 5,               ignored_by_stats = 5, ignored_by_productivity = 100 },
         { type = "fluid", name = "water",          amount = 90,    ignored_by_productivity = 100 },
     },
-    category = mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry",
+    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
     --main_product = "cubeine-powder",
     allow_productivity = false,
     allow_quality = true,

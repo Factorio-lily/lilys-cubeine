@@ -157,7 +157,7 @@ local battery_fried = {
 local crafting_battery = {
     type = "recipe",
     name = "cubeine-space-train-battery-pack",
-    category = "electromagnetics",
+    categories = { "electromagnetics" },
     energy_required = 10,
     enabled = false,
     allow_as_intermediate = false,
@@ -182,7 +182,7 @@ local crafting_charger = {
     name = "cubeine-space-train-battery-charging-station",
     energy_required = 30,
     enabled = false,
-    category = "electromagnetics",
+    categories = { "electromagnetics" },
     ingredients = {
         { type = "item", name = "space-train-battery-charging-station", amount = 1 },
         { type = "item", name = "cubeine-crystal", amount = 5 },
@@ -197,7 +197,7 @@ local crafting_charger = {
 local charging = {
   type = "recipe",
   name = "cubeine-space-train-battery-pack-recharge",
-  category = "electrical",
+  categories = { "electrical" },
   hidden = true,
   energy_required = 30,
   enabled = false,
@@ -228,13 +228,13 @@ local charging = {
     {
       type = "item",
       name = "cubeine-space-train-destroyed-battery-pack",
-      probability = 0.2,
+      independent_probability = 0.2,
       amount = 1
     },
     {
       type = "item",
       name = "cubeine-space-train-battery-pack",
-      probability = 0.8,
+      independent_probability = 0.8,
       amount = 1
     }
   }
@@ -245,7 +245,7 @@ local repair = {
     name = "cubeine-space-train-battery-pack-refurbish",
     energy_required = 10,
     enabled = false,
-    category = "chemistry",
+    categories = { "chemistry" },
     crafting_machine_tint = {
         primary = { r = 1, g = 0.169, b = 0.169, a = 1.000 },    --#ff2b2b
         secondary = { r = 1, g = 0.067, b = 0.067, a = 1.000 },  --#ff1111
@@ -398,7 +398,7 @@ local crafting_discharger = {
     name = "cubeine-space-train-battery-discharging-station",
     energy_required = 30,
     enabled = false,
-    category = "electromagnetics",
+    categories = { "electromagnetics" },
     ingredients = {
         { type = "item",  name = "space-train-battery-charging-station", amount = 1 },
         { type = "item",  name = "cubeine-crystal",                      amount = 5 },

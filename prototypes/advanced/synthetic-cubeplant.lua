@@ -18,19 +18,19 @@ local recipe = {
         { type = "fluid", name = "heavy-oil",         amount = 1000, },
         { type = "fluid", name = "fluoroketone-cold", amount = 1000, ignored_by_stats = 1000 },
     },
+    -- 2.1: RecipePrototype::result_is_always_fresh moved onto each item product as always_fresh
     results = {
-        { type = "item",  name = "cubeplant-branch", amount = 40, },
-        { type = "item",  name = "spoilage",         amount = 50 },
+        { type = "item", always_fresh = true,  name = "cubeplant-branch", amount = 40, },
+        { type = "item", always_fresh = true,  name = "spoilage",         amount = 50 },
         { type = "fluid", name = "fluoroketone-hot", amount = 1000, ignored_by_stats = 1000, ignored_by_productivity = 10000 },
     },
-    category = "cryogenics",
+    categories = { "cryogenics" },
     main_product = "cubeplant-branch",
     allow_productivity = true,
     allow_quality = true,
     auto_recycle = false,
     hide_from_signal_gui = false,
     show_amount_in_title = false,
-    result_is_always_fresh = true,
     preserve_products_in_machine_output = true,
     order = "n[cubeine]-s[synthesis]"
 }

@@ -592,7 +592,7 @@ local recipe = {
     results = {
         { type = "item", name = "cubeine-combustion-center", amount = 1 },
     },
-    category = "advanced-crafting",
+    categories = { "advanced-crafting" },
     main_product = "cubeine-combustion-center",
     allow_productivity = false,
     --preserve_products_in_machine_output = true,
@@ -622,7 +622,7 @@ local pipe_recipe = {
     results = {
         { type = "item", name = "cubeine-heat-pipe", amount = 1 },
     },
-    category = "cryogenics",
+    categories = { "cryogenics" },
     allow_productivity = false,
     --preserve_products_in_machine_output = true,
     order = "nk[nukubeine]-b[heat-pipe]",
