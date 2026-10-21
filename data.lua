@@ -59,17 +59,23 @@ if mods["cubium"] then
     require("prototypes.mod-compat.cubium")
 end
 
+-- bioprocessing-tab is optional: it defines the "bioprocessing" item group, which vanilla does not
+-- have (base groups: logistics, production, intermediate-products, combat, fluids, signals, ...).
+-- Without it these subgroups must land somewhere that exists, so fall back to intermediate products
+-- -- the group cubeine-products already uses.
+local cubeine_process_group = mods["bioprocessing-tab"] and "bioprocessing" or "intermediate-products"
+
 data:extend({
     {
         type = "item-subgroup",
         name = "cubeplant-processing",
-        group = "bioprocessing",
+        group = cubeine_process_group,
         order = "k"
     },
     {
         type = "item-subgroup",
         name = "cubeine-processes",
-        group = "bioprocessing",
+        group = cubeine_process_group,
         order = "l"
     },
     {
