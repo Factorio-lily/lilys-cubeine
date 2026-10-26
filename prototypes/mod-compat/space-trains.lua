@@ -121,6 +121,13 @@ battery_charged.pictures = {
 battery_charged.order = "s-aa[cubeine-battery-pack]"
 battery_charged.fuel_acceleration_multiplier = 2
 battery_charged.fuel_top_speed_multiplier = 1.6
+-- se-space-trains only assigns the fuel category in its own data-updates stage (2.1.20 renamed
+-- the field to the fuel_categories table), and we copy the prototype one stage earlier in
+-- data.lua -- so the copy would keep fuel_value with no category and 2.1 rejects it. Our own
+-- explicit category makes the copy self-sufficient; data-final-fixes syncs it back to the source.
+battery_charged.fuel_categories = battery_charged.fuel_categories
+    or (battery_charged.fuel_category and { battery_charged.fuel_category })
+    or { "electrical" }
 battery_charged.burnt_result = "cubeine-space-train-discharged-battery-pack"
 battery_charged.spoil_ticks = hour
 battery_charged.spoil_result = battery_discharged.name

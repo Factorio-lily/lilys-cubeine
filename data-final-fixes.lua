@@ -16,9 +16,16 @@ if mods["se-space-trains"] then
     c_battery_discharged.weight = battery_discharged.weight
 
     local battery_charged = data.raw["item"]["space-train-battery-pack"]
-    local c_battery_charged = data.raw["item"]["space-train-battery-pack"]
+    local c_battery_charged = data.raw["item"]["cubeine-space-train-battery-pack"]
 
     c_battery_charged.weight = battery_charged.weight
+    c_battery_charged.fuel_value = battery_charged.fuel_value
+    -- se-space-trains sets the category in its data-updates stage, i.e. after we copied the item
+    -- in data.lua; re-copy it here (2.1 rejects fuel_value with no fuel_categories).
+    c_battery_charged.fuel_categories = battery_charged.fuel_categories
+        or (battery_charged.fuel_category and { battery_charged.fuel_category })
+        or c_battery_charged.fuel_categories
+        or { "electrical" }
 
     local battery_fried = data.raw["item"]["space-train-destroyed-battery-pack"]
     local c_battery_fried = data.raw["item"]["cubeine-space-train-destroyed-battery-pack"]

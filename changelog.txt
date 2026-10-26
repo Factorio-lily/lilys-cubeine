@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.4.5
+Date: 2026-10-26
+  Changes:
+    - Fixed a load error with SE Space Trains on Factorio 2.1.20+: the Cubeine battery pack now declares its own fuel category, so the mod no longer gets disabled at startup
+    - The Cubeine battery pack now follows the base space battery's energy density setting and weight again
+---------------------------------------------------------------------------------------------------
 Version: 2.4.4
 Date: 2026-10-26
   Changes:
