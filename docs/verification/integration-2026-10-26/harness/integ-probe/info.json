@@ -1,0 +1,9 @@
+{
+  "name": "integ-probe",
+  "version": "1.0.0",
+  "title": "Cubeine integration probe",
+  "author": "Hermes",
+  "description": "Scratch harness: builds a showcase scene and photographs the re-mastered buildings at three zoom levels.",
+  "factorio_version": "2.1",
+  "dependencies": ["lilys-cubeine"]
+}

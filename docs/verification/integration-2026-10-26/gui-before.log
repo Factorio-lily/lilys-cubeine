@@ -1,0 +1,55 @@
+   5.338 Loading mod lilys-injector 1.1.1 (data.lua)
+   5.726 Loading mod runtime-spoilage-engine 1.0.2 (data.lua)
+   7.088 Loading mod lilys-cubeine 2.4.3 (data.lua)
+   7.533 Loading mod lilys-injector 1.1.1 (data-updates.lua)
+   7.614 Loading mod runtime-spoilage-engine 1.0.2 (data-updates.lua)
+   7.675 Loading mod lilys-cubeine 2.4.3 (data-updates.lua)
+   7.729 Loading mod runtime-spoilage-engine 1.0.2 (data-final-fixes.lua)
+   7.768 Loading mod lilys-cubeine 2.4.3 (data-final-fixes.lua)
+   9.464 Prototype list checksum: 2100032126
+  28.505 Created an atlas bitmap (size 16384x16192) [none]
+  28.524 Created an atlas bitmap (size 16384x16380) [none]
+  28.545 Created an atlas bitmap (size 16384x16384) [none]
+  28.619 Created an atlas bitmap (size 16384x16380) [none]
+  28.632 Created an atlas bitmap (size 16384x16364) [none]
+  28.633 Created an atlas bitmap (size 16384x5012) [none]
+  28.636 Created an atlas bitmap (size 16384x16224) [low-object]
+  28.641 Created an atlas bitmap (size 16384x16324) [corpse-decay]
+  28.641 Created an atlas bitmap (size 4096x2804) [corpse-decay]
+  28.642 Created an atlas bitmap (size 16384x9336) [decal]
+  28.642 Created an atlas bitmap (size 16384x5956) [none]
+  28.643 Created an atlas bitmap (size 8192x2800) [none]
+  28.643 Created an atlas bitmap (size 16384x3436) [procession-cover, linear-minification, linear-magnification]
+  28.644 Created an atlas bitmap (size 4096x1392) [none]
+  28.644 Created an atlas bitmap (size 3352x79) [not-compressed]
+  28.645 Created an atlas bitmap (size 16384x4368) [mipmap, linear-minification, linear-magnification, linear-mip-level]
+  28.646 Created an atlas bitmap (size 8192x2832) [smoke, mipmap, linear-minification, linear-magnification]
+  28.666 Created an atlas bitmap (size 16384x16368) [terrain, mipmap, linear-minification, linear-mip-level]
+  28.668 Created an atlas bitmap (size 16384x10752) [terrain, mipmap, linear-minification, linear-mip-level]
+  28.669 Created an atlas bitmap (size 8192x6192) [terrain-effect-map, mipmap, linear-minification, linear-mip-level]
+  28.670 Created an atlas bitmap (size 8192x2800) [mipmap]
+  28.671 Created an atlas bitmap (size 8192x4544) [mipmap]
+  28.672 Created an atlas bitmap (size 8192x3408) [mipmap]
+  28.672 Created an atlas bitmap (size 3504x768) [mipmap]
+  28.672 Created an atlas bitmap (size 4096x3152) [mipmap]
+  28.673 Created an atlas bitmap (size 4096x3152) [mipmap]
+  28.673 Created an atlas bitmap (size 4096x3152) [mipmap]
+  28.675 Created an atlas bitmap (size 8192x4352) [icon, not-compressed, mipmap, linear-minification, linear-magnification, linear-mip-level, ]
+  28.681 Created an atlas bitmap (size 16384x10268) [alpha-mask]
+  28.759 Created an atlas bitmap (size 16384x16348) [shadow, linear-magnification, alpha-mask]
+  28.781 Created an atlas bitmap (size 16384x16356) [shadow, linear-magnification, alpha-mask]
+  28.782 Created an atlas bitmap (size 16384x6724) [shadow, linear-magnification, alpha-mask]
+  28.782 Created an atlas bitmap (size 8192x5216) [shadow, mipmap, linear-magnification, alpha-mask]
+  28.784 Created an atlas bitmap (size 4096x360) [icon-background, not-compressed, mipmap, linear-minification, linear-magnification, linear-mip-level, ]
+  29.308 Parallel sprite loader initialized (threads: 7, bitmaps: 9190)
+ 129.601 Sprites loaded
+ 130.249 Estimated VRAM usage for textures: 4451.28 MB (Atlases: 4350.65 MB, Textures: 100.63 MB)
+ 130.249 Real VRAM usage for the whole program: 5109.95 MB
+ 134.077 Script @__integ-probe__/control.lua:46: [integprobe] shot drill zoom=1.00 path=integ/drill-z1.00.png ok=true 
+ 134.746 Script @__integ-probe__/control.lua:46: [integprobe] shot drill zoom=2.00 path=integ/drill-z2.00.png ok=true 
+ 135.411 Script @__integ-probe__/control.lua:46: [integprobe] shot drill zoom=4.00 path=integ/drill-z4.00.png ok=true 
+ 136.076 Script @__integ-probe__/control.lua:46: [integprobe] shot reactor zoom=1.00 path=integ/reactor-z1.00.png ok=true 
+ 136.744 Script @__integ-probe__/control.lua:46: [integprobe] shot reactor zoom=2.00 path=integ/reactor-z2.00.png ok=true 
+ 137.477 Script @__integ-probe__/control.lua:46: [integprobe] shot reactor zoom=4.00 path=integ/reactor-z4.00.png ok=true 
+ 138.143 Script @__integ-probe__/control.lua:46: [integprobe] shot scene zoom=1.00 path=integ/scene-z1.00.png ok=true 
+ 139.806 Script @__integ-probe__/control.lua:46: [integprobe] INTEG PROBE DONE

@@ -1,0 +1,98 @@
+{
+  "summary": {
+    "pack_disk_mb": [
+      418.0,
+      153.1
+    ],
+    "texture_vram_mb": [
+      4451.28,
+      4045.82
+    ],
+    "total_vram_mb": [
+      5109.95,
+      4699.09
+    ],
+    "atlas_gtexels": [
+      3.915,
+      3.619
+    ],
+    "atlas_pages": [
+      34,
+      33
+    ],
+    "sprite_load_s": [
+      100.29,
+      96.88
+    ],
+    "ram_peak_ws_mb": [
+      2284.2,
+      2267.8
+    ],
+    "ram_peak_private_mb": [
+      7748.1,
+      7113.4
+    ],
+    "gui_wall_s": [
+      140.4,
+      137.4
+    ]
+  },
+  "runs": {
+    "mid": {
+      "atlas_pages": 34,
+      "atlas_gtexels": 3.915,
+      "texture_vram_mb": 4451.28,
+      "total_vram_mb": 5109.95,
+      "sprite_load_start_s": 29.308,
+      "sprites_loaded_s": 129.601,
+      "pack_bytes": 438294669,
+      "pack_mb": 418.0,
+      "sprite_load_seconds": 100.29,
+      "gui_state": "done",
+      "wall_s": 140.4,
+      "ram_peak_ws_mb": 2284.2,
+      "ram_peak_private_mb": 7748.1,
+      "gpu": {
+        "gpu_process_peaks_mb": {
+          "1620": 507.7,
+          "14804": 280.6,
+          "17868": 222.3,
+          "936": 153.2
+        },
+        "gpu_game_peak_mb": 507.7,
+        "gpu_adapter_dedicated_peak_mb": 6675.7,
+        "gpu_adapter_dedicated_baseline_mb": 0.0,
+        "gpu_adapter_delta_mb": 6675.7
+      },
+      "errors": []
+    },
+    "after": {
+      "atlas_pages": 33,
+      "atlas_gtexels": 3.619,
+      "texture_vram_mb": 4045.82,
+      "total_vram_mb": 4699.09,
+      "sprite_load_start_s": 29.98,
+      "sprites_loaded_s": 126.859,
+      "pack_bytes": 160522729,
+      "pack_mb": 153.1,
+      "sprite_load_seconds": 96.88,
+      "gui_state": "done",
+      "wall_s": 137.4,
+      "ram_peak_ws_mb": 2267.8,
+      "ram_peak_private_mb": 7113.4,
+      "gpu": {
+        "gpu_process_peaks_mb": {
+          "1620": 507.7,
+          "14804": 280.6,
+          "17868": 236.6,
+          "26088": 200.7
+        },
+        "gpu_game_peak_mb": 507.7,
+        "gpu_adapter_dedicated_peak_mb": 6283.7,
+        "gpu_adapter_dedicated_baseline_mb": 0.0,
+        "gpu_adapter_delta_mb": 6283.7
+      },
+      "errors": []
+    }
+  }
+}
