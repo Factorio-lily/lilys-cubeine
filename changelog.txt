@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.4.4
+Date: 2026-10-26
+  Changes:
+    - Replaced the dead runtime-spoilage-library dependency with Runtime Spoilage Engine (runtime-spoilage-engine >= 1.0.2)
+    - Uninstall runtime-spoilage-library before updating - it and runtime-spoilage-engine cannot be enabled at the same time
+    - Module spoilage now registers through RSE; the same outcomes, chances and degraded results as before
+---------------------------------------------------------------------------------------------------
 Version: 2.4.3
 Date: 2026-10-22
   Changes:
