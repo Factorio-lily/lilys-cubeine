@@ -1,0 +1,5 @@
+  26.133 Script @__cubeine-spoil-probe__/control.lua:18: [spoilprobe] speed-module-3-overclocked-1: stack_size=50 placeholder=EXISTS
+  26.133 Script @__cubeine-spoil-probe__/control.lua:18: [spoilprobe] speed-module-3-overclocked-4: stack_size=50 placeholder=EXISTS
+  26.134 Script @__cubeine-spoil-probe__/control.lua:18: [spoilprobe] speed-module-3-degraded-overclocked-1: stack_size=50 placeholder=EXISTS
+  26.135 Script @__cubeine-spoil-probe__/control.lua:18: [spoilprobe] t=0 natural: speed-module-3-degraded-overclocked-1=50 speed-module-3-overclocked-1=50 speed-module-3-overclocked-4=50 [150 items]
+  26.135 Script @__cubeine-spoil-probe__/control.lua:18: [spoilprobe] t=0 forced : speed-module-3-degraded-overclocked-1=50 speed-module-3-overclocked-1=50 speed-module-3-overclocked-4=50 [150 items]

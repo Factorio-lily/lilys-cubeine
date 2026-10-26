@@ -1,6 +1,9 @@
 # Module spoilage: Runtime Spoilage Library → Runtime Spoilage Engine
 
-Status: implemented and verified on Factorio 2.1.23, uncommitted release step pending (see §6).
+Status: implemented and verified on Factorio 2.1.23. Commits
+`e276333` (code), `3628392` (this document), `31dd37a` (dead-comment cleanup)
+on top of `4ab16b6` "Release 2.4.3"; the version bump + packaging steps are still
+open (see §7).
 
 ## 1. Symptom
 
@@ -93,6 +96,11 @@ Results below 0.05 % therefore drop out of the table instead of being
 unreachable-but-present. A level-4 overclocked module still rolls
 `degraded 790 / destroyed 200 / hyper 10`; a level-1 rolls `base 800 / degraded 200`.
 
+Dropping RSL does not lose the machine-inventory plumbing it provided: RSL's
+`data-updates` widened `trash_inventory_size` to 5 for assembling machines and
+labs so results can be parked in the trash slot, and RSE's `data-updates` does the
+same.
+
 ## 5. Player-facing migration note
 
 > Cubeine now uses **Runtime Spoilage Engine**. Uninstall *Runtime Spoilage
@@ -113,7 +121,9 @@ changelog — and staged as a verified dependency in `_testenv/mods/`.
 ### 6a. Ship gate — `_tools/shipcheck.py --mods lilys-cubeine`
 
 ```
-lilys-cubeine  data=ok  runtime=ok
+lilys-cubeine   data=ok   runtime=ok   atlas=ok
+=== summary
+READY  lilys-cubeine  v2.4.3
 staged: lilys-cubeine 2.4.3, asset-pack 1.0.5, asset-pack-2 1.0.1,
         lilys-injector 1.1.1, runtime-spoilage-engine 1.0.2
 ```
@@ -122,10 +132,13 @@ staged: lilys-cubeine 2.4.3, asset-pack 1.0.5, asset-pack-2 1.0.1,
 `lilys-cubeine (data.lua)`, RSE's `data-final-fixes` after Cubeine's
 `data-updates`), and the 2000-tick benchmark ran clean.
 
-The `atlas=ERROR FileNotFoundError` in that report is pre-existing and unrelated:
-`shipcheck.py` needs a vanilla baseline dump at
-`cache/scratch/vanillaenv/write/script-output/data-raw-dump.json`, which is not on
-this machine. This change touches no graphics.
+The first run of this gate reported `atlas=ERROR FileNotFoundError`: `shipcheck.py`
+needs a vanilla baseline dump at
+`cache/scratch/vanillaenv/write/script-output/data-raw-dump.json`, which was not on
+this machine. Regenerating it with an empty mod directory
+(`Factorio.exe --config <env>/config.ini --mod-directory <env>/mods --dump-data`)
+turned the gate green — that is a repo-wide tooling fix, not something this
+change needs.
 
 ### 6b. Registrations actually exist — `--dump-data`
 
@@ -141,11 +154,27 @@ From the same env's `data-raw-dump.json`:
 
 ### 6c. Spoilage actually rolls at runtime — probe mod
 
-`/tmp` harness `cubeine-spoil-probe` (scratch only, never shipped) shortens
-`spoil_ticks` to 120, fills two chests with full 50-stacks of
+The harness, its raw logs and both runs live in this repo:
+`docs/verification/cubeine-spoil-probe/` (mod), `docs/verification/spoil-probe-{create,bench}.log`.
+It shortens `spoil_ticks` to 120, fills two chests with full 50-stacks of
 `speed-module-3-overclocked-1`, `speed-module-3-overclocked-4` and
 `speed-module-3-degraded-overclocked-1`, spoils one chest naturally and one
-through `LuaItemStack::spoil()`, then logs both chests every 20 ticks:
+through `LuaItemStack::spoil()`, then logs both chests every 20 ticks.
+
+To re-run, stage it into a `shipcheck` env and run `--create` then
+`--benchmark 400`:
+
+```bash
+E=C:/Users/Lily/AppData/Local/hermes/cache/scratch/ship/lilys-cubeine
+cp -r docs/verification/cubeine-spoil-probe "$E/mods/"
+# add {"name":"cubeine-spoil-probe","enabled":true} to $E/mods/mod-list.json
+"E:/SteamLibrary/steamapps/common/Factorio/bin/x64/Factorio.exe" \
+  --config "$E/config.ini" --mod-directory "$E/mods" --create "$E/write/probe.zip"
+"E:/SteamLibrary/steamapps/common/Factorio/bin/x64/Factorio.exe" \
+  --config "$E/config.ini" --mod-directory "$E/mods" --benchmark "$E/write/probe.zip" --benchmark-ticks 400
+```
+
+Run 1 — outcomes spread across the tables:
 
 ```
 t=0    natural: overclocked-1=50 overclocked-4=50 degraded-overclocked-1=50 [150 items]
@@ -154,11 +183,19 @@ t=100  forced : speed-module-3=50 overclocked-4=50 degraded-overclocked-1=50 [15
 t=140  natural: speed-module-3=50 speed-module-3-destroyed=50 speed-module-3-degraded=50 [150 items]
 ```
 
-Reading: the 80/20 table rolled base for the level-1 module, the dangerous table
-rolled `destroyed` for the level-4 module, the degraded table kept
-`speed-module-3-degraded-overclocked-1` degraded, and the item total stayed at 150
-throughout — nothing lost, no `-rse-placeholder` left stuck, no error lines in the
-benchmark log.
+Run 2 — the same scene, different roll:
+
+```
+t=140  natural: speed-module-3-degraded=150 [150 items]
+t=100  forced : speed-module-3=50 degraded-overclocked-1=50 overclocked-4=50 [150 items]
+```
+
+Reading: level-1 rolls produced base (`speed-module-3`) and degraded, level-4
+produced `destroyed`, and the degraded-table module kept itself degraded — the
+three chance tables behave as authored, and two runs with identical inputs
+landed on different outcomes, so the roll is really random. The item total stays
+at 150 in every line: nothing is lost and no `-rse-placeholder` is left stuck.
+Neither the create log nor the benchmark log contains an error line.
 
 Note: one roll happens per *stack*, not per item, because both libraries default
 `items_per_trigger` to the item's stack size (deliberate — it keeps the event rate

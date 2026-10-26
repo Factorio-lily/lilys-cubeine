@@ -1,0 +1,14 @@
+{
+  "name": "cubeine-spoil-probe",
+  "version": "0.0.1",
+  "title": "Cubeine spoilage probe (scratch harness)",
+  "author": "Hermes",
+  "description": "Scratch harness: proves that Cubeine's overclocked modules roll a random spoil result through RSE at runtime. Never shipped.",
+  "factorio_version": "2.1",
+  "dependencies": [
+    "base",
+    "space-age",
+    "lilys-cubeine",
+    "runtime-spoilage-engine"
+  ]
+}
