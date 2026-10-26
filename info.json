@@ -14,7 +14,7 @@
     "lilys-cubeine-asset-pack-2 >= 1.0.0",
     "lilys-injector",
     "? bioprocessing-tab",
-    "runtime-spoilage-library >= 2.0.2",
+    "runtime-spoilage-engine >= 1.0.2",
     "? maraxsis",
     "? astroponics",
     "? cubium",

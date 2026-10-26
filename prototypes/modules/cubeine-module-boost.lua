@@ -1,5 +1,6 @@
---local multispoil = require("__multispoil__.api")
-local rsl = require("__runtime-spoilage-library__/data_registry")
+-- Spoilage outcomes are registered in prototypes/modules/module-spoil-def.lua with a
+-- "mod-data" prototype (data_type rse_registration) for Runtime Spoilage Engine; this
+-- file only builds the module prototypes and sets their spoil_ticks.
 --------
 ---groups
 
