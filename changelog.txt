@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.4.6
+Date: 2026-10-28
+  Bugfixes:
+    - Fixed the startup crash "Error in assignID: recipe-category with name 'maraxsis-hydro-plant-or-chemistry' does not exist" when Maraxsis is installed: Maraxsis 1.32.1 removed its hybrid hydro-plant categories, so the cubeine recipes now list both 'maraxsis-hydro-plant' and 'chemistry' in their categories table (the 2.1 way of saying "hydro plant or chemical plant"), and fall back to plain 'chemistry' when that category is not defined at all
+---------------------------------------------------------------------------------------------------
 Version: 2.4.5
 Date: 2026-10-26
   Changes:

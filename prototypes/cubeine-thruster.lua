@@ -401,7 +401,7 @@ local fuel = {
     results = {
         { type = "fluid", name = "cubeine-fuel", amount = 10000 },
     },
-    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
+    categories = data.raw["recipe-category"]["maraxsis-hydro-plant"] and { "maraxsis-hydro-plant", "chemistry" } or { "chemistry" },
     main_product = "cubeine-fuel",
     allow_productivity = false
 
