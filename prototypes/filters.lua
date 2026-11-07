@@ -41,7 +41,7 @@ data:extend {{
         {type = "item",  name = "steel-plate",            amount = 1, independent_probability = 0.05},
         {type = "item", name = "spoilage", amount = 10},
     },
-    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
+    categories = { mods["maraxsis"] and "maraxsis-hydro-plant" or "chemistry" },
     --main_product = "cubeslurry-filter",
     allow_productivity = true,
     icons = {
