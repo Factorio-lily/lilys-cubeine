@@ -28,7 +28,7 @@ local raw_slurry = {
     results = {
         { type = "fluid", name = "acidic-cubeplant-slurry", amount = 600 },
     },
-    categories = { mods["maraxsis"] and "maraxsis-hydro-plant-or-chemistry" or "chemistry" },
+    categories = { mods["maraxsis"] and "maraxsis-hydro-plant" or "chemistry" },
     main_product = "acidic-cubeplant-slurry",
     allow_productivity = true
 }
